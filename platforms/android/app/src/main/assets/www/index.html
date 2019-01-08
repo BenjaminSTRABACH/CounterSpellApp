@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CS-Appli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <!-- Pemet l'affichage progressif des images -->
+    <script type="text/javascript" src="https://rawgit.com/tuupola/jquery_lazyload/2.x/lazyload.js"></script>
+    <!-- Rajoute les cookies en JS -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="liaison.js"></script>
+    <script src="cookie.js"></script>
+    <script src="rechercheCarte.js"></script>
+    <script src="slide.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="slide-smartphone.css" />
+    <link rel="stylesheet" href="slideperson-smartphone.css" />
+
+    <link rel="stylesheet" href="sliderBarCss.css" />
+</head>
+
+<body onload="ecranSlider();uniqueID();changerboutique();affichercarterechercher();">
+    <div class="darkbox"></div>
+    <div data-role="header">
+
+        <div data-role="fieldcontain" id='boutonVR'>
+            <select name="flip-mini" id="flip-mini" data-role="slider" data-role="slider" data-mini="true" onchange="chgmodemarchand();">
+                <option value="no">Achat</option>
+                <option value="yes">Vente</option>
+            </select>
+        </div>
+        <!-- <div id="flexheader "> -->
+        <img src="media/logo_nantes_temple.png" id="logo">
+        <h1>CS-Appli</h1>
+
+        <!-- </div> -->
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a onclick="openNavG();">Jeux</a>
+                </li>
+                <li>
+                    <input type="text" onkeyup="recupCard();" name="name" id="basic" value="" placeholder="Recherche" data-mini="true" /> </li>
+                <li>
+                    <a onclick="openNavD();">Panier</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="infonav" class="slidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavG();">&times;</a>
+        <a onclick='uniqueID();' href="#">Pseudo:
+            <div id="nom"></div>
+        </a>
+
+        <a href="#">Magic</a>
+        <a href="_">Final Fantasy</a>
+        <a href="#">Boutique Préférée:
+            <div id="boutique_preferee"></div>
+        </a>
+        <div id="chg_boutique"></div>
+        <br>
+        <br>
+        <br>
+        <div onclick="openinputbar();">
+            <button onclick="closeNavG();
+            recup_pseudo();">Modifier Pseudo</button>
+        </div>
+    </div>
+    <div id="infonavperson" class="slidenavperson">
+        <div id='supprhide'></div>
+        <h2>Panier</h2>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavD()">&times;</a>
+
+        <div id='panier'></div>
+    </div>
+
+    <div id="storCook" class="stock"></div>
+    <div id="storJson" class="stock"></div>
+    <div id="storImg" class="stock"></div>
+    <div id="nbrcartes">Vos recherches seront affichées ici.</div>
+    <div id="myModal" class="modal">
+        <div id='mdcContent' class="modal-content">
+            <span class="close">&times;</span>
+            <div id="mdlct">
+                <div id="prescart">
+                    <img id="cartemdl" class="imgg modalmdf">
+                    <div id="infc"></div>
+                </div>
+                <div id="genul0"></div>
+            </div>
+        </div>
+    </div>
+    <div id='button_bottom'>
+        <a href='' onClick='remonter()'>
+            <img id="flechehaut" src='media/chevron-up.png'>
+        </a>
+    </div>
+    <div id="slider"></div>
+    <a href="#logo"></a>
+</body>
+
+</html>

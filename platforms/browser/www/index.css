@@ -1,0 +1,348 @@
+html, body{
+    overflow: hidden;
+}
+body{
+    position: relative;
+}
+
+#logo{
+    height: 35px;
+    width: 58px;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.ui-body-c .ui-link:visited{
+    color: whitesmoke;
+}
+.ui-body-c .ui-link{
+    color: whitesmoke;
+    font-weight: normal;
+}
+.ui-body-c, .ui-overlay-c{
+    text-shadow: 0 2px 0 black;
+}
+.ui-body-c .ui-link:hover{
+    color: #747474;
+}
+#imgsld{
+    height: 50px;
+    width: 75px;
+    margin-left: 38%;
+}
+.ui-body-c{
+    text-shadow: none;
+    overflow: hidden;
+}
+/* #storage{
+    max-width: 240px;
+    overflow: hidden;
+} */
+a:link{
+    text-decoration: none;
+}
+#storage{
+    /* max-height: 300px; */
+    overflow: scroll;
+    display: none;
+}
+#basic{
+    width: 80%;
+    margin: 0 auto;
+}
+.stock{
+display: none;
+}
+.imgg{
+    width: 50%;
+}
+#pgimg{
+    text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 15; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ui-li-thumb{
+    height: 5%;
+    position: inherit;
+}
+/* #cartemdlint{
+    width: 8%;
+}
+#cartemdlintext{
+    width: 8%;
+}
+#cartemdlintfoil{
+    width: 8%;
+} */
+#contenu{
+    vertical-align: middle;
+    /* width: 40%; */
+}
+.modalmdfint{
+    width: 5%;
+    height: 5%;
+}
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb{
+    padding-left: 13px;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-family: Helvetica,Arial,sans-serif;
+    text-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+    
+}
+/* .divcontenu{
+    float: right;
+    width: 50%;
+}
+#divimage{
+    margin-top: 3%;
+    /* float: left;
+    width: 25%; 
+} */
+.flex-container{
+    /* margin-top: 3%;
+    margin-bottom: 3%; */
+    /* margin-top: -3%; */
+    margin-bottom: -7px;
+    padding: 3%;
+    display: flex;
+    border: 1px solid #ccc;
+    background: #eee;
+    font-weight: bold;
+    color: #222;
+    text-shadow: 0 1px 0 #fff;
+    background-image: linear-gradient( #fff,#f1f1f1 );
+    position: relative;
+    overflow: visible;
+    text-align: left;
+    /* border-width: 0; */
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    /* max-height: 8%; */
+}
+.ui-body-c .ui-link {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-family: Helvetica,Arial,sans-serif;
+    text-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+}
+/* #cart{
+    position: fixed;
+    right: 17%;
+
+} */
+#prescart{
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    font-family: Helvetica,Arial,sans-serif;
+    text-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+}
+.divctn{
+    margin-bottom: -7px;
+}
+#cart{
+    right: 3%;
+    position: absolute;
+}
+#infc{
+    margin-bottom: 5%;
+    
+    margin-top: 5%;
+}
+.selectopt{
+    right: 10%;
+    position: absolute;
+    max-height: 20px;
+}
+.liext{
+    list-style: none;
+
+    margin-top: 7%;
+    margin-bottom: -3%;
+}
+#liii{
+    border-style: solid;
+    /* border-width: 1px; */
+    border-color: #ccc;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    background-image: linear-gradient( grey,#f1f1f1 );
+    text-align: center;
+    border-bottom-width: 0px;
+    font-weight: bold;
+    /* height: 6%; */
+}
+.lictn{
+    margin-bottom: 7%;
+}
+divfoil{
+    height: 100%;
+    width: 100%;
+}
+.retourpanier{
+    margin-top: 5%;
+}
+#slider{
+    margin-top: 15px;
+    position: absolute;
+    bottom:0px;
+    top:77px;
+    text-align: center;
+    height:auto;
+    overflow-y: scroll;
+    width:100%;
+    /* max-height: 200px;; */
+    /* transition-duration: 2s;
+    transition-property: all;
+    scroll-behavior: auto; */
+}
+.cards{
+    margin: 1.1px;
+}
+#suppr{
+    right: 3%;
+    height: 15px;
+    width: 15px;
+    position: absolute
+}
+#supprhide{
+    display: none;
+}
+#flechehaut{
+    height: 48px;
+    width: 48px;
+    z-index: 1;
+    position: fixed;
+    margin-left: 42%;
+    bottom: 5%;
+}
+.lideplus{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.conteneur_imgcarte{
+    display: inline-block;
+    margin: 2px;
+    width:29%;
+}
+
+.conteneur_imgcarte img{
+    width: 100%;
+    height: 100%;
+}
+.imgpan{
+    height: 50px;
+    /* position: absolute;
+    display: table-header-group;
+    width: 100%; */
+}
+/* #ligne{
+    height: 8px;
+    background: #222;
+    width: 80%;
+    width: 100%; 
+    margin-left: 20%;
+    margin-right: 5%;
+} */
+.flex-containerpan{
+    /* margin-top: 3%;
+    margin-bottom: 3%; */
+    margin-top: -7%;
+    /* margin-bottom: -7%; */
+    padding: 3%;
+    display: flex;
+    border: 1px solid #ccc;
+    background: #eee;
+    font-weight: bold;
+    color: #222;
+    text-shadow: 0 1px 0 #fff;
+    background-image: linear-gradient( #fff,#f1f1f1 );
+    position: relative;
+    overflow: visible;
+    text-align: left;
+    /* border-width: 0; */
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    /* max-height: 8%; */
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+#boutonVR{
+    right: 0;
+    position: absolute;
+    top: 0;
+    margin-top: -4%;
+}
+.lislid{
+    list-style-type: none;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 4px;
+    background-image: linear-gradient(to right, grey,white, white, white, grey);
+    box-shadow: #222;
+    /* background-image: linear-gradient(grey, white, grey); */
+}
+#liprix{
+    text-align: center;
+}
+#imgext{
+    width: 10%;
+}
+#chg_boutique{
+    margin-left: 4%;
+    margin-right: 4%;
+    font-size: 5%;
+}
