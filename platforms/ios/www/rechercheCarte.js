@@ -425,6 +425,7 @@ function afficherAchat(idcarte) {
     else {
         contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1">Extension :</label><br><input onchange="refreshmodal(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-1" value="' + valeurdepart + '" min="0" max="' + valeurmax + '" data-popup-enabled="true"></li><br>';
     }
+    // contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="etatCarte">Etat : Mint</div></label><input onchange="etatSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-2" value="1" min="1" max="6" data-popup-enabled="true"></li><br>';
     contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="etatCarte">Etat : Mint</div></label><input onchange="etatSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-2" value="1" min="1" max="6" data-popup-enabled="true"></li><br>';
     // contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue : <img src="media/' + afficherDrap(0, tabdrap) + '.png" height=15></div></label><input onchange="langueSlider(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-3" value="1" min="1" max="' + tabdrap.length + '" data-popup-enabled="true"></li><br>';
     contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue :</div></label><ul class="drapList">';
@@ -453,6 +454,7 @@ function afficherAchat(idcarte) {
     contenu += "<img onclick='reprise_carte(" + idcarte + "," + prixRachat(idcarte) + ");' src='media/cart.png'>";
     contenu += "<div id='divpan'></div>";
     document.getElementById('genul0').innerHTML += contenu;
+
     // prixRachat(idcarte);
 
     // document.getElementById('slider-4').style.backgroundImage == 'linear-gradient(to right, grey, white, grey, white, grey )';
@@ -798,15 +800,4 @@ function closeModal(){
     
 }
 
-var mobileSelect1 = new MobileSelect({
-    trigger: '#day',
-    title: 'TEST LALALA ',
-    wheels: [
-                {data:['un','deux','trois','quatre']}
-            ],
-    ensureBtnText: "Confirmer",
-    cancelBtnText: "Annuler",
-    maskopacity: 0.0,
-    titleBgColor: "#ffffff",
-    titleColor: "#000000",
-});
+initPickerEtat();
