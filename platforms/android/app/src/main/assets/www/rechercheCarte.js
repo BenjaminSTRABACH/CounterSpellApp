@@ -11,8 +11,7 @@ function recupCard() {
 
 function uniqueID() {
     if ((Cookies.get('UniqueID')) == undefined) {
-        modal(0, '0');
-        recup_pseudo();
+        popup();
     }
     else {
         Cookies.set('UniqueID', Cookies.get('UniqueID'), { expires: 30 });
@@ -58,6 +57,28 @@ function changercookieboutique(valeur) {
     affichercarterechercher();
 }
 
+function popup(){
+    
+    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
+    document.getElementById('myModal').innerHTML = contenu;
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0]; 1
+    modal.style.display = "block";
+    recup_pseudo();
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
 function modal(card, liencarte) {
     if (card != 0){
         var contenu = '<div id="mdcContent" class="modal-content"><span class="close">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
@@ -71,9 +92,7 @@ function modal(card, liencarte) {
         //Affichage carte + nom + rareté
         var blocmodal = document.getElementById('cartemdl');
         blocmodal.src = "http://www.counterspell.fr/" + liencarte;
-        // var directory = 'https://www.counterspell.fr/app_json_cartes/voir_json/' + card;
-        // var element_idJson = 'storJson';
-        // submitForm(element_idJson, directory, 'innerHTML');
+        
 
         if (marchand == "achat") {
             afficherStock(card);
@@ -139,7 +158,11 @@ function getNomCarte(idcarte) {
 function rechercheCarte(card) {
     var motsaisi = card;
 
-    if (motsaisi.length < 4) {
+    if (motsaisi.length == 0){
+        affichercarterechercher();
+        return false;
+    }
+    else if (motsaisi.length < 3){
         document.getElementById("nbrcartes").innerHTML = "Votre recherche doit comporter un minimum de 3 lettres";
         document.getElementById("slider").innerHTML = "";
         return false;
@@ -149,7 +172,7 @@ function rechercheCarte(card) {
     // var element_idCarte = 'carte';
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
-    if (recup.length == 0) {
+    if (recup.length == 0 ) {
         document.getElementById("nbrcartes").innerHTML = "";
         document.getElementById("slider").innerHTML = " <div style='color:red; font-weight:bold; font-size:25;'>/!\\ Aucun Résultat /!\\</div> <br>Veuillez réessayer";
         return false;
@@ -215,10 +238,7 @@ function affichercarterechercher() {
 //Fonction d'affichage des drapeaux
 //*******************************************************************************************************//
 function afficherDrap(idDrap, tableau, verif) {
-    // var directory = 'https://www.counterspell.fr/app_json_cartes/idlang_to_imgdrap/' + idDrap;
-    // var element_idImg = 'storImg';
-    // submitForm(element_idImg, directory, 'innerHTML');
-    // var recup = document.getElementById(element_idImg).innerHTML;
+
     if (tableau == undefined && verif == undefined) {
         verif = 1;
     }
@@ -737,6 +757,7 @@ function refreshmodal(valeur, idcarte) {
     alert(detail[valeur.value].idcarte);
     afficherAchat(detail[valeur.value].idcarte);
 }
+
 function load2() {
     $("img.lazyload").lazyload();
 }
@@ -757,4 +778,9 @@ function chgmodemarchand() {
     else {
         marchand = "achat";
     }
+}
+
+function closeModal(){
+    document.getElementById("myModal").style.display = "none";
+    
 }
