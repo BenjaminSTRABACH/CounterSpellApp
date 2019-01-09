@@ -92,9 +92,7 @@ function modal(card, liencarte) {
         //Affichage carte + nom + rareté
         var blocmodal = document.getElementById('cartemdl');
         blocmodal.src = "http://www.counterspell.fr/" + liencarte;
-        // var directory = 'https://www.counterspell.fr/app_json_cartes/voir_json/' + card;
-        // var element_idJson = 'storJson';
-        // submitForm(element_idJson, directory, 'innerHTML');
+        
 
         if (marchand == "achat") {
             afficherStock(card);
@@ -240,10 +238,7 @@ function affichercarterechercher() {
 //Fonction d'affichage des drapeaux
 //*******************************************************************************************************//
 function afficherDrap(idDrap, tableau, verif) {
-    // var directory = 'https://www.counterspell.fr/app_json_cartes/idlang_to_imgdrap/' + idDrap;
-    // var element_idImg = 'storImg';
-    // submitForm(element_idImg, directory, 'innerHTML');
-    // var recup = document.getElementById(element_idImg).innerHTML;
+
     if (tableau == undefined && verif == undefined) {
         verif = 1;
     }
