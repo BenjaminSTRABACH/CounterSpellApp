@@ -406,9 +406,16 @@ function afficherAchat(idcarte) {
         contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1">Extension :</label><br><input onchange="refreshmodal(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-1" value="' + valeurdepart + '" min="0" max="' + valeurmax + '" data-popup-enabled="true"></li><br>';
     }
     contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="etatCarte">Etat : Mint</div></label><input onchange="etatSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-2" value="1" min="1" max="6" data-popup-enabled="true"></li><br>';
-    contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue : <img src="media/' + afficherDrap(0, tabdrap) + '.png" height=15></div></label><input onchange="langueSlider(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-3" value="1" min="1" max="' + tabdrap.length + '" data-popup-enabled="true"></li><br>';
+    // contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue : <img src="media/' + afficherDrap(0, tabdrap) + '.png" height=15></div></label><input onchange="langueSlider(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-3" value="1" min="1" max="' + tabdrap.length + '" data-popup-enabled="true"></li><br>';
+    contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue :</div></label><ul class="drapList">';
+    for(var i = 0; i < tabdrap.length - 1; i++) {
+        contenu += "<li class='drap' onclick='selectDrap(" + i + "," + idcarte + ")'><img src='media/" + afficherDrap(i, tabdrap) + ".png' height=42></li>";
+    }
+    contenu +='</ul></li><br>';
+    
     if (detail[position_dans_le_tableau(idcarte, detail)].FoilPossible == 0) {
-        contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidFoil">Foil : Non</div></label><input onchange="foilSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-4" value="0" min="0" max="1" data-popup-enabled="true"></li><br>';
+        // contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidFoil">Foil</div></label><input onchange="foilSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-4" value="0" min="0" max="1" data-popup-enabled="true"></li><br>';
+        contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidFoil">Foil</div></label><input onchange="foilSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-4" value="0" min="0" max="1" data-popup-enabled="true"></li><br>';
     }
     if (detail[position_dans_le_tableau(idcarte, detail)].FoilPossible == 1) {
         contenu += '<li style="display:none;" class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidFoil">Foil : Non</div></label><input type="range" name="slider-1" id="slider-4" value="1" min="1" max="1" data-popup-enabled="true"></li>';
@@ -500,6 +507,11 @@ function langueSlider(valeur, idcarte) {
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     valeur = tabdrap[(valeur.value) - 1];
     document.getElementById('slidDrap').innerHTML = "Langue : <img src='media/" + afficherDrap(valeur) + ".png' height=15>";
+    console.log(afficherDrap(valeur));
+}
+
+function selectDrap(valeur, idcarte) {
+    console.log("selectDrap");
 }
 
 function foilSlider(boolFoil) {

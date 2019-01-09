@@ -246,6 +246,11 @@ divfoil{
     transition-property: all;
     scroll-behavior: auto; */
 }
+
+#checkFoil{
+    float: left;
+}
+
 .cards{
     margin: 1.1px;
 }
@@ -325,6 +330,7 @@ divfoil{
     top: 0;
     margin-top: -4%;
 }
+
 .lislid{
     list-style-type: none;
     border-width: 1px;
@@ -345,4 +351,18 @@ divfoil{
     margin-left: 4%;
     margin-right: 4%;
     font-size: 5%;
+}
+
+.drap{
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.drapList{
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
 }
