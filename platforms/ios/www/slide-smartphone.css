@@ -22,6 +22,10 @@
     display: block;
     transition: 0.3s;
 }
+.slidenav .jeu {
+    padding: 0;
+    margin-bottom: 8px;
+}
 
 /* ----bouton de fermeture du slide----*/
 .slidenav .closebtn {

@@ -366,3 +366,28 @@ divfoil{
     margin-left:0;
     padding-left:0;
 }
+
+.jeuxList{
+    list-style:none;
+    margin-left:16px;
+    padding-left:0;
+}
+
+.jeu{
+    margin-bottom: 8px;
+}
+
+.slidenav #jeuxDiv {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-family: Helvetica,Arial,sans-serif;
+    text-shadow: 0 1px 0 #fff;
+    font-weight: bold;
+}
