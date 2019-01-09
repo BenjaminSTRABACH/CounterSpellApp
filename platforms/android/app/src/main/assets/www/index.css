@@ -19,9 +19,9 @@ body{
     color: whitesmoke;
     font-weight: normal;
 }
-.ui-body-c, .ui-overlay-c{
+/* .ui-body-c, .ui-overlay-c{
     text-shadow: 0 2px 0 black;
-}
+} */
 .ui-body-c .ui-link:hover{
     color: #747474;
 }

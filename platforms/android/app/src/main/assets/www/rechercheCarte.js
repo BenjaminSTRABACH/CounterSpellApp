@@ -797,3 +797,16 @@ function closeModal(){
     document.getElementById("myModal").style.display = "none";
     
 }
+
+var mobileSelect1 = new MobileSelect({
+    trigger: '#day',
+    title: 'TEST LALALA ',
+    wheels: [
+                {data:['un','deux','trois','quatre']}
+            ],
+    ensureBtnText: "Confirmer",
+    cancelBtnText: "Annuler",
+    maskopacity: 0.0,
+    titleBgColor: "#ffffff",
+    titleColor: "#000000",
+});
