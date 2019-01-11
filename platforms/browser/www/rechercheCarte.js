@@ -417,7 +417,7 @@ function afficherAchat(idcarte) {
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail);
-    //document.g
+
 
     // ETAT
     var mobileSelectEtat;

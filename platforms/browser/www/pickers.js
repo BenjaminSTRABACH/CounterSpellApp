@@ -20,7 +20,26 @@ function initPickerExten(detail) {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        callback:function(indexArr, data){    
+            if(typeof data !== 'undefined'){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     });
+    
+   
+    // if(mobileSelectExten.callback == true){
+    //     var picked = mobileSelectExten.data;
+    //     var item = detail.find(function(element){
+    //         return element.NomExtension == picked;
+    //     });
+
+    //     document.getElementById("imgext").src = item.ImgExtension;
+    // }
+
 }
 
 function initPickerEtat() {
