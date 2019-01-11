@@ -1,9 +1,15 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerExten() {
+function initPickerExten(detail) {
+    console.log(detail);
     //Initialisation des données
-    var data = ['...','...','...'];
+    var data = [];
 
+    //Récupération de chaque nom d'extension de la carte
+    detail.forEach(item => {
+        data.push(item.NomExtension);
+    });
+    
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
@@ -19,6 +25,7 @@ function initPickerExten() {
 
 function initPickerEtat() {
     //Initialisation des données
+    console.log("lol");
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
     
     //Création du picker
@@ -54,6 +61,7 @@ function initPickerDrap() {
 }
 
 function initPickerQuant() {
+    
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
 
