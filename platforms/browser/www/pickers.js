@@ -1,12 +1,14 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerExten() {
+    //Initialisation des données
+    var data = ['...','...','...'];
+
+    //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
         title: 'Extension',
-        wheels: [
-            {data:['...','...','...']}
-        ],
+        wheels: [{data}],
         ensureBtnText: "Confirmer",
         cancelBtnText: "Annuler",
         maskopacity: 0.0,
@@ -16,12 +18,14 @@ function initPickerExten() {
 }
 
 function initPickerEtat() {
+    //Initialisation des données
+    var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
+    
+    //Création du picker
     mobileSelectEtat = new MobileSelect({
         trigger: '#etatPicker',
         title: 'Etat',
-        wheels: [
-                    {data:['Mint','Near-mint','Excellent','Fine','Played','Poor']}
-                ],
+        wheels: [{data}],
         ensureBtnText: "Confirmer",
         cancelBtnText: "Annuler",
         maskopacity: 0.0,
@@ -32,13 +36,15 @@ function initPickerEtat() {
 
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerDrap(tabdrap) {
+function initPickerDrap() {
+    //Initialisation des données
+    var data = ['...','...','...'];
+
+    //Création du picker
     mobileSelectDrap = new MobileSelect({
         trigger: '#drapPicker',
         title: 'Langue',
-        wheels: [
-            {data:['...','...','...']}
-        ],
+        wheels: [{data}],
         ensureBtnText: "Confirmer",
         cancelBtnText: "Annuler",
         maskopacity: 0.0,
@@ -48,12 +54,14 @@ function initPickerDrap(tabdrap) {
 }
 
 function initPickerQuant() {
+    //Initialisation des données
+    var data = ['1','2','3','4','5','6','7','8'];
+
+    //Création du picker
     mobileSelectQuant = new MobileSelect({
         trigger: '#quantPicker',
         title: 'Quantité',
-        wheels: [
-                    {data:['1','2','3','4','5','6','7','8']}
-                ],
+        wheels: [{data}],
         ensureBtnText: "Confirmer",
         cancelBtnText: "Annuler",
         maskopacity: 0.0,
