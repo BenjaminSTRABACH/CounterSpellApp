@@ -42,9 +42,6 @@
         <img src="media/logo_nantes_temple.png" id="logo">
         <h1>CS-Appli</h1>
 
-        <div id="etatPicker">Etat</div>
-        <div id="quantPicker">Quantité</div>
-
         <!-- </div> -->
         <div data-role="navbar">
             <ul>
@@ -98,13 +95,52 @@
     <div id="myModal" class="modal">
         <div id='mdcContent' class="modal-content">
             <span class="close">&times;</span>
-           
             <div id="mdlct">
                 <div id="prescart">
                     <img id="cartemdl" class="imgg modalmdf">
                     <div id="infc"></div>
                 </div>
-                <div id="genul0"></div>
+                <div id="genul0">
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <label for="slider-1">Extension : </label><br>
+                        <!-- Picker Extension-->
+                        <div id="extenPicker">...</div>
+                    </li><br>
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <label for="slider-1">
+                            <div id="etatCarte">Etat : </div>
+                        </label>
+                        <!-- Picker Etat -->
+                        <div id="etatPicker">...</div>
+                    </li><br>
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <label for="slider-1">
+                            <div id="slidDrap">Langue : </div>
+                        </label>
+                        <!-- Picker Langue -->
+                        <div id="drapPicker">...</div>
+                    </li><br>
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <label for="slider-1">
+                            <div id="slidFoil">Foil : </div>
+                        </label>
+                        <!-- Bouton Foil -->
+                        <!-- Message pas de foil (display:none)-->
+                        <!-- Message que foil (display:none)-->
+                    </li><br>
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <label for="slider-1">
+                            <div id="slidQte">Quantité :</div>
+                        </label>
+                        <!-- Picker Quantité -->
+                        <div id="quantPicker">...</div>
+                    </li>
+                    <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        <div id="liprix"></div>
+                    </li>
+                    <img onclick='reprise_carte(" + idcarte + "," + prixRachat(idcarte) + ");' src='media/cart.png'>
+                    <div id='divpan'></div>
+                </div>
             </div>
         </div>
     </div>
