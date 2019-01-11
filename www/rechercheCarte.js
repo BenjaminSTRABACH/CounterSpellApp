@@ -217,7 +217,7 @@ function affichercarterechercher() {
     var carte = JSON.parse(recup);
 
     document.getElementById('nbrcartes').innerHTML = "Cartes recherchées par votre boutique.";
-    var cotenu = "<div id='topt'></div>";
+    var contenu = "<div id='top'></div>";
     if (carte.length == 0) {
         document.getElementById("slider").innerHTML = "<br>Votre boutique ne recherche actuellement aucune carte.";
         return false;
@@ -416,14 +416,14 @@ function afficherAchat(idcarte) {
     var imcartesrc = replaceAll(detail[position_dans_le_tableau(idcarte, detail)].ImgCarte, '"', '');
     blocmodal.src = imcartesrc;
     var contenu = "";
+
     contenu += "<div id='nomext'> Extension : " + afficher_Nom_Ext(idcarte, detail) + "</div>";
     contenu += "<img id='imgext'src=" + afficher_Img_Ext(idcarte, detail) + ">";
     if (detail.length == 1) {
         contenu += '<li style="display:none;" class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"></label><br><input type="range" name="slider-1" id="slider-1" value="0" min="0" max="0" data-popup-enabled="true"></li><br>';
     }
     else {
-        contenu += "<br><div id='day'>LALALALALA</div><br>";
-        //contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="extension">Extension :</div></label><br><input onchange="refreshmodal(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-1" value="' + valeurdepart + '" min="0" max="' + valeurmax + '" data-popup-enabled="true"></li><br>';
+        contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1">Extension :</label><br><input onchange="refreshmodal(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-1" value="' + valeurdepart + '" min="0" max="' + valeurmax + '" data-popup-enabled="true"></li><br>';
     }
     contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="etatCarte">Etat : Mint</div></label><input onchange="etatSlider(this);prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-2" value="1" min="1" max="6" data-popup-enabled="true"></li><br>';
     // contenu += '<li class="lislid ui-btn-icon-right ui-icon-carat-r lictn"><label for="slider-1"><div id="slidDrap">Langue : <img src="media/' + afficherDrap(0, tabdrap) + '.png" height=15></div></label><input onchange="langueSlider(this,' + idcarte + ');prixRachat(' + idcarte + ');" type="range" name="slider-1" id="slider-3" value="1" min="1" max="' + tabdrap.length + '" data-popup-enabled="true"></li><br>';
@@ -767,7 +767,7 @@ function refreshli(cpt) {
 }
 function refreshmodal(valeur, idcarte) {
     var detail = recupRachat(idcarte);
-    //alert(detail[valeur.value].idcarte);
+    alert(detail[valeur.value].idcarte);
     afficherAchat(detail[valeur.value].idcarte);
 }
 
@@ -797,19 +797,6 @@ function closeModal(){
     document.getElementById("myModal").style.display = "none";
     
 }
-
-var mobileSelect1 = new MobileSelect({
-    trigger: '#extensioqdsfghn',
-    title: 'Extensions',
-    wheels: [
-                {data:['un','deux','trois','quatre']}
-            ],
-    ensureBtnText: "Confirmer",
-    cancelBtnText: "Annuler",
-    maskopacity: 0.0,
-    titleBgColor: "#ffffff",
-    titleColor: "#000000",
-});
 
 var mobileSelect1 = new MobileSelect({
     trigger: '#day',
