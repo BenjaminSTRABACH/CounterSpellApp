@@ -1,15 +1,17 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerExten(detail) {
-    console.log(detail);
+
     //Initialisation des données
     var data = [];
+    var img = [];
 
     //Récupération de chaque nom d'extension de la carte
-    detail.forEach(item => {
-        data.push(item.NomExtension);
-    });
-    
+     detail.forEach(item => {
+         data.push(item.NomExtension);
+         img.push(item.ImgExtension.replace(/['"]+/g, ''));
+     });
+
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
@@ -21,30 +23,32 @@ function initPickerExten(detail) {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(indexArr, data){    
-            if(typeof data !== 'undefined'){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return data;
         }
     });
-    
-   
-    // if(mobileSelectExten.callback == true){
-    //     var picked = mobileSelectExten.data;
-    //     var item = detail.find(function(element){
-    //         return element.NomExtension == picked;
-    //     });
 
-    //     document.getElementById("imgext").src = item.ImgExtension;
+    document.getElementById("sContainer").addEventListener('click', function(e){
+        var i = e.target.id.replace( /^\D+/g, '');
+        console.log(i);
+        chgImg(i, img);
+    });
+    // for(i = 0; i < img.length - 1; i++){
+    //     document.getElementById("wheel"+i).addEventListener('mousedown', function(e){
+    //         console.log(i);
+    //         chgImg(i, img);
+    //     })
     // }
+
 
 }
 
+function chgImg(index, img){
+        document.getElementById("imgext").src = img[index];
+}
+
+
 function initPickerEtat() {
     //Initialisation des données
-    console.log("lol");
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
     
     //Création du picker
@@ -116,6 +120,7 @@ function resetPickers() {
     html.innerHTML = "..."
     var html = document.getElementById('quantPicker');
     html.innerHTML = "..."
+    document.getElementById('imgext').src = "";
 
     console.log("RESET");
 }
