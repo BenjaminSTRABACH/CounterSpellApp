@@ -1,11 +1,8 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerExten(detail) {
-    console.log(detail);
     //Initialisation des données
     var data = [];
-
-    //Récupération de chaque nom d'extension de la carte
     detail.forEach(item => {
         data.push(item.NomExtension);
     });
@@ -25,7 +22,6 @@ function initPickerExten(detail) {
 
 function initPickerEtat() {
     //Initialisation des données
-    console.log("lol");
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
     
     //Création du picker
@@ -43,13 +39,14 @@ function initPickerEtat() {
 
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerDrap() {
+function initPickerLang() {
     //Initialisation des données
     var data = ['...','...','...'];
-
+    var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Corée", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
+    data = langTab;
     //Création du picker
-    mobileSelectDrap = new MobileSelect({
-        trigger: '#drapPicker',
+    mobileSelectLang = new MobileSelect({
+        trigger: '#langPicker',
         title: 'Langue',
         wheels: [{data}],
         ensureBtnText: "Confirmer",
@@ -61,7 +58,6 @@ function initPickerDrap() {
 }
 
 function initPickerQuant() {
-    
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
 
@@ -82,10 +78,8 @@ function resetPickers() {
     //On supprime l'interface des pickers en html
     var mobileSelect = document.getElementsByClassName('mobileSelect');
     var parent = document.body;
-    console.log(mobileSelect.length);
     for(var i = mobileSelect.length - 1; i >= 0 ; i--){
         parent.removeChild(mobileSelect[i]);
-        console.log(i);
     }
 
     //On remets les valeurs de base dans les div
@@ -93,10 +87,8 @@ function resetPickers() {
     html.innerHTML = "..."
     var html = document.getElementById('etatPicker');
     html.innerHTML = "..."
-    var html = document.getElementById('drapPicker');
+    var html = document.getElementById('langPicker');
     html.innerHTML = "..."
     var html = document.getElementById('quantPicker');
     html.innerHTML = "..."
-
-    console.log("RESET");
 }

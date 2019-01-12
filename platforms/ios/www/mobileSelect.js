@@ -186,6 +186,7 @@
 			var _this = this;
 			var cancelText = cancelBtnText ? cancelBtnText : '取消';
 			var ensureText = ensureBtnText ? ensureBtnText : '确认';
+			_this.mobileSelect = document.getElementById("genul0");
 			_this.mobileSelect = document.createElement("div");
 			_this.mobileSelect.className = "mobileSelect";
 			_this.mobileSelect.innerHTML =
@@ -206,8 +207,10 @@
 		                    '<div class="shadowMask"></div>'+
 		                '</div>'+
 		            '</div>'+
-		        '</div>';
-		    document.body.appendChild(_this.mobileSelect);
+				'</div>';
+			// var html = document.getElementById("genul0")
+		    // html.appendChild(_this.mobileSelect);
+			document.body.appendChild(_this.mobileSelect);
 
 			//根据数据长度来渲染
 
