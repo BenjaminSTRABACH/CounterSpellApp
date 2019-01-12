@@ -27,23 +27,18 @@ function initPickerExten(detail) {
         }
     });
 
+    //EventListener sur la liste complète des extensions
     document.getElementById("sContainer").addEventListener('click', function(e){
+        //On prend le numéro du <li> (wheel0, wheel1, wheel2...)
         var i = e.target.id.replace( /^\D+/g, '');
         console.log(i);
         chgImg(i, img);
     });
-    // for(i = 0; i < img.length - 1; i++){
-    //     document.getElementById("wheel"+i).addEventListener('mousedown', function(e){
-    //         console.log(i);
-    //         chgImg(i, img);
-    //     })
-    // }
-
-
 }
 
 function chgImg(index, img){
-        document.getElementById("imgext").src = img[index];
+    //On change l'image en fonction de l'extension cliquée
+    document.getElementById("imgext").src = img[index];
 }
 
 
