@@ -76,19 +76,19 @@ function initPickerQuant() {
 
 function resetPickers() {
     //On supprime l'interface des pickers en html
-    var mobileSelect = document.getElementsByClassName('mobileSelect');
-    var parent = document.body;
+    var mobileSelect = document.getElementsByClassName('mobileSelect mobileSelect-show');
     for(var i = mobileSelect.length - 1; i >= 0 ; i--){
+        var parent = mobileSelect[i].parentNode;
         parent.removeChild(mobileSelect[i]);
     }
 
     //On remets les valeurs de base dans les div
-    var html = document.getElementById('extenPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('etatPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('langPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('quantPicker');
-    html.innerHTML = "..."
+    // var html = document.getElementById('extenPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('etatPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('langPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('quantPicker');
+    // html.innerHTML = "..."
 }

@@ -36,12 +36,14 @@
 			var _this = this;
 			_this.keyMap = config.keyMap ? config.keyMap : {id:'id', value:'value', childs:'childs'};
 			_this.checkDataType();
-			_this.renderWheels(_this.wheelsData, config.cancelBtnText, config.ensureBtnText);
 			_this.trigger = document.querySelector(config.trigger);
 			if(!_this.trigger){
 				console.error('mobileSelect has been successfully installed, but no trigger found on your page.');
 				return false;
 			}
+			_this.renderWheels(_this.wheelsData, config.cancelBtnText, config.ensureBtnText);
+			
+			
 			_this.wheel = getClass(_this.mobileSelect,'wheel');
 			_this.slider = getClass(_this.mobileSelect,'selectContainer');
 			_this.wheels = _this.mobileSelect.querySelector('.wheels');
@@ -60,7 +62,7 @@
 			_this.triggerDisplayData = !(typeof(config.triggerDisplayData)=='undefined') ? config.triggerDisplayData : true;
 			_this.trigger.style.cursor='pointer';
 			_this.setStyle(config);
-			_this.setTitle(_this.titleText);
+			// _this.setTitle(_this.titleText);
 			_this.checkIsPC();
 			_this.checkCascade();
 			_this.addListenerAll();
@@ -80,33 +82,33 @@
 
 
 			//按钮监听
-			_this.cancelBtn.addEventListener('click',function(){
-				_this.hide();
-		    });
+			// _this.cancelBtn.addEventListener('click',function(){
+			// 	_this.hide();
+		    // });
 
-		    _this.ensureBtn.addEventListener('click',function(){
-				_this.hide();
-			    if(!_this.liHeight) {
-			        _this.liHeight =  _this.mobileSelect.querySelector('li').offsetHeight;
-			    }
-				var tempValue ='';
-		    	for(var i=0; i<_this.wheel.length; i++){
-		    		i==_this.wheel.length-1 ? tempValue += _this.getInnerHtml(i) : tempValue += _this.getInnerHtml(i) + _this.connector;
-		    	}
-		    	if(_this.triggerDisplayData){
-		    		_this.trigger.innerHTML = tempValue;
-		    	}
-		    	_this.curIndexArr = _this.getIndexArr();
-		    	_this.curValue = _this.getCurValue();
-		    	_this.callback(_this.curIndexArr, _this.curValue);
-		    });
+		    // _this.ensureBtn.addEventListener('click',function(){
+			// 	_this.hide();
+			//     if(!_this.liHeight) {
+			//         _this.liHeight =  _this.mobileSelect.querySelector('li').offsetHeight;
+			//     }
+			// 	var tempValue ='';
+		    // 	for(var i=0; i<_this.wheel.length; i++){
+		    // 		i==_this.wheel.length-1 ? tempValue += _this.getInnerHtml(i) : tempValue += _this.getInnerHtml(i) + _this.connector;
+		    // 	}
+		    // 	if(_this.triggerDisplayData){
+		    // 		_this.trigger.innerHTML = tempValue;
+		    // 	}
+		    // 	_this.curIndexArr = _this.getIndexArr();
+		    // 	_this.curValue = _this.getCurValue();
+		    // 	_this.callback(_this.curIndexArr, _this.curValue);
+		    // });
 
-		    _this.trigger.addEventListener('click',function(){
-		    	_this.show();
-		    });
-		    _this.grayLayer.addEventListener('click',function(){
-				_this.hide();
-		    });
+		    // _this.trigger.addEventListener('click',function(){
+		    // 	_this.show();
+		    // });
+		    // _this.grayLayer.addEventListener('click',function(){
+			// 	_this.hide();
+		    // });
 		    _this.popUp.addEventListener('click',function(){
 		    	event.stopPropagation();
 		    });
@@ -122,24 +124,24 @@
 
 		setStyle: function(config){
 			var _this = this;
-			if(config.ensureBtnColor){
-				_this.ensureBtn.style.color = config.ensureBtnColor;
-			}
-			if(config.cancelBtnColor){
-				_this.cancelBtn.style.color = config.cancelBtnColor;
-			}
-			if(config.titleColor){
-				_this.title = _this.mobileSelect.querySelector('.title');
-				_this.title.style.color = config.titleColor;
-			}
+			// if(config.ensureBtnColor){
+			// 	_this.ensureBtn.style.color = config.ensureBtnColor;
+			// }
+			// if(config.cancelBtnColor){
+			// 	_this.cancelBtn.style.color = config.cancelBtnColor;
+			// }
+			// if(config.titleColor){
+			// 	_this.title = _this.mobileSelect.querySelector('.title');
+			// 	_this.title.style.color = config.titleColor;
+			// }
 			if(config.textColor){
 				_this.panel = _this.mobileSelect.querySelector('.panel');
 				_this.panel.style.color = config.textColor;
 			}
-			if(config.titleBgColor){
-				_this.btnBar = _this.mobileSelect.querySelector('.btnBar');
-				_this.btnBar.style.backgroundColor = config.titleBgColor;
-			}
+			// if(config.titleBgColor){
+			// 	_this.btnBar = _this.mobileSelect.querySelector('.btnBar');
+			// 	_this.btnBar.style.backgroundColor = config.titleBgColor;
+			// }
 			if(config.bgColor){
 				_this.panel = _this.mobileSelect.querySelector('.panel');
 				_this.shadowMask = _this.mobileSelect.querySelector('.shadowMask');
@@ -188,17 +190,17 @@
 			var ensureText = ensureBtnText ? ensureBtnText : '确认';
 			_this.mobileSelect = document.getElementById("genul0");
 			_this.mobileSelect = document.createElement("div");
-			_this.mobileSelect.className = "mobileSelect";
+			_this.mobileSelect.className = "mobileSelect mobileSelect-show";
 			_this.mobileSelect.innerHTML =
-		    	'<div class="grayLayer"></div>'+
+		    	// '<div class="grayLayer"></div>'+
 		        '<div class="content">'+
-		            '<div class="btnBar">'+
-		                '<div class="fixWidth">'+
-		                    '<div class="cancel">'+ cancelText +'</div>'+
-		                    '<div class="title"></div>'+
-		                    '<div class="ensure">'+ ensureText +'</div>'+
-		                '</div>'+
-		            '</div>'+
+		            // '<div class="btnBar">'+
+		                // '<div class="fixWidth">'+
+		                    // '<div class="cancel">'+ cancelText +'</div>'+
+		                    // '<div class="title"></div>'+
+		                    // '<div class="ensure">'+ ensureText +'</div>'+
+		                // '</div>'+
+		            // '</div>'+
 		            '<div class="panel">'+
 		                '<div class="fixWidth">'+
 		                	'<div class="wheels">'+
@@ -209,8 +211,8 @@
 		            '</div>'+
 				'</div>';
 			// var html = document.getElementById("genul0")
-		    // html.appendChild(_this.mobileSelect);
-			document.body.appendChild(_this.mobileSelect);
+			_this.trigger.appendChild(_this.mobileSelect);
+			// document.body.appendChild(_this.mobileSelect);
 
 			//根据数据长度来渲染
 
