@@ -25,15 +25,8 @@ function initPickerExten(detail) {
         callback:function(){ 
             console.log(this.getIndexArr());   
             console.log(this.getCurValue());
+            chgImg(this.getIndexArr(), img);
         }
-    });
-
-    //EventListener sur la liste complète des extensions
-    document.getElementById("sContainer").addEventListener('mouseup', function(e){
-        //On prend le numéro du <li> (wheel0, wheel1, wheel2...)
-        var i = e.target.id.replace( /^\D+/g, '');
-        console.log(i);
-        chgImg(i, img);
     });
 }
 
@@ -69,7 +62,7 @@ function initPickerEtat() {
 function initPickerLang() {
     //Initialisation des données
     var data = ['...','...','...'];
-    var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Corée", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
+    var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
     data = langTab;
     //Création du picker
     mobileSelectLang = new MobileSelect({
