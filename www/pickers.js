@@ -105,14 +105,14 @@ function resetPickers() {
     }
 
     //On remets les valeurs de base dans les div
-    var html = document.getElementById('extenPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('etatPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('drapPicker');
-    html.innerHTML = "..."
-    var html = document.getElementById('quantPicker');
-    html.innerHTML = "..."
+    // var html = document.getElementById('extenPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('etatPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('langPicker');
+    // html.innerHTML = "..."
+    // var html = document.getElementById('quantPicker');
+    // html.innerHTML = "..."
     document.getElementById('imgext').src = "";
 
     console.log("RESET");

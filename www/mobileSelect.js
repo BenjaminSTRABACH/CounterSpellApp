@@ -528,12 +528,12 @@
 	    },
 
 	    fixPosition: function(distance){
-	        return -(this.getIndex(distance)-2)*this.liHeight;
+			return -(this.getIndex(distance)-2)*this.liHeight;
 	    },
 
 	    movePosition: function(theSlider, distance){
 	        theSlider.style.webkitTransform = 'translate3d(0,' + distance + 'px, 0)';
-	        theSlider.style.transform = 'translate3d(0,' + distance + 'px, 0)';
+			theSlider.style.transform = 'translate3d(0,' + distance + 'px, 0)';
 	    },
 
 	    locatePosition: function(index, posIndex){
@@ -550,7 +550,7 @@
 				this.curDistance[index] = parseInt(theSlider.style.transform.split(',')[1]);
 	        }else{
 				this.curDistance[index] = parseInt(theSlider.style.webkitTransform.split(',')[1]);
-	        }
+			}
 	    },
 
 	    getDistance:function(theSlider){
@@ -558,7 +558,7 @@
 	    		return parseInt(theSlider.style.transform.split(',')[1]);
 	    	}else{
 	    		return parseInt(theSlider.style.webkitTransform.split(',')[1]);
-	    	}
+			}
 	    },
 
 	    getInnerHtml: function(sliderIndex){
@@ -571,14 +571,13 @@
 	    	var _this = this;
 	    	event = event || window.event;
 	    	switch(event.type){
-	    		case "touchstart":
+				case "touchstart":
 			        _this.startY = event.touches[0].clientY;
 			        _this.startY = parseInt(_this.startY);
 			        _this.oldMoveY = _this.startY;
 	    			break;
 
 	    		case "touchend":
-
 			        _this.moveEndY = parseInt(event.changedTouches[0].clientY);
 			        _this.offsetSum = _this.moveEndY - _this.startY;
 					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
@@ -586,7 +585,15 @@
 					if(_this.offsetSum == 0){
 						//offsetSum为0,相当于点击事件
 						// 0 1 [2] 3 4
-						var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
+						var element = _this.trigger;
+						while(element.tagName != "UL"){
+							element = element.children[0];
+						}
+						element = element.children[_this.getIndexArr()];
+						var rect = element.getBoundingClientRect();
+						pos = rect.bottom + 40*2;
+						var clickOffetNum = parseInt((pos - _this.moveEndY)/40);
+						// var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
 						if(clickOffetNum!=2){
 							var offset = clickOffetNum - 2;
 							var newDistance = _this.curDistance[index] + (offset*_this.liHeight);
@@ -613,7 +620,7 @@
 				            _this.curDistance[index] = _this.oversizeBorder;
 				            setTimeout(function(){
 				                _this.movePosition(theSlider, _this.curDistance[index]);
-				            }, 100);
+							}, 100);
 				        }
 						_this.transitionEnd(_this.getIndexArr(),_this.getCurValue());
 					}
@@ -624,7 +631,7 @@
 
 	    			break;
 
-	    		case "touchmove":
+				case "touchmove":
 			        event.preventDefault();
 			        _this.moveY = event.touches[0].clientY;
 			        _this.offset = _this.moveY - _this.oldMoveY;
@@ -633,8 +640,8 @@
 			        _this.curDistance[index] = _this.curDistance[index] + _this.offset;
 			        _this.movePosition(theSlider, _this.curDistance[index]);
 			        _this.oldMoveY = _this.moveY;
-	    			break;
-	    	}
+					break;
+			}
 	    },
 
 	    dragClick: function(event, theSlider, index){

@@ -413,7 +413,6 @@ function afficherAchat(idcarte) {
     var valeurdepart = position_dans_le_tableau(idcarte, detail);
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
-    console.log(detail);
     
     // EXTENSION
     var mobileSelectExten;
