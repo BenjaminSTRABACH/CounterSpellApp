@@ -56,6 +56,7 @@ function initPickerEtat() {
         titleColor: "#000000",
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
+            setEtat(this.getCurValue());
         }
     });
 }
@@ -102,6 +103,7 @@ function initPickerQuant() {
         titleColor: "#000000",
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
+            setQuant(this.getIndexArr())
         }
     });
 }
@@ -128,13 +130,16 @@ function resetPickers() {
     console.log("RESET");
 }
 
+//SETTER
+
 function setExten(index, detail) {
     exten = detail[index];
     console.log(exten);
 }
 
-function setEtat(index) {
-
+function setEtat(value) {
+    etat = value[0];
+    console.log(etat);
 }
 
 function setLang(index) {
@@ -142,5 +147,6 @@ function setLang(index) {
 }
 
 function setQuant(index) {
-
+    quant = index[0] + 1;
+    console.log(quant);
 }
