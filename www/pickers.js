@@ -11,6 +11,8 @@ function initPickerExten(detail) {
          data.push(item.NomExtension);
          img.push(item.ImgExtension.replace(/['"]+/g, ''));
      });
+     //Ajout de l'image à l'initialisation
+     chgImg(0, img);
 
     //Création du picker
     mobileSelectExten = new MobileSelect({
@@ -23,9 +25,9 @@ function initPickerExten(detail) {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(){ 
-            console.log(this.getIndexArr());   
-            console.log(this.getCurValue());
             chgImg(this.getIndexArr(), img);
+            resetPickerLang();
+            //Récupération données (getIndexArr/getCurValue)
         }
     });
 }
@@ -51,8 +53,7 @@ function initPickerEtat() {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(){ 
-            console.log(this.getIndexArr());   
-            console.log(this.getCurValue());
+            //Récupération données (getIndexArr/getCurValue)
         }
     });
 }
@@ -75,8 +76,7 @@ function initPickerLang() {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(){    
-            console.log(this.getIndexArr());
-            console.log(this.getCurValue());
+            //Récupération données (getIndexArr/getCurValue)
         }
     });
 }
@@ -96,10 +96,17 @@ function initPickerQuant() {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(){    
-            console.log(this.getIndexArr());
-            console.log(this.getCurValue());
+            //Récupération données (getIndexArr/getCurValue)
         }
     });
+}
+
+function resetPickerLang(){
+    var parent = document.getElementById('langPicker');
+    mobileSelect = parent.children[0];
+    parent.removeChild(mobileSelect);
+    initPickerLang();
+
 }
 
 function resetPickers() {
@@ -110,15 +117,7 @@ function resetPickers() {
         parent.removeChild(mobileSelect[i]);
     }
 
-    //On remets les valeurs de base dans les div
-    // var html = document.getElementById('extenPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('etatPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('langPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('quantPicker');
-    // html.innerHTML = "..."
+    //On remet l'image à la valeur par défaut
     document.getElementById('imgext').src = "";
 
     console.log("RESET");
