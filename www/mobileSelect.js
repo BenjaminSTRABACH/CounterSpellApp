@@ -219,7 +219,7 @@
 			var tempHTML='';
 			for(var i=0; i<wheelsData.length; i++){
 			//列
-				tempHTML += '<div class="wheel"><ul class="selectContainer">';
+				tempHTML += '<div class="wheel"><ul id="sContainer" class="selectContainer">';
 				if(_this.jsonType){
 					for(var j=0; j<wheelsData[i].data.length; j++){
 					//行
@@ -228,7 +228,7 @@
 				}else{
 					for(var j=0; j<wheelsData[i].data.length; j++){
 					//行
-						tempHTML += '<li>'+wheelsData[i].data[j]+'</li>';
+						tempHTML += '<li id="wheel'+j+'">'+wheelsData[i].data[j]+'</li>';
 					}
 				}
 				tempHTML += '</ul></div>';

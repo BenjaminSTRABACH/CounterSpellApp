@@ -1,12 +1,17 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerExten(detail) {
+
     //Initialisation des données
     var data = [];
-    detail.forEach(item => {
-        data.push(item.NomExtension);
-    });
-    
+    var img = [];
+
+    //Récupération de chaque nom d'extension de la carte
+     detail.forEach(item => {
+         data.push(item.NomExtension);
+         img.push(item.ImgExtension.replace(/['"]+/g, ''));
+     });
+
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
@@ -17,8 +22,25 @@ function initPickerExten(detail) {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        callback:function(indexArr, data){    
+            return data;
+        }
+    });
+
+    //EventListener sur la liste complète des extensions
+    document.getElementById("sContainer").addEventListener('click', function(e){
+        //On prend le numéro du <li> (wheel0, wheel1, wheel2...)
+        var i = e.target.id.replace( /^\D+/g, '');
+        console.log(i);
+        chgImg(i, img);
     });
 }
+
+function chgImg(index, img){
+    //On change l'image en fonction de l'extension cliquée
+    document.getElementById("imgext").src = img[index];
+}
+
 
 function initPickerEtat() {
     //Initialisation des données
@@ -83,12 +105,15 @@ function resetPickers() {
     }
 
     //On remets les valeurs de base dans les div
-    // var html = document.getElementById('extenPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('etatPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('langPicker');
-    // html.innerHTML = "..."
-    // var html = document.getElementById('quantPicker');
-    // html.innerHTML = "..."
+    var html = document.getElementById('extenPicker');
+    html.innerHTML = "..."
+    var html = document.getElementById('etatPicker');
+    html.innerHTML = "..."
+    var html = document.getElementById('drapPicker');
+    html.innerHTML = "..."
+    var html = document.getElementById('quantPicker');
+    html.innerHTML = "..."
+    document.getElementById('imgext').src = "";
+
+    console.log("RESET");
 }

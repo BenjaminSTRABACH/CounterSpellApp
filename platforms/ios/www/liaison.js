@@ -40,13 +40,12 @@ function submitForm(id, directory, type) {
                 storing(req.responseText, htmlobj, type);
             }
             else {
-                // alert("Error: returned status code " + req.status + " " + req.statusText);
+                 //alert("Error: returned status code " + req.status + " " + req.statusText);
             }
 
         }
     }
 
     req.open("GET", directory, false, 'ltdj', 'magasin2');
-
     req.send(null);
 }
