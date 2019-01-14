@@ -11,8 +11,9 @@ function initPickerExten(detail) {
          data.push(item.NomExtension);
          img.push(item.ImgExtension.replace(/['"]+/g, ''));
      });
-     //Ajout de l'image à l'initialisation
+     //Initialisation de l'extension et de l'image au choix par défaut
      chgImg(0, img);
+     setExten(0, detail);
 
     //Création du picker
     mobileSelectExten = new MobileSelect({
@@ -25,9 +26,10 @@ function initPickerExten(detail) {
         titleBgColor: "#ffffff",
         titleColor: "#000000",
         callback:function(){ 
+            //Récupération données (getIndexArr/getCurValue)
+            setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
             resetPickerLang();
-            //Récupération données (getIndexArr/getCurValue)
         }
     });
 }
@@ -62,6 +64,9 @@ function initPickerEtat() {
 //Générer les data en fonction du tableau
 function initPickerLang() {
     //Initialisation des données
+    langBin = exten.LangPossible;
+    console.log("langBin " + langBin);
+
     var data = ['...','...','...'];
     var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
     data = langTab;
@@ -121,4 +126,21 @@ function resetPickers() {
     document.getElementById('imgext').src = "";
 
     console.log("RESET");
+}
+
+function setExten(index, detail) {
+    exten = detail[index];
+    console.log(exten);
+}
+
+function setEtat(index) {
+
+}
+
+function setLang(index) {
+
+}
+
+function setQuant(index) {
+
 }

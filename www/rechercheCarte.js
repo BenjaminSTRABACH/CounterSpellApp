@@ -414,6 +414,11 @@ function afficherAchat(idcarte) {
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     
+    var exten;
+    var etat;
+    var lang;
+    var quant;
+    
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail);
