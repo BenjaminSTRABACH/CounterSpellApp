@@ -577,7 +577,8 @@
 			        _this.oldMoveY = _this.startY;
 	    			break;
 
-	    		case "touchend":
+				case "touchend":
+					
 			        _this.moveEndY = parseInt(event.changedTouches[0].clientY);
 			        _this.offsetSum = _this.moveEndY - _this.startY;
 					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
@@ -627,7 +628,9 @@
 
  			        if(_this.cascade){
 				        _this.checkRange(index, _this.getIndexArr());
-				    }
+					}
+					
+					_this.callback(_this.curIndexArr, _this.curValue);
 
 	    			break;
 
@@ -655,7 +658,6 @@
 	    			break;
 
 	    		case "mouseup":
-
 			        _this.moveEndY = event.clientY;
 			        _this.offsetSum = _this.moveEndY - _this.startY;
 					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;

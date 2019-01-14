@@ -22,13 +22,14 @@ function initPickerExten(detail) {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
-        callback:function(indexArr, data){    
-            return data;
+        callback:function(){ 
+            console.log(this.getIndexArr());   
+            console.log(this.getCurValue());
         }
     });
 
     //EventListener sur la liste complète des extensions
-    document.getElementById("sContainer").addEventListener('click', function(e){
+    document.getElementById("sContainer").addEventListener('mouseup', function(e){
         //On prend le numéro du <li> (wheel0, wheel1, wheel2...)
         var i = e.target.id.replace( /^\D+/g, '');
         console.log(i);
@@ -56,6 +57,10 @@ function initPickerEtat() {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        callback:function(){ 
+            console.log(this.getIndexArr());   
+            console.log(this.getCurValue());
+        }
     });
 }
 
@@ -76,6 +81,10 @@ function initPickerLang() {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        callback:function(){    
+            console.log(this.getIndexArr());
+            console.log(this.getCurValue());
+        }
     });
 }
 
@@ -93,6 +102,10 @@ function initPickerQuant() {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        callback:function(){    
+            console.log(this.getIndexArr());
+            console.log(this.getCurValue());
+        }
     });
 }
 
