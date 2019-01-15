@@ -85,7 +85,7 @@ function modal(card, liencarte) {
     if (card != 0){
         var contenu = '<div id="mdcContent" class="modal-content"><span class="close">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
         // document.getElementById('myModal').innerHTML = contenu;
-        var card = card;
+        idCarte = card;
         // Get the modal
         var modal = document.getElementById('myModal');
         // Get the <span> element that closes the modal
@@ -418,19 +418,19 @@ function afficherAchat(idcarte) {
     
     // EXTENSION
     var mobileSelectExten;
-    initPickerExten(detail);
+    initPickerExten(detail, idcarte);
 
     // ETAT
     var mobileSelectEtat;
-    initPickerEtat();
+    initPickerEtat(idcarte);
 
     // LANGUE
     var mobileSelectLang;
-    initPickerLang(detail);
+    initPickerLang(detail, idcarte);
     
     // QUANTITE
     var mobileSelectQuant;
-    initPickerQuant();
+    initPickerQuant(idcarte);
 }
 
 function index_string_lang(detail, valeur) {
@@ -492,12 +492,7 @@ function recupRachat(idcarte) {
     return rachatP;
 }
 
-function qteSlider(qte) {
-    // alert(qte.value);
-    document.getElementById('slidQte').innerHTML = 'Quantité : ' + qte.value;
-}
-
-function prixRachat(idcarte) {
+function updatePrixRachat(idcarte) {
     
 }
 

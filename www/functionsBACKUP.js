@@ -111,5 +111,9 @@ function foilSlider(boolFoil) {
         document.getElementById('slidFoil').innerHTML = "Foil : Oui";
         document.getElementById('slider-4').style.backgroundImage = 'linear-gradient(to right, red, yellow, green, blue,green, yellow, red)';
     }
+}
 
+function qteSlider(qte) {
+    // alert(qte.value);
+    document.getElementById('slidQte').innerHTML = 'Quantité : ' + qte.value;
 }

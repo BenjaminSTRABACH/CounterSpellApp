@@ -1,8 +1,6 @@
 //Passer le tableau des extensions dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerExten(detail) {
-
-    console.log(detail);
+function initPickerExten(detail, idcarte) {
     //Initialisation des données
     var data = [];
     var img = [];
@@ -31,6 +29,7 @@ function initPickerExten(detail) {
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
             resetPickerLang();
+            updatePrixRachat(idcarte);
         }
     });
 }
@@ -41,12 +40,12 @@ function chgImg(index, img){
 }
 
 
-function initPickerEtat() {
+function initPickerEtat(idcarte) {
     //Initialisation des données
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
 
     //Initialisation de l'état au choix par défaut
-    setEtat('Mint');
+    setEtat(['Mint']);
 
     //Création du picker
     mobileSelectEtat = new MobileSelect({
@@ -61,13 +60,14 @@ function initPickerEtat() {
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
             setEtat(this.getCurValue());
+            updatePrixRachat(idcarte);
         }
     });
 }
 
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerLang() {
+function initPickerLang(idcarte) {
 
 
     //Initialisation des données
@@ -89,7 +89,7 @@ function initPickerLang() {
     }
 
     //Initialisation de la langue et de l'image au choix par défaut
-    setLang(0);
+    setLang([data[0]]);
     chgDrap(0, imgDrap);
 
     //Création du picker
@@ -105,25 +105,25 @@ function initPickerLang() {
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
             chgDrap(this.getIndexArr(), imgDrap);
+            setLang(this.getCurValue());
+            updatePrixRachat(idcarte);
         }
     });
 }
 
 function chgDrap(index, imgDrap){
-    console.log(index);
-    
     document.getElementById("imgdrap").src = "/media/" + imgDrap[index] + ".png";
     document.getElementById("imgdrap").style["height"] = 15;
 
 
 }
 
-function initPickerQuant() {
+function initPickerQuant(idcarte) {
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
 
     //Initialisation de la quantitéau choix par défaut
-    setQuant(0);
+    setQuant([0]);
 
     //Création du picker
     mobileSelectQuant = new MobileSelect({
@@ -137,7 +137,8 @@ function initPickerQuant() {
         titleColor: "#000000",
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
-            setQuant(this.getIndexArr())
+            setQuant(this.getIndexArr());
+            updatePrixRachat(idcarte);
         }
     });
 }
@@ -175,8 +176,9 @@ function setEtat(value) {
     console.log(etat);
 }
 
-function setLang(index) {
-
+function setLang(value) {
+    lang = value[0];
+    console.log(lang);
 }
 
 function setQuant(index) {
