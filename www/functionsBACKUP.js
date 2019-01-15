@@ -52,3 +52,64 @@ function afficherAchat(idcarte) {
 
     // document.getElementById('slider-4').style.backgroundImage == 'linear-gradient(to right, grey, white, grey, white, grey )';
 }
+
+function prixRachat(idcarte) {
+    var detail = recupRachat(idcarte);
+    var tabdrap = [];
+    tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
+
+    // var extension = document.getElementById("slider-1").value;
+    var etat = document.getElementById("slider-2").value;
+    // var langue = document.getElementById("slider-3").value;
+    // var langue2 = tabdrap[langue - 1];
+
+    var foil = document.getElementById("slider-4").value;
+    var qte = document.getElementById("slider-5").value;
+    // alert(etat);
+    // var prixRachat = $('#storJson').load('https://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue + '/echange/72000/rien');//remplacer rien par la boutique préférée 
+    // var prixRachatP = parseInt(prixRachat);
+    // var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
+    var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/echange/72000/rien';
+    var element_idJson = 'storJson';
+    submitForm(element_idJson, directory, 'innerHTML');
+    var recup = document.getElementById(element_idJson).innerHTML;
+    var prixRachat = recup * qte;
+    // alert(prixRachat);
+    // var prixRachatP = document.getElementById('storJson').innerHTML;
+    // alert(prixRachatP);
+    if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
+        document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de cartes, ou contacter directement la boutique.';
+        return false
+    } else {
+        document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
+        return prixRachat;
+    }
+
+}
+
+function etatSlider(etat) {
+    var etats = ['', 'Mint', 'Near-mint', 'Excellent', 'Fine', 'Played', 'Poor'];
+    document.getElementById('etatCarte').innerHTML = 'Etat : ' + etats[etat.value];
+}
+
+function langueSlider(valeur, idcarte) {
+    var detail = recupRachat(idcarte);
+    tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
+    valeur = tabdrap[(valeur.value) - 1];
+    document.getElementById('slidDrap').innerHTML = "Langue : <img src='media/" + afficherDrap(valeur) + ".png' height=15>";
+    console.log(afficherDrap(valeur));
+}
+
+function foilSlider(boolFoil) {
+    // var deb = document.getElementById('foilSlider').innerHTML;
+    // alert(deb);
+    if (boolFoil.value == 0) {
+        document.getElementById('slidFoil').innerHTML = "Foil : Non";
+        document.getElementById('slider-4').style.backgroundImage = 'linear-gradient(to right, white, white)';
+    }
+    else {
+        document.getElementById('slidFoil').innerHTML = "Foil : Oui";
+        document.getElementById('slider-4').style.backgroundImage = 'linear-gradient(to right, red, yellow, green, blue,green, yellow, red)';
+    }
+
+}
