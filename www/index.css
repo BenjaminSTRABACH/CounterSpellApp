@@ -373,6 +373,10 @@ divfoil{
     padding-left:0;
 }
 
+#imgdrap{
+    max-height: 15px;
+}
+
 .jeu{
     margin-bottom: 8px;
 }
