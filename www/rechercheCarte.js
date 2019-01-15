@@ -430,7 +430,7 @@ function afficherAchat(idcarte) {
 
     // LANGUE
     var mobileSelectLang;
-    initPickerLang();
+    initPickerLang(detail);
     
     // QUANTITE
     var mobileSelectQuant;

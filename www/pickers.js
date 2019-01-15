@@ -2,6 +2,7 @@
 //Générer les data en fonction du tableau
 function initPickerExten(detail) {
 
+    console.log(detail);
     //Initialisation des données
     var data = [];
     var img = [];
@@ -43,7 +44,6 @@ function chgImg(index, img){
 function initPickerEtat() {
     //Initialisation des données
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
-    
     //Création du picker
     mobileSelectEtat = new MobileSelect({
         trigger: '#etatPicker',
@@ -64,13 +64,29 @@ function initPickerEtat() {
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerLang() {
+
+
     //Initialisation des données
     langBin = exten.LangPossible;
+    langBin = "" + langBin;
+    
     console.log("langBin " + langBin);
-
-    var data = ['...','...','...'];
+    var array = Array.from(langBin);
+    
     var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
-    data = langTab;
+    var listDrap = ["drapFra", "drapAng", "drapAll", "drapEsp", "drapIta", "drapCor", "drapRus", "drapJap", "drapChi", "drapChi"];
+
+    var imgDrap = [];
+    var data = [];
+    for(i = 0; i < array.length -1; i++){
+        if(array[i] == 1){
+            data.push(langTab[i]);
+            imgDrap.push(listDrap[i]);
+        }
+    }
+
+    console.log(data);
+
     //Création du picker
     mobileSelectLang = new MobileSelect({
         trigger: '#langPicker',
@@ -83,8 +99,20 @@ function initPickerLang() {
         titleColor: "#000000",
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
+            chgDrap(this.getIndexArr(), imgDrap);
         }
     });
+
+    chgDrap(mobileSelectLang.getIndexArr(), imgDrap);
+}
+
+function chgDrap(index, imgDrap){
+    console.log(index);
+    
+    document.getElementById("imgdrap").src = "/media/" + imgDrap[index] + ".png";
+    document.getElementById("imgdrap").style["height"] = 15;
+
+
 }
 
 function initPickerQuant() {
