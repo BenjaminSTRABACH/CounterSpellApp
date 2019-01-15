@@ -103,6 +103,7 @@ function initPickerLang() {
         }
     });
 
+    chgDrap(mobileSelectLang.getIndexArr(), imgDrap);
 }
 
 function chgDrap(index, imgDrap){
