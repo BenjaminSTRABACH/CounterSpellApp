@@ -8,13 +8,13 @@ function initPickerExten(detail) {
     var img = [];
 
     //Récupération de chaque nom d'extension de la carte
-     detail.forEach(item => {
-         data.push(item.NomExtension);
-         img.push(item.ImgExtension.replace(/['"]+/g, ''));
-     });
-     //Initialisation de l'extension et de l'image au choix par défaut
-     chgImg(0, img);
-     setExten(0, detail);
+    detail.forEach(item => {
+        data.push(item.NomExtension);
+        img.push(item.ImgExtension.replace(/['"]+/g, ''));
+    });
+    //Initialisation de l'extension et de l'image au choix par défaut
+    chgImg(0, img);
+    setExten(0, detail);
 
     //Création du picker
     mobileSelectExten = new MobileSelect({
@@ -44,6 +44,10 @@ function chgImg(index, img){
 function initPickerEtat() {
     //Initialisation des données
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
+
+    //Initialisation de l'état au choix par défaut
+    setEtat('Mint');
+
     //Création du picker
     mobileSelectEtat = new MobileSelect({
         trigger: '#etatPicker',
@@ -70,7 +74,6 @@ function initPickerLang() {
     langBin = exten.LangPossible;
     langBin = "" + langBin;
     
-    console.log("langBin " + langBin);
     var array = Array.from(langBin);
     
     var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
@@ -85,7 +88,9 @@ function initPickerLang() {
         }
     }
 
-    console.log(data);
+    //Initialisation de la langue et de l'image au choix par défaut
+    setLang(0);
+    chgDrap(0, imgDrap);
 
     //Création du picker
     mobileSelectLang = new MobileSelect({
@@ -102,8 +107,6 @@ function initPickerLang() {
             chgDrap(this.getIndexArr(), imgDrap);
         }
     });
-
-    chgDrap(mobileSelectLang.getIndexArr(), imgDrap);
 }
 
 function chgDrap(index, imgDrap){
@@ -118,6 +121,9 @@ function chgDrap(index, imgDrap){
 function initPickerQuant() {
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
+
+    //Initialisation de la quantitéau choix par défaut
+    setQuant(0);
 
     //Création du picker
     mobileSelectQuant = new MobileSelect({
@@ -141,7 +147,6 @@ function resetPickerLang(){
     mobileSelect = parent.children[0];
     parent.removeChild(mobileSelect);
     initPickerLang();
-
 }
 
 function resetPickers() {

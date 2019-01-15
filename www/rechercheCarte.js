@@ -499,7 +499,6 @@ function qteSlider(qte) {
 
 function prixRachat(idcarte) {
     
-
 }
 
 function reprise_carte(idcarte, prixRachat) {
