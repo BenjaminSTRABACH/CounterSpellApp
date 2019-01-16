@@ -333,6 +333,7 @@ divfoil{
 
 .lislid{
     list-style-type: none;
+    width: 40%;
     border-width: 1px;
     border-style: solid;
     padding: 10px;
@@ -344,8 +345,13 @@ divfoil{
     text-align: center;
 }
 #imgext{
-    width: 10%;
+    width: 25%;
 }
+
+#imgdrap{
+    width: 25%;
+}
+
 #chg_boutique{
     margin-left: 4%;
     margin-right: 4%;
@@ -372,10 +378,6 @@ divfoil{
     padding-left:0;
 }
 
-#imgdrap{
-    max-height: 15px;
-}
-
 .jeu{
     margin-bottom: 8px;
 }
@@ -394,3 +396,22 @@ divfoil{
     text-shadow: 0 1px 0 #fff;
     font-weight: bold;
 }
+
+#genul0 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.modalLine {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.titlePick {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
