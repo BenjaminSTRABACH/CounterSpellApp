@@ -78,9 +78,9 @@ display: none;
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 85%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -333,7 +333,7 @@ divfoil{
 
 .lislid{
     list-style-type: none;
-    width: 40%;
+    width: 42%;
     border-width: 1px;
     border-style: solid;
     padding: 10px;
