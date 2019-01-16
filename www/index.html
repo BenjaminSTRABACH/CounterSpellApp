@@ -103,16 +103,16 @@
                 <div id="genul0">
                     <div class="modalLine">
                         <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
-                            <div class="titlePick">
-                                <div>Extension</div>
+                            <div class="headerPick">
+                                <div class="titlePick">Extension</div>
                                 <img id="imgext"/>
                             </div>
                             <!-- Picker Extension-->
                             <div id="extenPicker"></div>
                         </li>
                         <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
-                            <div class="titlePick">
-                                <div>Langue</div>
+                            <div class="headerPick">
+                                <div class="titlePick">Langue</div>
                                 <img id="imgdrap"/>
                             </div>
                             <!-- Picker Langue -->
@@ -121,14 +121,14 @@
                     </div>
                     <div class="modalLine">
                         <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
-                            <div>
+                            <div class="headerPick">
                                 <div class="titlePick">Etat</div>
                             </div>
                             <!-- Picker Etat -->
                             <div id="etatPicker"></div>
                         </li>
                         <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
-                            <div>
+                            <div class="headerPick">
                                 <div class="titlePick">Quantité</div>
                             </div>
                             <!-- Picker Quantité -->
@@ -136,10 +136,8 @@
                         </li>
                     </div>
                     <div class="modalLine">
-                        <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
-                            <div>
-                                <div>Foil : </div>
-                            </div>
+                        <div id="foilModal">
+                            <div id="foilTitle">Foil : </div>
                             <!-- Bouton Foil -->
                             <div data-role="fieldcontain" id='boutonFoil'>
                                 <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true"">
@@ -148,11 +146,11 @@
                                 </select>
                             </div>
                             <!-- Message que foil (display:none)-->
-                        </li>
-                        <li class="lislid ui-btn-icon-right ui-icon-carat-r lictn">
+                        </div>
+                        <div id="confirmReprise">
                             <div id="liprix"></div>
-                        </li>
-                        <img onclick='reprise_carte(" + idcarte + "," + prixRachat(idcarte) + ");' src='media/cart.png'>
+                            <img id="imgReprise" onclick='reprise_carte(" + idcarte + "," + prixRachat(idcarte) + ");' src='media/cart.png'>
+                        </div>
                     </div>
                     <div id='divpan'></div>
                 </div>

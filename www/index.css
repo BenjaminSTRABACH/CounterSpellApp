@@ -334,6 +334,7 @@ divfoil{
 .lislid{
     list-style-type: none;
     width: 42%;
+    margin: 2px;
     border-width: 1px;
     border-style: solid;
     padding: 10px;
@@ -341,9 +342,7 @@ divfoil{
     box-shadow: #222;
     /* background-image: linear-gradient(grey, white, grey); */
 }
-#liprix{
-    text-align: center;
-}
+
 #imgext{
     width: 25%;
 }
@@ -408,10 +407,43 @@ divfoil{
     flex-wrap: nowrap;
 }
 
-
-.titlePick {
+.headerPick {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+}
+
+.titlePick {
+    font-weight: bold;
+}
+
+#foilModal {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 2;
+}
+
+#foilTitle {
+    margin: 10px;
+}
+
+#confirmReprise {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#liprix{
+    font-weight: bold;
+    margin: 10px;
+}
+
+#imgReprise {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}
