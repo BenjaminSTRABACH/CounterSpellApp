@@ -60,16 +60,21 @@ function prixRachat(idcarte) {
 
     // var extension = document.getElementById("slider-1").value;
     var etat = document.getElementById("slider-2").value;
-    // var langue = document.getElementById("slider-3").value;
-    // var langue2 = tabdrap[langue - 1];
+    console.log(etat);
+    var langue = document.getElementById("slider-3").value;
+    console.log(langue);
+    var langue2 = tabdrap[langue - 1];
 
     var foil = document.getElementById("slider-4").value;
+    console.log(foil);
     var qte = document.getElementById("slider-5").value;
+    console.log(qte);
+    console.log("----------------------")
     // alert(etat);
     // var prixRachat = $('#storJson').load('https://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue + '/echange/72000/rien');//remplacer rien par la boutique préférée 
     // var prixRachatP = parseInt(prixRachat);
-    // var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
-    var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/echange/72000/rien';
+    var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
+    console.log(directory);
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;

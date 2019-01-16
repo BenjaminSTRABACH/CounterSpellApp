@@ -2,7 +2,7 @@
 var exten;
 var etat;
 var lang;
-var foil;
+var foil = 0;
 var quant;
 
 var marchand = "achat";
@@ -426,11 +426,13 @@ function afficherAchat(idcarte) {
 
     // LANGUE
     var mobileSelectLang;
-    initPickerLang(detail, idcarte);
+    initPickerLang(idcarte);
     
     // QUANTITE
     var mobileSelectQuant;
     initPickerQuant(idcarte);
+
+    updatePrixRachat(idcarte);
 }
 
 function index_string_lang(detail, valeur) {
@@ -493,7 +495,23 @@ function recupRachat(idcarte) {
 }
 
 function updatePrixRachat(idcarte) {
-    
+    console.log("idcarte : " + idcarte);
+    var detail = recupRachat(idcarte);
+    var tabdrap = [];
+    tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
+    var langue2 = tabdrap[lang - 1];
+    var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
+    var element_idJson = 'storJson';
+    submitForm(element_idJson, directory, 'innerHTML');
+    var recup = document.getElementById(element_idJson).innerHTML;
+    var prixRachat = recup * quant;
+    if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
+        document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de cartes, ou contacter directement la boutique.';
+        return false
+    } else {
+        document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
+        return prixRachat;
+    }
 }
 
 function reprise_carte(idcarte, prixRachat) {

@@ -13,6 +13,7 @@ function initPickerExten(detail, idcarte) {
     //Initialisation de l'extension et de l'image au choix par défaut
     chgImg(0, img);
     setExten(0, detail);
+    idcarte = detail[0].idcarte;
 
     //Création du picker
     mobileSelectExten = new MobileSelect({
@@ -26,6 +27,7 @@ function initPickerExten(detail, idcarte) {
         titleColor: "#000000",
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
+            idcarte = detail[this.getIndexArr()].idcarte;
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
             resetPickerLang();
@@ -45,7 +47,7 @@ function initPickerEtat(idcarte) {
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
 
     //Initialisation de l'état au choix par défaut
-    setEtat(['Mint']);
+    setEtat([0]);
 
     //Création du picker
     mobileSelectEtat = new MobileSelect({
@@ -59,7 +61,7 @@ function initPickerEtat(idcarte) {
         titleColor: "#000000",
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
-            setEtat(this.getCurValue());
+            setEtat(this.getIndexArr());
             updatePrixRachat(idcarte);
         }
     });
@@ -68,7 +70,6 @@ function initPickerEtat(idcarte) {
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerLang(idcarte) {
-
 
     //Initialisation des données
     langBin = exten.LangPossible;
@@ -89,7 +90,7 @@ function initPickerLang(idcarte) {
     }
 
     //Initialisation de la langue et de l'image au choix par défaut
-    setLang([data[0]]);
+    setLang([0]);
     chgDrap(0, imgDrap);
 
     //Création du picker
@@ -105,7 +106,7 @@ function initPickerLang(idcarte) {
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
             chgDrap(this.getIndexArr(), imgDrap);
-            setLang(this.getCurValue());
+            setLang(this.getIndexArr());
             updatePrixRachat(idcarte);
         }
     });
@@ -168,20 +169,20 @@ function resetPickers() {
 
 function setExten(index, detail) {
     exten = detail[index];
-    console.log(exten);
+    // console.log(exten);
 }
 
-function setEtat(value) {
-    etat = value[0];
-    console.log(etat);
+function setEtat(index) {
+    etat = index[0] + 1;
+    // console.log(etat);
 }
 
-function setLang(value) {
-    lang = value[0];
-    console.log(lang);
+function setLang(index) {
+    lang = index[0] + 1;
+    // console.log(lang);
 }
 
 function setQuant(index) {
     quant = index[0] + 1;
-    console.log(quant);
+    // console.log(quant);
 }
