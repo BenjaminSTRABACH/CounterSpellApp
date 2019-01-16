@@ -30,7 +30,7 @@ function initPickerExten(detail, idcarte) {
             idcarte = detail[this.getIndexArr()].idcarte;
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
-            resetPickerLang();
+            resetPickerLang(idcarte);
             updatePrixRachat(idcarte);
         }
     });
@@ -144,11 +144,11 @@ function initPickerQuant(idcarte) {
     });
 }
 
-function resetPickerLang(){
+function resetPickerLang(idcarte){
     var parent = document.getElementById('langPicker');
     mobileSelect = parent.children[0];
     parent.removeChild(mobileSelect);
-    initPickerLang();
+    initPickerLang(idcarte);
 }
 
 function resetPickers() {

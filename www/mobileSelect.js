@@ -1,14 +1,8 @@
-/*!
- * mobileSelect.js
- * (c) 2017-present onlyhom
- * Released under the MIT License.
- */
-
 (function() {
 	function getClass(dom,string) {
 		return dom.getElementsByClassName(string);
 	}
-	//构造器
+	
 	function MobileSelect(config) {
 		this.mobileSelect;
 		this.wheelsData = config.wheels;
@@ -70,7 +64,7 @@
 			if (_this.cascade) {
 				_this.initCascade();
 			}
-			//定位 初始位置
+			
 			if(_this.initPosition.length < _this.slider.length){
 				var diff = _this.slider.length - _this.initPosition.length;
 				for(var i=0; i<diff; i++){
@@ -81,7 +75,7 @@
 			_this.setCurDistance(_this.initPosition);
 
 
-			//按钮监听
+			
 			// _this.cancelBtn.addEventListener('click',function(){
 			// 	_this.hide();
 		    // });
@@ -113,7 +107,7 @@
 		    	event.stopPropagation();
 		    });
 
-			_this.fixRowStyle(); //修正列数
+			_this.fixRowStyle(); 
 		},
 
 		setTitle: function(string){
@@ -184,6 +178,8 @@
 			}
 	    },
 
+
+		
 		renderWheels: function(wheelsData, cancelBtnText, ensureBtnText){
 			var _this = this;
 			var cancelText = cancelBtnText ? cancelBtnText : '取消';
@@ -214,20 +210,20 @@
 			_this.trigger.appendChild(_this.mobileSelect);
 			// document.body.appendChild(_this.mobileSelect);
 
-			//根据数据长度来渲染
+			
 
 			var tempHTML='';
 			for(var i=0; i<wheelsData.length; i++){
-			//列
+			
 				tempHTML += '<div class="wheel"><ul id="sContainer" class="selectContainer">';
 				if(_this.jsonType){
 					for(var j=0; j<wheelsData[i].data.length; j++){
-					//行
+					
 						tempHTML += '<li data-id="'+wheelsData[i].data[j][_this.keyMap.id]+'">'+wheelsData[i].data[j][_this.keyMap.value]+'</li>';
 					}
 				}else{
 					for(var j=0; j<wheelsData[i].data.length; j++){
-					//行
+					
 						tempHTML += '<li id="wheel'+j+'">'+wheelsData[i].data[j]+'</li>';
 					}
 				}
@@ -239,7 +235,7 @@
 		addListenerAll: function(){
 			var _this = this;
 			for(var i=0; i<_this.slider.length; i++){
-				//手势监听
+				
 				(function (i) {
 					_this.addListenerWheel(_this.wheel[i], i);
 				})(i);
@@ -259,7 +255,7 @@
 			},false);
 
 			if(_this.isPC){
-				//如果是PC端则再增加拖拽监听 方便调试
+				
 				theWheel.addEventListener('mousedown', function () {
 					_this.dragClick(event, this.firstChild, index);
 				},false);
@@ -337,12 +333,12 @@
 		},
 
 		checkArrDeep: function (parent) {
-			//检测子节点深度  修改 displayJson
+			
 			var _this = this;
 			if(parent){
 				if (_this.keyMap.childs in parent && parent[_this.keyMap.childs].length > 0) {
-					_this.displayJson.push(_this.generateArrData(parent[_this.keyMap.childs])); //生成子节点数组
-					_this.checkArrDeep(parent[_this.keyMap.childs][0]);//检测下一个子节点
+					_this.displayJson.push(_this.generateArrData(parent[_this.keyMap.childs])); 
+					_this.checkArrDeep(parent[_this.keyMap.childs][0]);
 				}
 			}
 		},
@@ -351,7 +347,7 @@
 			var _this = this;
 			var deleteNum = _this.displayJson.length-1-index;
 			for(var i=0; i<deleteNum; i++){
-				_this.displayJson.pop(); //修改 displayJson
+				_this.displayJson.pop(); 
 			}
 			var resultNode;
 			for (var i = 0; i <= index; i++){
@@ -362,7 +358,7 @@
 				}
 			}
 			_this.checkArrDeep(resultNode);
-			//console.log(_this.displayJson);
+			
 			_this.reRenderWheels();
 			_this.fixRowStyle();
 			_this.setCurDistance(_this.resetPosition(index, posIndexArr));
@@ -391,7 +387,7 @@
 
 		reRenderWheels: function(){
 			var _this = this;
-			//删除多余的wheel
+			
 			if(_this.wheel.length > _this.displayJson.length){
 				var count = _this.wheel.length - _this.displayJson.length;
 				for(var i=0; i<count; i++){
@@ -399,13 +395,13 @@
 				}
 			}
 			for(var i=0; i<_this.displayJson.length; i++){
-			//列
+
 				(function (i) {
 					var tempHTML='';
 					if(_this.wheel[i]){
-						//console.log('插入Li');
+				
 						for(var j=0; j<_this.displayJson[i].length; j++){
-						//行
+	
 							tempHTML += '<li data-id="'+_this.displayJson[i][j][_this.keyMap.id]+'">'+_this.displayJson[i][j][_this.keyMap.value]+'</li>';
 						}
 						_this.slider[i].innerHTML = tempHTML;
@@ -415,7 +411,7 @@
 						tempWheel.className = "wheel";
 						tempHTML = '<ul class="selectContainer">';
 						for(var j=0; j<_this.displayJson[i].length; j++){
-						//行
+					
 							tempHTML += '<li data-id="'+_this.displayJson[i][j][_this.keyMap.id]+'">'+_this.displayJson[i][j][_this.keyMap.value]+'</li>';
 						}
 						tempHTML += '</ul>';
@@ -584,8 +580,7 @@
 					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
 
 					if(_this.offsetSum == 0){
-						//offsetSum为0,相当于点击事件
-						// 0 1 [2] 3 4
+
 						var element = _this.trigger;
 						while(element.tagName != "UL"){
 							element = element.children[0];
@@ -605,12 +600,12 @@
 							}
 						}
 					}else{
-						//修正位置
+		
 						_this.updateCurDistance(theSlider, index);
 						_this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
 						_this.movePosition(theSlider, _this.curDistance[index]);
 
-				        //反弹
+				 
 				        if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
 				            _this.curDistance[index] = 2*_this.liHeight;
 				            setTimeout(function(){
@@ -674,12 +669,12 @@
 							}
 						}
 					}else{
-						//修正位置
+		
 						_this.updateCurDistance(theSlider, index);
 						_this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
 						_this.movePosition(theSlider, _this.curDistance[index]);
 
-						//反弹
+
 						if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
 						    _this.curDistance[index] = 2*_this.liHeight;
 						    setTimeout(function(){
