@@ -336,8 +336,7 @@ divfoil{
     border-width: 1px;
     border-style: solid;
     padding: 10px;
-    border-radius: 4px;
-    background-image: linear-gradient(to right, grey,white, white, white, grey);
+    background-image: grey;
     box-shadow: #222;
     /* background-image: linear-gradient(grey, white, grey); */
 }
