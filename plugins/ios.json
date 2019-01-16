@@ -12,7 +12,47 @@
         },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.example.hello"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.example.hello"
+        },
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.example.hello"
+        }
+    }
 }
