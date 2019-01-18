@@ -169,20 +169,20 @@ function resetPickers() {
 
 function setExten(index, detail) {
     exten = detail[index];
-    // console.log(exten);
+    console.log(exten);
 }
 
 function setEtat(index) {
     etat = index[0] + 1;
-    // console.log(etat);
+    console.log(etat);
 }
 
 function setLang(index) {
     lang = index[0] + 1;
-    // console.log(lang);
+    console.log(lang);
 }
 
 function setQuant(index) {
     quant = index[0] + 1;
-    // console.log(quant);
+    console.log(quant);
 }
