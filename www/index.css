@@ -225,7 +225,8 @@ a{
 .lictn{
     margin-bottom: 7%;
 }
-divfoil{
+
+#foilModal{
     height: 100%;
     width: 100%;
 }
@@ -336,7 +337,8 @@ divfoil{
     width: 42%;
     margin: 2px;
     border-width: 1px;
-    border-style: solid;
+    border-style: dashed;
+    border-color: rgb(184, 184, 184);
     padding: 10px;
     background-image: grey;
     box-shadow: #222;
@@ -443,7 +445,7 @@ divfoil{
 }
 
 #imgReprise {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     margin: 10px;
 }
