@@ -214,6 +214,10 @@ function resetPickers() {
     //On remet l'image à la valeur par défaut
     document.getElementById('imgext').src = "";
 
+    mobileSelectExten == null;
+    mobileSelectLang == null;
+    mobileSelectEtat == null;
+    mobileSelectQuant == null;
     console.log("RESET");
 }
 
@@ -224,8 +228,8 @@ function setExten(index, detail) {
 }
 
 function setFoil(choice, idcarte){
-    console.log('foil : ' + foil);
-    console.log('choix : ' + choice);
+    // console.log('foil : ' + foil);
+    // console.log('choix : ' + choice);
     foil = choice;
 }
 

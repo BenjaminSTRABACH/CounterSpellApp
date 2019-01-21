@@ -192,6 +192,8 @@ a{
 #cart{
     right: 3%;
     position: absolute;
+    width: 16px;
+    height: 16px;
 }
 #infc{
     margin-bottom: 5%;

@@ -61,7 +61,7 @@ function changercookieboutique(valeur) {
 
 function popup(){
     
-    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
+    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="modalAchat"></div></div><div>';
     document.getElementById('myModal').innerHTML = contenu;
     // Get the modal
     var modal = document.getElementById('myModal');
@@ -83,7 +83,7 @@ function popup(){
 
 function modal(card, liencarte) {
     if (card != 0){
-        var contenu = '<div id="mdcContent" class="modal-content"><span class="close">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
+        var contenu = '<div id="mdcContent" class="modal-content"><span class="close">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="modalAchat"></div></div><div>';
         // document.getElementById('myModal').innerHTML = contenu;
         idCarte = card;
         // Get the modal
@@ -98,24 +98,28 @@ function modal(card, liencarte) {
 
         if (marchand == "achat") {
             afficherStock(card);
+            document.getElementById("modalAchat").style.display = "block";
+            document.getElementById("modalVente").style.display = "none";
         }
         else {
             // alert(card);
             afficherAchat(card);
+            document.getElementById("modalAchat").style.display = "none";
+            document.getElementById("modalVente").style.display = "block";
         }
     }
     
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
-        resetPickers()
+        resetPickers();
     }
     
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            resetPickers()
+            resetPickers();
         }
     }
 }
@@ -406,7 +410,7 @@ function afficherStock(idcarte) {
     }
     //FIN boucle pour chaque boutique ayant du sto
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
-    document.getElementById('genul0').innerHTML = contenu_first + contenu_total;
+    document.getElementById('modalAchat').innerHTML = contenu_first + contenu_total;
 }
 
 function afficherAchat(idcarte) {
@@ -509,6 +513,7 @@ function updatePrixRachat(idcarte) {
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
+    console.log(prixRachat);
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
         document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de cartes, ou contacter directement la boutique.';
         return false
@@ -722,4 +727,8 @@ function chgmodemarchand() {
 
 function closeModal(){
     document.getElementById("myModal").style.display = "none";
+    mobileSelectExten == null;
+    mobileSelectLang == null;
+    mobileSelectEtat == null;
+    mobileSelectQuant == null;
 }

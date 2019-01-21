@@ -558,7 +558,7 @@
 
 	    getInnerHtml: function(sliderIndex){
 	    	var _this = this;
-	    	var index = _this.getIndex(_this.curDistance[sliderIndex]);
+			var index = _this.getIndex(_this.curDistance[sliderIndex]);
 	    	return _this.slider[sliderIndex].getElementsByTagName('li')[index].innerHTML;
 	    },
 
