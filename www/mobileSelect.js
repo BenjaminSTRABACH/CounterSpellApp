@@ -71,7 +71,6 @@
 					_this.initPosition.push(0);
 				}
 			}
-
 			_this.setCurDistance(_this.initPosition);
 
 
@@ -107,7 +106,7 @@
 		    	event.stopPropagation();
 		    });
 
-			_this.fixRowStyle(); 
+			_this.fixRowStyle();
 		},
 
 		setTitle: function(string){
@@ -333,7 +332,6 @@
 		},
 
 		checkArrDeep: function (parent) {
-			
 			var _this = this;
 			if(parent){
 				if (_this.keyMap.childs in parent && parent[_this.keyMap.childs].length > 0) {
@@ -391,7 +389,7 @@
 			if(_this.wheel.length > _this.displayJson.length){
 				var count = _this.wheel.length - _this.displayJson.length;
 				for(var i=0; i<count; i++){
-					_this.wheels.removeChild(_this.wheel[_this.wheel.length-1]);
+					_this.wheels.removeChild(_this.wheel[_this.wheel.length-2]);
 				}
 			}
 			for(var i=0; i<_this.displayJson.length; i++){
@@ -465,14 +463,14 @@
 
 		fixRowStyle: function(){
 			var _this = this;
-			var width = (100/_this.wheel.length).toFixed(2);
+			var width = (100/_this.wheel.length).toFixed(1);
 			for(var i=0; i<_this.wheel.length; i++){
 				_this.wheel[i].style.width = width+'%';
 			}
 		},
 
 	    getIndex: function(distance){
-	        return Math.round((2*this.liHeight-distance)/this.liHeight);
+	        return Math.round((1*this.liHeight-distance)/this.liHeight);
 	    },
 
 	    getIndexArr: function(){
@@ -480,7 +478,7 @@
 	    	var temp = [];
 	    	for(var i=0; i<_this.curDistance.length; i++){
 	    		temp.push(_this.getIndex(_this.curDistance[i]));
-	    	}
+			}
 	    	return temp;
 	    },
 
@@ -501,7 +499,7 @@
 		    	for(var i=0; i<_this.curDistance.length; i++){
 		    		temp.push(_this.getInnerHtml(i));
 		    	}
-	    	}
+			}
 	    	return temp;
 	    },
 
@@ -510,21 +508,22 @@
 	    },
 
 	    calcDistance: function(index){
-			return 2*this.liHeight-index*this.liHeight;
+			return 1*this.liHeight-index*this.liHeight;
 	    },
 
 	    setCurDistance: function(indexArr){
 	    	var _this = this;
-	    	var temp = [];
+			var temp = [];
 	    	for(var i=0; i<_this.slider.length; i++){
 	    		temp.push(_this.calcDistance(indexArr[i]));
 	    		_this.movePosition(_this.slider[i],temp[i]);
 	    	}
-	    	_this.curDistance = temp;
+			// _this.curDistance = [0];
+			_this.curDistance = temp;
 	    },
 
 	    fixPosition: function(distance){
-			return -(this.getIndex(distance)-2)*this.liHeight;
+			return -(this.getIndex(distance)-1)*this.liHeight;
 	    },
 
 	    movePosition: function(theSlider, distance){
@@ -535,7 +534,7 @@
 	    locatePosition: function(index, posIndex){
 	    	var _this = this;
   	    	this.curDistance[index] = this.calcDistance(posIndex);
-  	    	this.movePosition(this.slider[index],this.curDistance[index]);
+			this.movePosition(this.slider[index],this.curDistance[index]);
 	        if(_this.cascade){
 		    	_this.checkRange(index, _this.getIndexArr());
 			}
@@ -577,7 +576,7 @@
 					
 			        _this.moveEndY = parseInt(event.changedTouches[0].clientY);
 			        _this.offsetSum = _this.moveEndY - _this.startY;
-					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
+					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-2)*_this.liHeight;
 
 					if(_this.offsetSum == 0){
 
@@ -587,13 +586,13 @@
 						}
 						element = element.children[_this.getIndexArr()];
 						var rect = element.getBoundingClientRect();
-						pos = rect.bottom + 40*2;
+						pos = rect.bottom + 40*1;
 						var clickOffetNum = parseInt((pos - _this.moveEndY)/40);
 						// var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
-						if(clickOffetNum!=2){
-							var offset = clickOffetNum - 2;
+						if(clickOffetNum!=1){
+							var offset = clickOffetNum - 1;
 							var newDistance = _this.curDistance[index] + (offset*_this.liHeight);
-							if((newDistance <= 2*_this.liHeight) && (newDistance >= _this.oversizeBorder) ){
+							if((newDistance <= 1*_this.liHeight) && (newDistance >= _this.oversizeBorder) ){
 								_this.curDistance[index] = newDistance;
 								_this.movePosition(theSlider, _this.curDistance[index]);
 								_this.transitionEnd(_this.getIndexArr(),_this.getCurValue());
@@ -606,8 +605,8 @@
 						_this.movePosition(theSlider, _this.curDistance[index]);
 
 				 
-				        if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
-				            _this.curDistance[index] = 2*_this.liHeight;
+				        if(_this.curDistance[index] + _this.offsetSum > 1*_this.liHeight){
+				            _this.curDistance[index] = 1*_this.liHeight;
 				            setTimeout(function(){
 				                _this.movePosition(theSlider, _this.curDistance[index]);
 				            }, 100);
@@ -655,14 +654,14 @@
 	    		case "mouseup":
 			        _this.moveEndY = event.clientY;
 			        _this.offsetSum = _this.moveEndY - _this.startY;
-					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
+					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-2)*_this.liHeight;
 
 					if(_this.offsetSum == 0){
 						var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
-						if(clickOffetNum!=2){
-							var offset = clickOffetNum - 2;
+						if(clickOffetNum!=1){
+							var offset = clickOffetNum - 1;
 							var newDistance = _this.curDistance[index] + (offset*_this.liHeight);
-							if((newDistance <= 2*_this.liHeight) && (newDistance >= _this.oversizeBorder) ){
+							if((newDistance <= 1*_this.liHeight) && (newDistance >= _this.oversizeBorder) ){
 								_this.curDistance[index] = newDistance;
 								_this.movePosition(theSlider, _this.curDistance[index]);
 								_this.transitionEnd(_this.getIndexArr(),_this.getCurValue());
@@ -675,8 +674,8 @@
 						_this.movePosition(theSlider, _this.curDistance[index]);
 
 
-						if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
-						    _this.curDistance[index] = 2*_this.liHeight;
+						if(_this.curDistance[index] + _this.offsetSum > 1*_this.liHeight){
+						    _this.curDistance[index] = 1*_this.liHeight;
 						    setTimeout(function(){
 						        _this.movePosition(theSlider, _this.curDistance[index]);
 						    }, 100);
