@@ -223,7 +223,7 @@ function setExten(index, detail) {
     exten = detail[index];
 }
 
-function setFoil(choice, idcarte){
+function setFoil(choice){
     console.log('foil : ' + foil);
     console.log('choix : ' + choice);
     foil = choice;

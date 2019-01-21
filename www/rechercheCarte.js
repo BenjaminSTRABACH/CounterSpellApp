@@ -61,14 +61,14 @@ function changercookieboutique(valeur) {
 
 function popup(){
     
-    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
-    document.getElementById('myModal').innerHTML = contenu;
+    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">×</span><div id="mdlct"><br><br>Veuillez mettre votre pseudo,<br> il ne sera utilisé que pour la sauvegarde de votre panier.<br><br><input id="pseudo" type="text" placeholder="Votre pseudo."><button onclick="sauvegarde_pseudo();">Valider</button></div></div>';
+    document.getElementById('myPopup').innerHTML = contenu;
     // Get the modal
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById('myPopup');
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0]; 1
     modal.style.display = "block";
-    recup_pseudo();
+    //recup_pseudo();
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
@@ -84,7 +84,7 @@ function popup(){
 function modal(card, liencarte) {
     if (card != 0){
         var contenu = '<div id="mdcContent" class="modal-content"><span class="close">&times;</span><div id="mdlct"><div id="prescart"><img id="cartemdl" class="imgg modalmdf"><div id="infc"></div></div><div id="genul0"></div></div><div>';
-        // document.getElementById('myModal').innerHTML = contenu;
+        //document.getElementById('myModal').innerHTML = contenu;
         idCarte = card;
         // Get the modal
         var modal = document.getElementById('myModal');
@@ -127,6 +127,7 @@ function recup_pseudo() {
 }
 
 function sauvegarde_pseudo() {
+    console.log("sauvegarde");
     var pseudo = document.getElementById("pseudo").value;
     Cookies.set('Pseudo', pseudo, { expires: 30 });
     var start = (Date.now()).toString();
@@ -136,7 +137,7 @@ function sauvegarde_pseudo() {
         uniqueID += alphabet[Math.floor(Math.random() * Math.floor(alphabet.length))];
     }
     Cookies.set('UniqueID', uniqueID, { expires: 30 });
-    document.getElementById('myModal').style.display = "none";
+    document.getElementById('myPopup').style.display = "none";
 
 }
 
@@ -505,12 +506,12 @@ function updatePrixRachat(idcarte) {
     var langue2 = tabdrap[lang - 1];
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
-    console.log(directory);
+    
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
-        document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de cartes, ou contacter directement la boutique.';
+        document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de carte, ou contacter directement la boutique.';
         return false
     } else {
         document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
@@ -682,6 +683,7 @@ function getval(select, idLigne) {
 }
 function refresh() {
     $.get(recupPanier(), function (data) {
+        console.log("PANIER");
         $("#slidenavperson").html(data);
     });
 }
