@@ -2,7 +2,7 @@
 var exten;
 var etat;
 var lang;
-var foil = 0;
+var foil;
 var quant;
 
 var marchand = "achat";
@@ -183,7 +183,6 @@ function rechercheCarte(card) {
     }
     // alert(recup);
     var carte = JSON.parse(recup);
-
     if (carte.length > 1) {
         document.getElementById('nbrcartes').innerHTML = carte.length + " cartes trouvées.";
 
@@ -199,6 +198,7 @@ function rechercheCarte(card) {
 
     }
     document.getElementById("slider").innerHTML = contenu;
+
     load2();
 }
 
@@ -417,6 +417,9 @@ function afficherAchat(idcarte) {
     var mobileSelectExten;
     initPickerExten(detail, idcarte);
 
+    //FOIL
+    initPickerFoil(idcarte);
+
     // ETAT
     var mobileSelectEtat;
     initPickerEtat(idcarte);
@@ -502,6 +505,7 @@ function updatePrixRachat(idcarte) {
     var langue2 = tabdrap[lang - 1];
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
+
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
