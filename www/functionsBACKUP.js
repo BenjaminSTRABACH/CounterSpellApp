@@ -122,3 +122,21 @@ function qteSlider(qte) {
     // alert(qte.value);
     document.getElementById('slidQte').innerHTML = 'Quantité : ' + qte.value;
 }
+
+function reprise_carte(idcarte, prixRachat) {
+    var detail = recupRachat(idcarte);
+    var tabdrap = [];
+    tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
+    var etat = document.getElementById("slider-2").value;
+    var langue = document.getElementById("slider-3").value;
+    var foil = document.getElementById("slider-4").value;
+    var qte = document.getElementById("slider-5").value;
+    var langue2 = tabdrap[langue - 1];
+    var alteree = "0";
+    var tampon = "0";
+    var datee = "0";
+    var dedicace = "0";
+    var idelmt = "divpan";
+    var boutiquepref = 'nantes_temple'
+    modif_panier(idcarte, etat, langue2, (qte * (-1)), foil, prixRachat, boutiquepref, alteree, tampon, datee, dedicace, idelmt);
+}

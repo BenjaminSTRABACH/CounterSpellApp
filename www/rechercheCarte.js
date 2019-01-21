@@ -433,6 +433,12 @@ function afficherAchat(idcarte) {
     initPickerQuant(idcarte);
 
     updatePrixRachat(idcarte);
+
+    // content = "<img id='imgReprise' onclick='reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");' src='media/cart.png'>";
+    // document.getElementById("confirmReprise").innerHTML = content;
+    content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
+    html = document.getElementById('imgReprise');
+    html.setAttribute("onclick", content);
 }
 
 function index_string_lang(detail, valeur) {
@@ -495,7 +501,6 @@ function recupRachat(idcarte) {
 }
 
 function updatePrixRachat(idcarte) {
-    console.log("idcarte : " + idcarte);
     var detail = recupRachat(idcarte);
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
@@ -518,18 +523,14 @@ function reprise_carte(idcarte, prixRachat) {
     var detail = recupRachat(idcarte);
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
-    var etat = document.getElementById("slider-2").value;
-    var langue = document.getElementById("slider-3").value;
-    var foil = document.getElementById("slider-4").value;
-    var qte = document.getElementById("slider-5").value;
-    var langue2 = tabdrap[langue - 1];
+    var langue2 = tabdrap[lang - 1];
     var alteree = "0";
     var tampon = "0";
     var datee = "0";
     var dedicace = "0";
     var idelmt = "divpan";
     var boutiquepref = 'nantes_temple'
-    modif_panier(idcarte, etat, langue2, (qte * (-1)), foil, prixRachat, boutiquepref, alteree, tampon, datee, dedicace, idelmt);
+    modif_panier(idcarte, etat, langue2, (quant * (-1)), foil, prixRachat, boutiquepref, alteree, tampon, datee, dedicace, idelmt);
 }
 
 //Fonction d'ajout au panier
@@ -722,5 +723,5 @@ function chgmodemarchand() {
 
 function closeModal(){
     document.getElementById("myModal").style.display = "none";
-    
+    // document.getElementById("imgReprise").
 }
