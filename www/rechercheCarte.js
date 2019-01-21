@@ -411,11 +411,8 @@ function afficherStock(idcarte) {
 
 function afficherAchat(idcarte) {
     var detail = recupRachat(idcarte);
-    var valeurmax = detail.length - 1;
-    var valeurdepart = position_dans_le_tableau(idcarte, detail);
-    var tabdrap = [];
-    tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
-    
+    idcarte = detail[0].idcarte;
+
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail, idcarte);
@@ -431,8 +428,6 @@ function afficherAchat(idcarte) {
     // QUANTITE
     var mobileSelectQuant;
     initPickerQuant(idcarte);
-
-    updatePrixRachat(idcarte);
 
     content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
     html = document.getElementById('imgReprise');

@@ -140,3 +140,89 @@ function reprise_carte(idcarte, prixRachat) {
     var boutiquepref = 'nantes_temple'
     modif_panier(idcarte, etat, langue2, (qte * (-1)), foil, prixRachat, boutiquepref, alteree, tampon, datee, dedicace, idelmt);
 }
+
+function afficherStock(idcarte) {
+
+
+    var element_idJson = 'storJson';
+    //stock devient un objet avec le stock de toutes les boutiues pour cette carte et celles avec le même nom
+    directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
+    submitForm(element_idJson, directory, 'innerHTML');
+    stock = document.getElementById(element_idJson).innerHTML;
+    var stock = JSON.parse(stock);
+    //Fin récup stock
+    //boutiques devient le tableau de données sur les boutiques existantes
+
+    // directory = 'https://www.counterspell.fr/app_json_cartes/getboutiques';
+    // submitForm(element_idJson, directory, 'innerHTML');
+    // recup = document.getElementById(element_idJson).innerHTML;
+    // var boutiques = JSON.parse(recup);
+
+    //Tableau avec le nom de chaque boutique ayant au moins une carte en stock
+    var boutTab = Object.getOwnPropertyNames(stock);
+
+    // var prix = "9.99";
+    // var nomBout = "";
+    var contenu_total = "";
+    var contenu_first = "";
+
+    if (boutTab.length == 1) {
+        contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Pas de stock disponible pour cette carte</li><div id='contenu1' class='divctn'></div></ul>";
+    }
+
+    //boucle pour chaque boutique ayant du stock
+    for (var h = 0; h < boutTab.length - 1; h++) {
+        var villeBout = boutTab[h];
+        var idcartecheck = 0;
+        var idboutiquecheck = 0;
+        for (var i = 0; i < stock[villeBout].length; i++) {
+            var contenu = "";
+
+            if (idboutiquecheck == 0 || idboutiquecheck != stock[villeBout][i].NomBoutique) {
+                contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + stock[villeBout][i].NomBoutique + "</li><div id='contenu" + h + "' class='divctn'></div></ul>";
+            }
+            idboutiquecheck = stock[villeBout][i].NomBoutique;
+            if (idcartecheck == 0 || idcartecheck != stock[villeBout][i].Carte_idCarte) {
+                texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=12>";
+                contenu += "<li class='liext'><div id='liii'>" + texttemp + " " + stock[villeBout][i].NomExtension + "</div></li>";
+            }
+            idcartecheck = stock[villeBout][i].Carte_idCarte;
+            style = "";
+            var foil = stock[villeBout][i].Foil;
+            if (foil == 1) {
+                style = "style='background-image : url(\"media/surfoil.png\");' ";
+            }
+            contenu += "<li id='idfoil" + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-container lideplus' " + style + "id='divfoil" + i + "'>";
+            var idlang = stock[villeBout][i].Langages_idLangages;
+            if (idlang != 0) {
+                contenu += "<img src='media/" + afficherDrap(idlang) + ".png' height=15>&nbsp;&nbsp;";
+            }
+            var qte = stock[villeBout][i].Quantite;
+            contenu += 'Dispo : ' + qte + '&nbsp;';
+            var etat = stock[villeBout][i].Etats_idEtats;
+            contenu += GetEtat(etat);
+            contenu += stock[villeBout][i].prix_vente + '€&nbsp;';
+            contenu += "<SELECT class='selectopt' id='selectopt_" + i + "_" + h + "' name='quantite'>";
+            for (var x = 1; x <= qte; x++) {
+                contenu += "<OPTION value='" + x + "'>" + x + "</OPTION>";
+            }
+            contenu += "</SELECT>";
+            var alteree = stock[villeBout][i].Alteration;
+            var tampon = stock[villeBout][i].Tampon;
+            var datee = stock[villeBout][i].Datee;
+            var dedicace = stock[villeBout][i].Dedicace;
+            idelmt = "panier_" + i + "_" + h;
+            contenu += "&nbsp;&nbsp;&nbsp;&nbsp;<img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
+            if (stock[villeBout][i].NomBoutique == Cookies.get('Boutique_preferee')) {
+                contenu_first += contenu;
+            } else {
+                contenu_total += contenu;
+            }
+        }
+
+        //FIN boucle pour chaque ligne de stock de cette boutique
+    }
+    //FIN boucle pour chaque boutique ayant du sto
+    document.getElementById('infc').innerHTML = stock.general.nom_carte;
+    document.getElementById('genul0').innerHTML = contenu_first + contenu_total;
+}

@@ -14,7 +14,7 @@ function initPickerExten(detail, idcarte) {
     chgImg(0, img);
     setExten(0, detail);
     idcarte = detail[0].idcarte;
-
+    
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
@@ -174,15 +174,15 @@ function setExten(index, detail) {
 
 function setEtat(index) {
     etat = index[0] + 1;
-    console.log(etat);
+    // console.log(etat);
 }
 
 function setLang(index) {
     lang = index[0] + 1;
-    console.log(lang);
+    // console.log(lang);
 }
 
 function setQuant(index) {
     quant = index[0] + 1;
-    console.log(quant);
+    // console.log(quant);
 }
