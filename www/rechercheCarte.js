@@ -434,11 +434,11 @@ function afficherAchat(idcarte) {
 
     updatePrixRachat(idcarte);
 
-    // content = "<img id='imgReprise' onclick='reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");' src='media/cart.png'>";
-    // document.getElementById("confirmReprise").innerHTML = content;
     content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
     html = document.getElementById('imgReprise');
     html.setAttribute("onclick", content);
+
+    document.getElementById('divpan').innerHTML = '';
 }
 
 function index_string_lang(detail, valeur) {
@@ -723,5 +723,4 @@ function chgmodemarchand() {
 
 function closeModal(){
     document.getElementById("myModal").style.display = "none";
-    // document.getElementById("imgReprise").
 }
