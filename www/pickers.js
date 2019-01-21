@@ -63,6 +63,7 @@ function initPickerEtat(idcarte) {
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
             setEtat(this.getIndexArr());
+            idcarte = exten.idcarte;
             updatePrixRachat(idcarte);
         }
     });
@@ -138,13 +139,13 @@ function initPickerQuant(idcarte) {
         callback:function(){    
             //Récupération données (getIndexArr/getCurValue)
             setQuant(this.getIndexArr());
+            idcarte = exten.idcarte;
             updatePrixRachat(idcarte);
         }
     });
 }
 
 function initPickerFoil(idcarte){
-    
     var foilDef = exten.FoilPossible;
 
     if(foilDef == '0' || foilDef == '2'){
