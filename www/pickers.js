@@ -30,6 +30,7 @@ function initPickerExten(detail, idcarte) {
             idcarte = detail[this.getIndexArr()].idcarte;
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
+            resetPickerFoil(idcarte);
             resetPickerLang(idcarte);
             updatePrixRachat(idcarte);
         }
@@ -115,8 +116,6 @@ function initPickerLang(idcarte) {
 function chgDrap(index, imgDrap){
     document.getElementById("imgdrap").src = "/media/" + imgDrap[index] + ".png";
     document.getElementById("imgdrap").style["height"] = 15;
-
-
 }
 
 function initPickerQuant(idcarte) {
@@ -144,6 +143,58 @@ function initPickerQuant(idcarte) {
     });
 }
 
+function initPickerFoil(idcarte){
+    
+    var foilDef = exten.FoilPossible;
+
+    if(foilDef == '0' || foilDef == '2'){
+        setFoil('0', idcarte);
+        document.getElementById('idfoil').checked = false;
+    }
+    else{
+        setFoil('1', idcarte);
+    }
+
+
+    var pick = document.getElementById('idfoil');
+    var title = document.getElementById('foilTitle');
+    // title.style.display = 'block';
+
+    //0 LES DEUX
+    //1 FORCEMENT FOIL
+    //2 FORCEMENT PAS FOIL
+
+    if(foilDef == '2'){
+        pick.style.display = 'none';
+        title.innerHTML = "Foil indisponible";
+        setFoil('0', idcarte);
+    }
+    else if(foilDef == '1'){
+        pick.style.display = 'none';
+        title.innerHTML = 'Foil uniquement';
+        setFoil('1', idcarte);
+    }
+    else{
+        title.innerHTML = 'Foil : ';
+        pick.style.display = 'block';
+        pick.onclick = function(){
+            if(foil == '1'){
+                setFoil('0', idcarte);
+            }
+            else if(foil == '0'){
+                setFoil('1',idcarte);
+            }
+            updatePrixRachat(idcarte);
+        }
+    }
+}
+
+function resetPickerFoil(idcarte){
+    // var title = document.getElementById('foilTitle');
+    // title.style.display = 'none';
+     initPickerFoil(idcarte);
+}
+
 function resetPickerLang(idcarte){
     var parent = document.getElementById('langPicker');
     mobileSelect = parent.children[0];
@@ -169,20 +220,22 @@ function resetPickers() {
 
 function setExten(index, detail) {
     exten = detail[index];
-    // console.log(exten);
+}
+
+function setFoil(choice, idcarte){
+    console.log('foil : ' + foil);
+    console.log('choix : ' + choice);
+    foil = choice;
 }
 
 function setEtat(index) {
     etat = index[0] + 1;
-    // console.log(etat);
 }
 
 function setLang(index) {
     lang = index[0] + 1;
-    // console.log(lang);
 }
 
 function setQuant(index) {
     quant = index[0] + 1;
-    // console.log(quant);
 }
