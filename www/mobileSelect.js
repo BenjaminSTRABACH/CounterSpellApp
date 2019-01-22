@@ -42,7 +42,7 @@
 			_this.slider = getClass(_this.mobileSelect,'selectContainer');
 			_this.wheels = _this.mobileSelect.querySelector('.wheels');
 			// _this.liHeight = _this.mobileSelect.querySelector('li').offsetHeight;
-			_this.liHeight = 40;
+			_this.liHeight = 32;
 			_this.ensureBtn = _this.mobileSelect.querySelector('.ensure');
 			_this.cancelBtn = _this.mobileSelect.querySelector('.cancel');
 			_this.grayLayer = _this.mobileSelect.querySelector('.grayLayer');
@@ -588,8 +588,8 @@
 						}
 						element = element.children[_this.getIndexArr()];
 						var rect = element.getBoundingClientRect();
-						pos = rect.bottom + 40*1;
-						var clickOffetNum = parseInt((pos - _this.moveEndY)/40);
+						pos = rect.bottom + 32*1;
+						var clickOffetNum = parseInt((pos - _this.moveEndY)/32);
 						// var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
 						if(clickOffetNum!=1){
 							var offset = clickOffetNum - 1;
@@ -659,7 +659,7 @@
 					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-2)*_this.liHeight;
 
 					if(_this.offsetSum == 0){
-						var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
+						var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/32);
 						if(clickOffetNum!=1){
 							var offset = clickOffetNum - 1;
 							var newDistance = _this.curDistance[index] + (offset*_this.liHeight);

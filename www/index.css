@@ -196,9 +196,8 @@ a{
     height: 16px;
 }
 #infc{
-    margin-bottom: 5%;
-    
-    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 .selectopt{
     right: 10%;
@@ -336,12 +335,12 @@ a{
 
 .lislid{
     list-style-type: none;
-    width: 42%;
+    width: 45%;
     margin: 2px;
     border-width: 1px;
     border-style: dashed;
     border-color: rgb(184, 184, 184);
-    padding: 10px;
+    padding: 5px;
     background-image: grey;
     box-shadow: #222;
     /* background-image: linear-gradient(grey, white, grey); */
