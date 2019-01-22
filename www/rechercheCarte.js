@@ -418,6 +418,11 @@ function afficherStock(idcarte) {
 function afficherAchat(idcarte) {
     var detail = recupRachat(idcarte);
     idcarte = detail[0].idcarte;
+    var element_idJson = 'storJson';
+    directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
+    submitForm(element_idJson, directory, 'innerHTML');
+    stock = document.getElementById(element_idJson).innerHTML;
+    var stock = JSON.parse(stock);
 
     // EXTENSION
     var mobileSelectExten;
@@ -438,6 +443,7 @@ function afficherAchat(idcarte) {
     var mobileSelectQuant;
     initPickerQuant(idcarte);
 
+    document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
     html = document.getElementById('imgReprise');
     html.setAttribute("onclick", content);
