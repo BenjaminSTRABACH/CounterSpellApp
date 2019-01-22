@@ -227,10 +227,6 @@ a{
     margin-bottom: 7%;
 }
 
-#foilModal{
-    height: 50%;
-    width: 100%;
-}
 .retourpanier{
     margin-top: 5%;
 }
@@ -423,6 +419,8 @@ a{
 }
 
 #foilModal {
+    height: 50%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
