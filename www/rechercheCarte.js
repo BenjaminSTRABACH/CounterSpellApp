@@ -107,7 +107,6 @@ function modal(card, liencarte) {
             document.getElementById("modalAchat").style.display = "none";
             document.getElementById("modalVente").style.display = "block";
         }
-        console.log(mobileSelectExten);
     }
     
     // When the user clicks on <span> (x), close the modal
@@ -424,12 +423,13 @@ function afficherStock(idcarte) {
 
 function afficherAchat(idcarte) {
     var detail = recupRachat(idcarte);
-    idcarte = detail[0].idcarte;
+    // idcarte = detail[0].idcarte;
     var element_idJson = 'storJson';
     directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
+    console.log(detail);
 
     // EXTENSION
     var mobileSelectExten;
@@ -528,7 +528,6 @@ function updatePrixRachat(idcarte) {
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
-    console.log(prixRachat);
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
         document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de carte, ou contacter directement la boutique.';
         return false
@@ -702,7 +701,6 @@ function getval(select, idLigne) {
 }
 function refresh() {
     $.get(recupPanier(), function (data) {
-        console.log("PANIER");
         $("#slidenavperson").html(data);
     });
 }

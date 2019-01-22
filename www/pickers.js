@@ -13,8 +13,15 @@ function initPickerExten(detail, idcarte) {
     //Initialisation de l'extension et de l'image au choix par défaut
     chgImg(0, img);
     setExten(0, detail);
-    idcarte = detail[0].idcarte;
-    
+    //idcarte = detail[0].idcarte;
+    console.log(idcarte);
+    var ext;
+    for(var i = 0; i < detail.length; i++){
+        if(detail[i].idcarte == idcarte){
+            ext = i;
+        }
+    }
+
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
@@ -25,16 +32,24 @@ function initPickerExten(detail, idcarte) {
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
+        position: [ext],
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
             idcarte = detail[this.getIndexArr()].idcarte;
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
+            chgCardImg(this.getIndexArr(), detail);
             resetPickerFoil(idcarte);
             resetPickerLang(idcarte);
             updatePrixRachat(idcarte);
         }
     });
+}
+
+function chgCardImg(index, detail){
+    var carte = document.getElementById('cartemdl');
+    var source = detail[index].ImgCarte.replace(/['"]+/g, '')
+    carte.src = source;
 }
 
 function chgImg(index, img){
@@ -228,22 +243,17 @@ function setExten(index, detail) {
 }
 
 function setFoil(choice, idcarte){
-    // console.log('foil : ' + foil);
-    // console.log('choix : ' + choice);
     foil = choice;
 }
 
 function setEtat(index) {
     etat = index[0] + 1;
-    // console.log(etat);
 }
 
 function setLang(index) {
     lang = index[0] + 1;
-    // console.log(lang);
 }
 
 function setQuant(index) {
     quant = index[0] + 1;
-    // console.log(quant);
 }
