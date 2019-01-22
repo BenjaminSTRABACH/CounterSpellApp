@@ -524,6 +524,7 @@ function updatePrixRachat(idcarte) {
     var langue2 = tabdrap[lang - 1];
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
+    console.log(directory);
     
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
