@@ -107,6 +107,7 @@ function modal(card, liencarte) {
             document.getElementById("modalAchat").style.display = "none";
             document.getElementById("modalVente").style.display = "block";
         }
+        console.log(mobileSelectExten);
     }
     
     // When the user clicks on <span> (x), close the modal

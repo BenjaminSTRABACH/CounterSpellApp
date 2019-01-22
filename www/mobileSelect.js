@@ -41,7 +41,8 @@
 			_this.wheel = getClass(_this.mobileSelect,'wheel');
 			_this.slider = getClass(_this.mobileSelect,'selectContainer');
 			_this.wheels = _this.mobileSelect.querySelector('.wheels');
-			_this.liHeight = _this.mobileSelect.querySelector('li').offsetHeight;
+			// _this.liHeight = _this.mobileSelect.querySelector('li').offsetHeight;
+			_this.liHeight = 40;
 			_this.ensureBtn = _this.mobileSelect.querySelector('.ensure');
 			_this.cancelBtn = _this.mobileSelect.querySelector('.cancel');
 			_this.grayLayer = _this.mobileSelect.querySelector('.grayLayer');
@@ -559,7 +560,7 @@
 	    getInnerHtml: function(sliderIndex){
 	    	var _this = this;
 			var index = _this.getIndex(_this.curDistance[sliderIndex]);
-	    	return _this.slider[sliderIndex].getElementsByTagName('li')[index].innerHTML;
+			return _this.slider[sliderIndex].getElementsByTagName('li')[index].innerHTML;
 	    },
 
 	    touch: function(event, theSlider, index){

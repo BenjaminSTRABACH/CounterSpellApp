@@ -214,10 +214,10 @@ function resetPickers() {
     //On remet l'image à la valeur par défaut
     document.getElementById('imgext').src = "";
 
-    mobileSelectExten == null;
-    mobileSelectLang == null;
-    mobileSelectEtat == null;
-    mobileSelectQuant == null;
+    mobileSelectExten = null;
+    mobileSelectLang = null;
+    mobileSelectEtat = null;
+    mobileSelectQuant = null;
     console.log("RESET");
 }
 
