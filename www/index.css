@@ -228,7 +228,7 @@ a{
 }
 
 #foilModal{
-    height: 100%;
+    height: 50%;
     width: 100%;
 }
 .retourpanier{
@@ -347,11 +347,11 @@ a{
 }
 
 #imgext{
-    width: 25%;
+    width: 22%;
 }
 
 #imgdrap{
-    width: 25%;
+    width: 22%;
 }
 
 #chg_boutique{
@@ -434,6 +434,8 @@ a{
 }
 
 #confirmReprise {
+    width: 100%;
+    height: 50%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -441,12 +443,14 @@ a{
 }
 
 #liprix{
+    align-content: center;
     font-weight: bold;
+    font-size: 18px;
     margin: 10px;
 }
 
 #imgReprise {
-    width: 26px;
-    height: 26px;
+    width: 40px;
+    height: 40px;
     margin: 10px;
 }
