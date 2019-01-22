@@ -30,7 +30,7 @@ function uniqueID() {
 //Fonction de récupération des cartes
 //*******************************************************************************************************//
 function changerboutique() {
-    var directory = 'https://www.counterspell.fr/app_json_cartes/getboutiques';
+    var directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     recup = document.getElementById(element_idJson).innerHTML;
@@ -93,7 +93,7 @@ function modal(card, liencarte) {
         modal.style.display = "block";
         //Affichage carte + nom + rareté
         var blocmodal = document.getElementById('cartemdl');
-        blocmodal.src = "https://www.counterspell.fr/" + liencarte;
+        blocmodal.src = "http://www.counterspell.fr/" + liencarte;
         
 
         if (marchand == "achat") {
@@ -138,7 +138,7 @@ function recup_pseudo() {
 }
 
 function sauvegarde_pseudo() {
-    console.log("sauvegarde");
+    // console.log("sauvegarde");
     var pseudo = document.getElementById("pseudo").value;
     Cookies.set('Pseudo', pseudo, { expires: 30 });
     var start = (Date.now()).toString();
@@ -155,7 +155,7 @@ function sauvegarde_pseudo() {
 //Fonction de récupération du nom des cartes
 //*******************************************************************************************************//
 function getNomCarte(idcarte) {
-    var directory = 'https://www.counterspell.fr/app_json_cartes/voir_json/' + idcarte;
+    var directory = 'http://www.counterspell.fr/app_json_cartes/voir_json/' + idcarte;
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
@@ -183,7 +183,7 @@ function rechercheCarte(card) {
         document.getElementById("slider").innerHTML = "";
         return false;
     }
-    var directory = 'https://www.counterspell.fr/app_json_cartes/recherche_carte/' + escape(card);
+    var directory = 'http://www.counterspell.fr/app_json_cartes/recherche_carte/' + escape(card);
     var element_idJson = 'storJson';
     // var element_idCarte = 'carte';
     submitForm(element_idJson, directory, 'innerHTML');
@@ -204,8 +204,8 @@ function rechercheCarte(card) {
     var contenu = "<div id='top'></div>";
     for (i = 0; i < carte.length; i++) {
         // alert(carte[i].img);
-        // contenu += "<img class='lazyload cards' alt='Photo' src='img/rainbow.jpg' data-src='https://www.counterspeel.fr/app_json_cartes/recherche_carte/'" + carte[i].img + "' style='width:29%;'>";
-        src = "https://www.counterspell.fr/" + carte[i].img;
+        // contenu += "<img class='lazyload cards' alt='Photo' src='img/rainbow.jpg' data-src='http://www.counterspeel.fr/app_json_cartes/recherche_carte/'" + carte[i].img + "' style='width:29%;'>";
+        src = "http://www.counterspell.fr/" + carte[i].img;
         contenu += "<div class='conteneur_imgcarte'><img class='lazyload cards'  alt='Photo' src='media/nope.png' data-src='" + src + "' onclick='modal(" + carte[i].id + ",`" + escape(carte[i].img) + "` ) '></div>";
 
     }
@@ -217,7 +217,7 @@ function rechercheCarte(card) {
 //Fonction d'affichage des cartes
 //*******************************************************************************************************//
 function afficherCarte(card) {
-    var directory = 'https://www.counterspell.fr/app_json_carte/img_to_app/' + card;
+    var directory = 'http://www.counterspell.fr/app_json_carte/img_to_app/' + card;
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
@@ -226,7 +226,7 @@ function afficherCarte(card) {
 }
 
 function affichercarterechercher() {
-    var directory = 'https://www.counterspell.fr/int_client/recherches_to_csmobile/' + Cookies.get('Boutique_preferee_nom_court');
+    var directory = 'http://www.counterspell.fr/int_client/recherches_to_csmobile/' + Cookies.get('Boutique_preferee_nom_court');
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
@@ -240,9 +240,9 @@ function affichercarterechercher() {
     }
     for (i = 0; i < carte.length; i++) {
         // alert(carte[i].img);
-        // contenu += "<img class='lazyload cards' alt='Photo' src='img/rainbow.jpg' data-src='https://www.counterspeel.fr/app_json_cartes/recherche_carte/'" + carte[i].img + "' style='width:29%;'>";
+        // contenu += "<img class='lazyload cards' alt='Photo' src='img/rainbow.jpg' data-src='http://www.counterspeel.fr/app_json_cartes/recherche_carte/'" + carte[i].img + "' style='width:29%;'>";
         src = replaceAll(carte[i].img, '"', "");
-        src2 = replaceAll(carte[i].img, 'https://www.counterspell.fr/', "");
+        src2 = replaceAll(carte[i].img, 'http://www.counterspell.fr/', "");
         src2 = replaceAll(src2, '"', "");
         contenu += "<div class='conteneur_imgcarte'><img class='lazyload cards'  alt='Photo' src='media/nope.png' data-src='" + src + "' onclick='modal(" + carte[i].id + ",`" + src2 + "` ) '></div>";
 
@@ -275,7 +275,7 @@ function afficherDrap(idDrap, tableau, verif) {
 //Fonction d'affichage des extensions
 //*******************************************************************************************************//
 function afficherExt(idExt) {
-    var directory = 'https://www.counterspell.fr/app_json_cartes/idcarte_to_imgsrcext/' + idExt;
+    var directory = 'http://www.counterspell.fr/app_json_cartes/idcarte_to_imgsrcext/' + idExt;
     var element_idImg = 'storImg';
     submitForm(element_idImg, directory, 'innerHTML');
     var recup = document.getElementById(element_idImg).innerHTML;
@@ -285,7 +285,7 @@ function afficherExt(idExt) {
 //Fonction d'affichage des foils
 //*******************************************************************************************************//
 function afficherFoil() {
-    var directory = 'https://www.counterspell.fr/app_json_cartes/getimgfoil';
+    var directory = 'http://www.counterspell.fr/app_json_cartes/getimgfoil';
     var element_idImg = 'storImg';
     submitForm(element_idImg, directory, 'innerHTML');
     var recup = document.getElementById(element_idImg).innerHTML;
@@ -294,7 +294,7 @@ function afficherFoil() {
 
 function GetNomBoutique(idboutique) {
     //boutiques devient le tableau de données sur les boutiques existantes
-    directory = 'https://www.counterspell.fr/app_json_cartes/getboutiques';
+    directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     recup = document.getElementById(element_idJson).innerHTML;
@@ -340,14 +340,14 @@ function afficherStock(idcarte) {
 
     var element_idJson = 'storJson';
     //stock devient un objet avec le stock de toutes les boutiues pour cette carte et celles avec le même nom
-    directory = 'https://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
+    directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
     //Fin récup stock
     //boutiques devient le tableau de données sur les boutiques existantes
 
-    // directory = 'https://www.counterspell.fr/app_json_cartes/getboutiques';
+    // directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     // submitForm(element_idJson, directory, 'innerHTML');
     // recup = document.getElementById(element_idJson).innerHTML;
     // var boutiques = JSON.parse(recup);
@@ -425,11 +425,11 @@ function afficherAchat(idcarte) {
     var detail = recupRachat(idcarte);
     // idcarte = detail[0].idcarte;
     var element_idJson = 'storJson';
-    directory = 'https://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
+    directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
-    console.log(detail);
+    // console.log(detail);
 
     // EXTENSION
     var mobileSelectExten;
@@ -509,7 +509,7 @@ function tabExt(valeur, detail) {
 }
 
 function recupRachat(idcarte) {
-    var directory = 'https://www.counterspell.fr/app_json_cartes/idcarte_to_details/' + idcarte;
+    var directory = 'http://www.counterspell.fr/app_json_cartes/idcarte_to_details/' + idcarte;
     var element_idJson = 'storJson';
     submitForm(element_idJson, directory, 'innerHTML');
     var rachat = document.getElementById(element_idJson).innerHTML;
@@ -522,9 +522,9 @@ function updatePrixRachat(idcarte) {
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];
-    var directory = 'https://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
+    var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
-    console.log(directory);
+    // console.log(directory);
     
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
@@ -583,8 +583,8 @@ function modif_panier(idcarte, etat, idlang, qte, foil, prix, villeBout, alteree
         datee = 1;
     }
     // recupPanier(uniqueID);
-    // ('https://www.counterspell.fr/ajout_panier/' + idcarte + '/' + etat + '/' + idlang + '/' + qte + '/' + foil + '/' + prix + '/' + villeBout + '/' + alteree + '/' + tampon + '/' + datee + '/' + dedicace + '/' + uniqueID);
-    $('#' + idelement).load('https://www.counterspell.fr/ajout_panier/' + idcarte + '/' + etat + '/' + idlang + '/' + qte + '/' + foil + '/' + prix + '/' + villeBout + '/' + alteree + '/' + tampon + '/' + datee + '/' + dedicace + '/' + uniqueID);
+    // ('http://www.counterspell.fr/ajout_panier/' + idcarte + '/' + etat + '/' + idlang + '/' + qte + '/' + foil + '/' + prix + '/' + villeBout + '/' + alteree + '/' + tampon + '/' + datee + '/' + dedicace + '/' + uniqueID);
+    $('#' + idelement).load('http://www.counterspell.fr/ajout_panier/' + idcarte + '/' + etat + '/' + idlang + '/' + qte + '/' + foil + '/' + prix + '/' + villeBout + '/' + alteree + '/' + tampon + '/' + datee + '/' + dedicace + '/' + uniqueID);
     // return uniqueID;
 }
 
@@ -596,7 +596,7 @@ function recupPanier() {
     var contenu = "<div id='divpanier'>";
     var contenu_reprise = "";
     var element_idJson = 'storJson';
-    directory = 'https://www.counterspell.fr/app_user/voirpanier/' + uniqueID;
+    directory = 'http://www.counterspell.fr/app_user/voirpanier/' + uniqueID;
     // alert(directory);
     submitForm(element_idJson, directory, 'innerHTML');
     // alert(document.getElementById(element_idJson).innerHTML);
@@ -692,15 +692,15 @@ function recupPanier() {
 function supprLigne(idLigne) {
     // alert(idLigne);
     if (confirm('Voulez vous vraiment supprimer cette carte')) {
-        $('#supprhide').load('https://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
+        $('#supprhide').load('http://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
         refresh();
     }
-    // alert('https://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
+    // alert('http://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
 }
 function getval(select, idLigne) {
     var newqte = select.value;
-    // alert('https://www.counterspell.fr/chgqtepanier/' + newqte + '/' + idLigne + '/niet');
-    $('#supprhide').load('https://www.counterspell.fr/chgqtepanier/' + newqte + '/' + idLigne + '/niet');
+    // alert('http://www.counterspell.fr/chgqtepanier/' + newqte + '/' + idLigne + '/niet');
+    $('#supprhide').load('http://www.counterspell.fr/chgqtepanier/' + newqte + '/' + idLigne + '/niet');
     // alert(select.value);
 
 }

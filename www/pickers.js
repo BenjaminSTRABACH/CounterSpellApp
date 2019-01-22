@@ -20,7 +20,7 @@ function initPickerExten(detail, idcarte) {
     chgImg(ext, img);
     setExten(ext, detail);
     //idcarte = detail[0].idcarte;
-    console.log(idcarte);
+    // console.log(idcarte);
 
 
     //Création du picker
@@ -62,7 +62,7 @@ function chgImg(index, img){
 function initPickerEtat(idcarte) {
     //Initialisation des données
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
-    console.log("etat : " + idcarte);
+
     //Initialisation de l'état au choix par défaut
     setEtat([0]);
 
@@ -88,7 +88,6 @@ function initPickerEtat(idcarte) {
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerLang(idcarte) {
-    console.log("langue " + idcarte);
 
     //Initialisation des données
     langBin = exten.LangPossible;
@@ -164,7 +163,7 @@ function initPickerQuant(idcarte) {
 }
 
 function initPickerFoil(idcarte){
-    console.log("foil " + idcarte)
+    // console.log("foil " + idcarte)
     var foilDef = exten.FoilPossible;
 
     if(foilDef == '0' || foilDef == '2'){
@@ -237,7 +236,7 @@ function resetPickers() {
     mobileSelectLang = null;
     mobileSelectEtat = null;
     mobileSelectQuant = null;
-    console.log("RESET")
+    // console.log("RESET")
 }
 
 //SETTER
