@@ -4,17 +4,6 @@ function initPickerExten(detail, idcarte) {
     //Initialisation des données
     var data = [];
     var img = [];
-
-    //Récupération de chaque nom d'extension de la carte
-    detail.forEach(item => {
-        data.push(item.NomExtension);
-        img.push(item.ImgExtension.replace(/['"]+/g, ''));
-    });
-    //Initialisation de l'extension et de l'image au choix par défaut
-    chgImg(0, img);
-    setExten(0, detail);
-    //idcarte = detail[0].idcarte;
-    console.log(idcarte);
     var ext;
     for(var i = 0; i < detail.length; i++){
         if(detail[i].idcarte == idcarte){
@@ -22,17 +11,29 @@ function initPickerExten(detail, idcarte) {
         }
     }
 
+    //Récupération de chaque nom d'extension de la carte
+    detail.forEach(item => {
+        data.push(item.NomExtension);
+        img.push(item.ImgExtension.replace(/['"]+/g, ''));
+    });
+    //Initialisation de l'extension et de l'image au choix par défaut
+    chgImg(ext, img);
+    setExten(ext, detail);
+    //idcarte = detail[0].idcarte;
+    console.log(idcarte);
+
+
     //Création du picker
     mobileSelectExten = new MobileSelect({
         trigger: '#extenPicker',
         title: 'Extension',
+        position: [ext],
         wheels: [{data}],
         ensureBtnText: "Confirmer",
         cancelBtnText: "Annuler",
         maskopacity: 0.0,
         titleBgColor: "#ffffff",
         titleColor: "#000000",
-        position: [ext],
         callback:function(){ 
             //Récupération données (getIndexArr/getCurValue)
             idcarte = detail[this.getIndexArr()].idcarte;
@@ -61,7 +62,7 @@ function chgImg(index, img){
 function initPickerEtat(idcarte) {
     //Initialisation des données
     var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
-
+    console.log("etat : " + idcarte);
     //Initialisation de l'état au choix par défaut
     setEtat([0]);
 
@@ -87,6 +88,7 @@ function initPickerEtat(idcarte) {
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
 function initPickerLang(idcarte) {
+    console.log("langue " + idcarte);
 
     //Initialisation des données
     langBin = exten.LangPossible;
@@ -135,6 +137,7 @@ function chgDrap(index, imgDrap){
 }
 
 function initPickerQuant(idcarte) {
+
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
 
@@ -161,6 +164,7 @@ function initPickerQuant(idcarte) {
 }
 
 function initPickerFoil(idcarte){
+    console.log("foil " + idcarte)
     var foilDef = exten.FoilPossible;
 
     if(foilDef == '0' || foilDef == '2'){
