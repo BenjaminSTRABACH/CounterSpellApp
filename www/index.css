@@ -334,8 +334,9 @@ a{
 }
 
 .lislid{
+    flex: 1;
     list-style-type: none;
-    width: 45%;
+    width: 40%;
     margin: 2px;
     border-width: 1px;
     border-style: dashed;
@@ -426,6 +427,7 @@ a{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    flex: 1;
 }
 
 #foilTitle {
@@ -433,7 +435,6 @@ a{
 }
 
 #confirmReprise {
-    width: 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
@@ -452,4 +453,16 @@ a{
     width: 40px;
     height: 40px;
     margin: 10px;
+}
+
+#endForm {
+    flex: 1;
+    list-style-type: none;
+    width: 40%;
+    margin: 2px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 }

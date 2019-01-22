@@ -529,9 +529,13 @@ function updatePrixRachat(idcarte) {
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
+        document.getElementById('imgReprise').style.display = "none";
+        document.getElementById('liprix').style.fontSize = "14px";
         document.getElementById('liprix').innerHTML = 'Veuillez vérifier vos informations de carte, ou contacter directement la boutique.';
         return false
     } else {
+        document.getElementById('imgReprise').style.display = "block";
+        document.getElementById('liprix').style.fontSize = "18px";
         document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
         return prixRachat;
     }
