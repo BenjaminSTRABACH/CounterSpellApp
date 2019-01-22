@@ -3,7 +3,7 @@ var exten;
 var etat;
 var lang;
 var foil;
-var quant;
+var quant = 1;
 
 var marchand = "achat";
 function recupCard() {
@@ -447,8 +447,8 @@ function afficherAchat(idcarte) {
     initPickerLang(idcarte);
     
     // QUANTITE
-    var mobileSelectQuant;
-    initPickerQuant(idcarte);
+    //var mobileSelectQuant;
+    //initPickerQuant(idcarte);
 
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
