@@ -218,7 +218,7 @@ function resetPickers() {
     mobileSelectLang = null;
     mobileSelectEtat = null;
     mobileSelectQuant = null;
-    console.log("RESET");
+    console.log("RESET")
 }
 
 //SETTER
