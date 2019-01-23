@@ -345,10 +345,15 @@ a{
 
 #imgext{
     width: 22%;
+    height: 40px;
+    max-height: 40px;
+
 }
 
 #imgdrap{
     width: 22%;
+    height: 40px;
+    max-height: 40px;
 }
 
 #chg_boutique{
