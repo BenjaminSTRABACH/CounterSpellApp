@@ -524,6 +524,7 @@ function updatePrixRachat(idcarte, detail) {
     var element_idJson = 'storJson';
     
     submitForm(element_idJson, directory, 'innerHTML');
+    
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {

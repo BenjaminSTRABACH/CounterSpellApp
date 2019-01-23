@@ -344,16 +344,13 @@ a{
 }
 
 #imgext{
-    width: 22%;
-    height: 40px;
-    max-height: 40px;
-
+    max-height: 32px;
+    max-width: 32px;
 }
 
 #imgdrap{
-    width: 22%;
-    height: 40px;
-    max-height: 40px;
+    max-height: 32px;
+    max-width: 32px;
 }
 
 #chg_boutique{
