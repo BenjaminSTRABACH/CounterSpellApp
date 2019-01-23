@@ -138,7 +138,6 @@ function recup_pseudo() {
 }
 
 function sauvegarde_pseudo() {
-    // console.log("sauvegarde");
     var pseudo = document.getElementById("pseudo").value;
     Cookies.set('Pseudo', pseudo, { expires: 30 });
     var start = (Date.now()).toString();
@@ -429,7 +428,7 @@ function afficherAchat(idcarte) {
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
-    // console.log(detail);
+    console.log(detail);
 
     // EXTENSION
     var mobileSelectExten;
@@ -524,7 +523,7 @@ function updatePrixRachat(idcarte) {
     var langue2 = tabdrap[lang - 1];
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
-    // console.log(directory);
+    console.log(directory);
     
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;
@@ -691,7 +690,7 @@ function recupPanier() {
 // }
 function supprLigne(idLigne) {
     // alert(idLigne);
-    if (confirm('Voulez vous vraiment supprimer cette carte')) {
+    if (confirm('Voulez vous vraiment supprimer cette carte de votre panier ?')) {
         $('#supprhide').load('http://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
         refresh();
     }

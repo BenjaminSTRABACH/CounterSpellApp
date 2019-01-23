@@ -19,8 +19,6 @@ function initPickerExten(detail, idcarte) {
     //Initialisation de l'extension et de l'image au choix par défaut
     chgImg(ext, img);
     setExten(ext, detail);
-    //idcarte = detail[0].idcarte;
-    // console.log(idcarte);
 
 
     //Création du picker
@@ -163,8 +161,8 @@ function initPickerQuant(idcarte) {
 }
 
 function initPickerFoil(idcarte){
-    // console.log("foil " + idcarte)
     var foilDef = exten.FoilPossible;
+    console.log(foilDef);
 
     if(foilDef == '0' || foilDef == '2'){
         setFoil('0', idcarte);
@@ -236,7 +234,6 @@ function resetPickers() {
     mobileSelectLang = null;
     mobileSelectEtat = null;
     mobileSelectQuant = null;
-    // console.log("RESET")
 }
 
 //SETTER
@@ -251,7 +248,6 @@ function setFoil(choice, idcarte){
 
 function setEtat(index) {
     etat = index[0] + 2;
-    console.log(etat);
 }
 
 function setLang(index) {
