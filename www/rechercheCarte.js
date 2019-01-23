@@ -428,29 +428,29 @@ function afficherAchat(idcarte) {
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
-    console.log(detail);
+
 
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail, idcarte);
 
     //FOIL
-    initPickerFoil(idcarte);
+    initPickerFoil(idcarte, detail);
 
     // ETAT
     var mobileSelectEtat;
-    initPickerEtat(idcarte);
+    initPickerEtat(idcarte, detail);
 
     // LANGUE
     var mobileSelectLang;
-    initPickerLang(idcarte);
+    initPickerLang(idcarte, detail);
     
     // QUANTITE
     //var mobileSelectQuant;
-    //initPickerQuant(idcarte);
+    //initPickerQuant(idcarte, detail);
 
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
-    content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
+    content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte, detail) + ");";
     html = document.getElementById('imgReprise');
     html.setAttribute("onclick", content);
 
@@ -516,14 +516,12 @@ function recupRachat(idcarte) {
     return rachatP;
 }
 
-function updatePrixRachat(idcarte) {
-    var detail = recupRachat(idcarte);
+function updatePrixRachat(idcarte, detail) {
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
-    console.log(directory);
     
     submitForm(element_idJson, directory, 'innerHTML');
     var recup = document.getElementById(element_idJson).innerHTML;

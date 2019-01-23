@@ -38,9 +38,9 @@ function initPickerExten(detail, idcarte) {
             setExten(this.getIndexArr(), detail);
             chgImg(this.getIndexArr(), img);
             chgCardImg(this.getIndexArr(), detail);
-            resetPickerFoil(idcarte);
-            resetPickerLang(idcarte);
-            updatePrixRachat(idcarte);
+            resetPickerFoil(idcarte, detail);
+            resetPickerLang(idcarte, detail);
+            updatePrixRachat(idcarte,detail);
         }
     });
 }
@@ -57,7 +57,7 @@ function chgImg(index, img){
 }
 
 
-function initPickerEtat(idcarte) {
+function initPickerEtat(idcarte, detail) {
     //Initialisation des données
     var data = ['Near-mint','Excellent','Fine','Played','Poor'];
 
@@ -78,19 +78,19 @@ function initPickerEtat(idcarte) {
             //Récupération données (getIndexArr/getCurValue)
             setEtat(this.getIndexArr());
             idcarte = exten.idcarte;
-            updatePrixRachat(idcarte);
+            updatePrixRachat(idcarte, detail);
         }
     });
 }
 
 //Passer le tableau des langues dans lesquelles la carte est disponible
 //Générer les data en fonction du tableau
-function initPickerLang(idcarte) {
+function initPickerLang(idcarte, detail) {
 
     //Initialisation des données
     langBin = exten.LangPossible;
     langBin = "" + langBin;
-    
+    console.log("pickerlang detail" + detail);
     var array = Array.from(langBin);
     
     var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
@@ -123,7 +123,8 @@ function initPickerLang(idcarte) {
             //Récupération données (getIndexArr/getCurValue)
             chgDrap(this.getIndexArr(), imgDrap);
             setLang(this.getIndexArr());
-            updatePrixRachat(idcarte);
+            console.log("callback detail" + detail);
+            updatePrixRachat(idcarte, detail);
         }
     });
 }
@@ -133,7 +134,7 @@ function chgDrap(index, imgDrap){
     document.getElementById("imgdrap").style["height"] = 15;
 }
 
-function initPickerQuant(idcarte) {
+function initPickerQuant(idcarte, detail) {
 
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
@@ -155,12 +156,12 @@ function initPickerQuant(idcarte) {
             //Récupération données (getIndexArr/getCurValue)
             setQuant(this.getIndexArr());
             idcarte = exten.idcarte;
-            updatePrixRachat(idcarte);
+            updatePrixRachat(idcarte, detail);
         }
     });
 }
 
-function initPickerFoil(idcarte){
+function initPickerFoil(idcarte, detail){
     var foilDef = exten.FoilPossible;
     console.log(foilDef);
 
@@ -201,22 +202,22 @@ function initPickerFoil(idcarte){
             else if(foil == '0'){
                 setFoil('1',idcarte);
             }
-            updatePrixRachat(idcarte);
+            updatePrixRachat(idcarte, detail);
         }
     }
 }
 
-function resetPickerFoil(idcarte){
+function resetPickerFoil(idcarte, detail){
     // var title = document.getElementById('foilTitle');
     // title.style.display = 'none';
-     initPickerFoil(idcarte);
+     initPickerFoil(idcarte, detail);
 }
 
-function resetPickerLang(idcarte){
+function resetPickerLang(idcarte, detail){
     var parent = document.getElementById('langPicker');
     mobileSelect = parent.children[0];
     parent.removeChild(mobileSelect);
-    initPickerLang(idcarte);
+    initPickerLang(idcarte, detail);
 }
 
 function resetPickers() {
