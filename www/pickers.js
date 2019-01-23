@@ -61,7 +61,7 @@ function chgImg(index, img){
 
 function initPickerEtat(idcarte) {
     //Initialisation des données
-    var data = ['Mint','Near-mint','Excellent','Fine','Played','Poor'];
+    var data = ['Near-mint','Excellent','Fine','Played','Poor'];
 
     //Initialisation de l'état au choix par défaut
     setEtat([0]);
@@ -250,7 +250,8 @@ function setFoil(choice, idcarte){
 }
 
 function setEtat(index) {
-    etat = index[0] + 1;
+    etat = index[0] + 2;
+    console.log(etat);
 }
 
 function setLang(index) {
