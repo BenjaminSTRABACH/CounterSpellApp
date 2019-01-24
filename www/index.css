@@ -190,20 +190,17 @@ a{
     margin-bottom: -7px;
 }
 #cart{
-    right: 3%;
-    position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 28px;
+    height: 28px;
 }
 #infc{
     margin-bottom: 2%;
     margin-top: 2%;
 }
-.selectopt{
-    right: 10%;
-    position: absolute;
-    max-height: 20px;
+.selectopt{  
+    height: 24px;
 }
+
 .liext{
     list-style: none;
 
@@ -284,6 +281,7 @@ a{
     width: 100%;
     height: 100%;
 }
+
 .imgpan{
     height: 50px;
     /* position: absolute;
@@ -449,8 +447,8 @@ a{
 }
 
 #imgReprise {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     margin: 10px;
 }
 
@@ -467,33 +465,63 @@ a{
 }
 
 #modalAchat #ulll {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #modalAchat .ui-btn {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#modalAchat .flex-container #stockLeft{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#modalAchat .flex-container #stockRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#modalAchat .flex-container a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .liext {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #boutPrefTitle {
     border-width: 1px;
     border-style: solid;
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(219, 219, 219);
     border-color: rgb(155, 155, 155);
-    padding: 5px;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #boutPrefContent {
     border-width: 1px;
     border-style: dashed;
     border-top: none;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(245, 245, 245);
     border-color: rgb(184, 184, 184);
-    padding: 5px;
+    padding-top: 12px;
 }
+
+#noStock {
+    padding: 10px;
+    padding-top: 0;
+}
+

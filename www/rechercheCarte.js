@@ -380,7 +380,7 @@ function afficherStock(idcarte) {
             idboutiquecheck = stock[villeBout][i].NomBoutique;
             if (idcartecheck == 0 || idcartecheck != stock[villeBout][i].Carte_idCarte) {
                 
-                texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=12>";
+                texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=14>";
                 contenu += "<li class='liext'><div id='liii'>" + texttemp + " " + stock[villeBout][i].NomExtension + "</div></li>";
             }
             idcartecheck = stock[villeBout][i].Carte_idCarte;
@@ -392,14 +392,14 @@ function afficherStock(idcarte) {
             contenu += "<li id='idfoil" + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-container lideplus' " + style + "id='divfoil" + i + "'>";
             var idlang = stock[villeBout][i].Langages_idLangages;
             if (idlang != 0) {
-                contenu += "<img src='media/" + afficherDrap(idlang) + ".png' height=15>&nbsp;&nbsp;";
+                contenu += "<div id='stockLeft'><div><img src='media/" + afficherDrap(idlang) + ".png' height=24></div><div>&nbsp;";
             }
             var qte = stock[villeBout][i].Quantite;
             contenu += 'Dispo : ' + qte + '&nbsp;';
             var etat = stock[villeBout][i].Etats_idEtats;
             contenu += GetEtat(etat);
-            contenu += stock[villeBout][i].prix_vente + '€&nbsp;';
-            contenu += "<SELECT class='selectopt' id='selectopt_" + i + "_" + h + "' name='quantite'>";
+            contenu += stock[villeBout][i].prix_vente + '€&nbsp;</div></div>';
+            contenu += "<div id='stockLeft'><div><SELECT class='selectopt' id='selectopt_" + i + "_" + h + "' name='quantite'>";
             for (var x = 1; x <= qte; x++) {
                 contenu += "<OPTION value='" + x + "'>" + x + "</OPTION>";
             }
@@ -409,7 +409,7 @@ function afficherStock(idcarte) {
             var datee = stock[villeBout][i].Datee;
             var dedicace = stock[villeBout][i].Dedicace;
             idelmt = "panier_" + i + "_" + h;
-            contenu += "&nbsp;&nbsp;&nbsp;&nbsp;<img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
+            contenu += "&nbsp;&nbsp;</div><div><img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></div></div></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
 
             //Vérification si le magasin préféré correspond -> Placé en tête
             if (stock[villeBout][i].NomBoutique == Cookies.get('Boutique_preferee')) {
@@ -423,7 +423,7 @@ function afficherStock(idcarte) {
     }
     //Vérification si il y a du stock dans la boutique préféré (contenu_first défini)
     if(contenu_first == "<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>") {
-        contenu_first += "Pas de stock disponible";
+        contenu_first += "<div id='noStock'>Pas de stock disponible</div>";
     }
     contenu_first += "</div><br></div>"
 
