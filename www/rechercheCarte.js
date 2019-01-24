@@ -425,7 +425,7 @@ function afficherStock(idcarte) {
     if(contenu_first == "<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>") {
         contenu_first += "Pas de stock disponible";
     }
-    contenu_first += "</div><br></div><br>"
+    contenu_first += "</div><br></div>"
 
     //FIN boucle pour chaque boutique ayant du sto
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
