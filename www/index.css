@@ -465,3 +465,25 @@ a{
     justify-content: flex-end;
     align-items: center;
 }
+
+#modalAchat #ulll {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#modalAchat .ui-btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.liext {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#boutPref {
+    border-width: 1px;
+    border-style: dashed;
+    background-color: rgb(184, 184, 184);
+    padding: 5px;
+}
