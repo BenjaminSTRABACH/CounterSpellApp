@@ -469,6 +469,7 @@
 	    },
 
 	    fixPosition: function(distance){
+			console.log("fixPosition");
 			return -(this.getIndex(distance)-1)*this.liHeight;
 	    },
 

@@ -357,25 +357,29 @@ function afficherStock(idcarte) {
     // var prix = "9.99";
     // var nomBout = "";
     var contenu_total = "";
-    var contenu_first = "";
+    contenu_first ="<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>"
 
     if (boutTab.length == 1) {
         contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Pas de stock disponible pour cette carte</li><div id='contenu1' class='divctn'></div></ul>";
     }
+
+    console.log(boutTab);
 
     //boucle pour chaque boutique ayant du stock
     for (var h = 0; h < boutTab.length - 1; h++) {
         var villeBout = boutTab[h];
         var idcartecheck = 0;
         var idboutiquecheck = 0;
+        console.log(stock[villeBout]);
         for (var i = 0; i < stock[villeBout].length; i++) {
             var contenu = "";
-
+            
             if (idboutiquecheck == 0 || idboutiquecheck != stock[villeBout][i].NomBoutique) {
                 contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + stock[villeBout][i].NomBoutique + "</li><div id='contenu" + h + "' class='divctn'></div></ul>";
             }
             idboutiquecheck = stock[villeBout][i].NomBoutique;
             if (idcartecheck == 0 || idcartecheck != stock[villeBout][i].Carte_idCarte) {
+                
                 texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=12>";
                 contenu += "<li class='liext'><div id='liii'>" + texttemp + " " + stock[villeBout][i].NomExtension + "</div></li>";
             }
@@ -406,6 +410,8 @@ function afficherStock(idcarte) {
             var dedicace = stock[villeBout][i].Dedicace;
             idelmt = "panier_" + i + "_" + h;
             contenu += "&nbsp;&nbsp;&nbsp;&nbsp;<img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
+
+            //Vérification si le magasin préféré correspond -> Placé en tête
             if (stock[villeBout][i].NomBoutique == Cookies.get('Boutique_preferee')) {
                 contenu_first += contenu;
             } else {
@@ -415,6 +421,12 @@ function afficherStock(idcarte) {
 
         //FIN boucle pour chaque ligne de stock de cette boutique
     }
+    //Vérification si il y a du stock dans la boutique préféré (contenu_first défini)
+    if(contenu_first == "<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>") {
+        contenu_first += "Pas de stock disponible";
+    }
+    contenu_first += "</div></div>"
+
     //FIN boucle pour chaque boutique ayant du sto
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     document.getElementById('modalAchat').innerHTML = contenu_first + contenu_total;
