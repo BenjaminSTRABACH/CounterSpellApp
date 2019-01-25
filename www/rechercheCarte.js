@@ -457,9 +457,7 @@ function afficherAchat(idcarte) {
     // QUANTITE
     //var mobileSelectQuant;
     //initPickerQuant(idcarte, detail);
-    //var price = updatePrixRachat(idcarte, detail);
-    //console.log("price : " + price)
-    console.log("before update : " + updatePrixRachat(idcarte, detail));
+
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + ");";
     html = document.getElementById('imgReprise');
@@ -531,7 +529,7 @@ function updatePrixRachat(idcarte, detail) {
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];
-    console.log("update foil : " + foil);
+
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
     
@@ -548,7 +546,7 @@ function updatePrixRachat(idcarte, detail) {
         document.getElementById('imgReprise').style.display = "block";
         document.getElementById('liprix').style.fontSize = "18px";
         document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
-        console.log("update : " + prixRachat);
+
         return prixRachat;
     }
 }
@@ -571,8 +569,7 @@ function reprise_carte(idcarte) {
 //Fonction d'ajout au panier
 //*******************************************************************************************************//
 function modif_panier(idcarte, etat, idlang, qte, foil, prix, villeBout, alteree, tampon, datee, dedicace, idelement) {
-    console.log(foil);
-    console.log("modif : " +    prix);
+
     var uniqueID = Cookies.get('UniqueID');
     var villeBout = villeBout || '';
     var idcarte = idcarte || '';
