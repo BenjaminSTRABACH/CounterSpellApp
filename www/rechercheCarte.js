@@ -457,7 +457,7 @@ function afficherAchat(idcarte) {
     // QUANTITE
     //var mobileSelectQuant;
     //initPickerQuant(idcarte, detail);
-
+    updatePrixRachat(idcarte, detail);
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + ");";
     html = document.getElementById('imgReprise');
