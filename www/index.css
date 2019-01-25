@@ -504,8 +504,8 @@ a{
 #boutPrefTitle {
     border-width: 1px;
     border-style: solid;
-    background-color: rgb(219, 219, 219);
-    border-color: rgb(155, 155, 155);
+    background: linear-gradient(#ff9853,#ffc392);
+    border-color: rgb(165, 165, 165);
     padding: 8px;
     font-weight: bold;
     font-size: 14px;
@@ -515,8 +515,8 @@ a{
     border-width: 1px;
     border-style: dashed;
     border-top: none;
-    background-color: rgb(245, 245, 245);
-    border-color: rgb(184, 184, 184);
+    background-color: #ffecdd;
+    border-color: rgb(187, 187, 187);
     padding-top: 12px;
 }
 

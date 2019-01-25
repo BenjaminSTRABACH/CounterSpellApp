@@ -90,7 +90,6 @@ function initPickerLang(idcarte, detail) {
     //Initialisation des données
     langBin = exten.LangPossible;
     langBin = "" + langBin;
-    console.log("pickerlang detail" + detail);
     var array = Array.from(langBin);
     
     var langTab = ["Français", "Anglais", "Allemand", "Espagnol", "Italien", "Coréen", "Russe", "Japonais", "Chinois simplifié", "Chinois traditionnel"];
@@ -123,7 +122,6 @@ function initPickerLang(idcarte, detail) {
             //Récupération données (getIndexArr/getCurValue)
             chgDrap(this.getIndexArr(), imgDrap);
             setLang(this.getIndexArr());
-            console.log("callback detail" + detail);
             updatePrixRachat(idcarte, detail);
         }
     });
@@ -163,7 +161,6 @@ function initPickerQuant(idcarte, detail) {
 
 function initPickerFoil(idcarte, detail){
     var foilDef = exten.FoilPossible;
-    console.log(foilDef);
 
     if(foilDef == '0' || foilDef == '2'){
         setFoil('0', idcarte);

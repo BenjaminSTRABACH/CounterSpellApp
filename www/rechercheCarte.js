@@ -363,14 +363,11 @@ function afficherStock(idcarte) {
         contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Pas de stock disponible pour cette carte</li><div id='contenu1' class='divctn'></div></ul>";
     }
 
-    console.log(boutTab);
-
     //boucle pour chaque boutique ayant du stock
     for (var h = 0; h < boutTab.length - 1; h++) {
         var villeBout = boutTab[h];
         var idcartecheck = 0;
         var idboutiquecheck = 0;
-        console.log(stock[villeBout]);
         for (var i = 0; i < stock[villeBout].length; i++) {
             var contenu = "";
             
