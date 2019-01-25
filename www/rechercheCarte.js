@@ -438,7 +438,6 @@ function afficherAchat(idcarte) {
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
 
-
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail, idcarte);
@@ -457,7 +456,9 @@ function afficherAchat(idcarte) {
     // QUANTITE
     //var mobileSelectQuant;
     //initPickerQuant(idcarte, detail);
+
     updatePrixRachat(idcarte, detail);
+    
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + ");";
     html = document.getElementById('imgReprise');
