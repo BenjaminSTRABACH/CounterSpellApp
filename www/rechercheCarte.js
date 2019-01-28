@@ -311,24 +311,14 @@ function GetNomBoutique(idboutique) {
 
 function GetEtat(etat) {
     var contenu = "";
-    if (etat == 1) {
-        contenu += '| M &nbsp;| &nbsp; ';
-    }
-    if (etat == 2) {
-        contenu += '| NM | &nbsp;';
-    }
-    if (etat == 3) {
-        contenu += '| EX | &nbsp;';
-    }
-    if (etat == 4) {
-        contenu += '| F &nbsp;| &nbsp;';
-    }
-    if (etat == 5) {
-        contenu += '| P &nbsp;| &nbsp;';
-    }
-    if (etat == 6) {
-        contenu += '| Po | &nbsp;';
-    }
+    var etats = ['| M &nbsp;| &nbsp; ',
+    '| NM | &nbsp;',
+    '| EX | &nbsp;',
+    '| F &nbsp;| &nbsp;',
+    '| P &nbsp;| &nbsp;',
+    '| Po | &nbsp;',
+    ]
+    contenu += etats[etat-1];
     return contenu
 }
 
