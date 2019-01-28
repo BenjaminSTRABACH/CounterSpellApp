@@ -420,6 +420,8 @@ function afficherStock(idcarte) {
     }
     //Vérification si il y a du stock dans la boutique préféré (contenu_first défini)
     if(contenu_first == "<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>") {
+
+        contenu_first += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + Cookies.get('Boutique_preferee') + "</li></ul>"
         contenu_first += "<div id='noStock'>Pas de stock disponible</div>";
     }
     contenu_first += "</div><br></div>"
