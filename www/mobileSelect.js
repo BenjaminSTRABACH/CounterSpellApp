@@ -41,7 +41,6 @@
 			_this.wheel = getClass(_this.mobileSelect,'wheel');
 			_this.slider = getClass(_this.mobileSelect,'selectContainer');
 			_this.wheels = _this.mobileSelect.querySelector('.wheels');
-			// _this.liHeight = _this.mobileSelect.querySelector('li').offsetHeight;
 			_this.liHeight = 32;
 			_this.ensureBtn = _this.mobileSelect.querySelector('.ensure');
 			_this.cancelBtn = _this.mobileSelect.querySelector('.cancel');
@@ -57,7 +56,6 @@
 			_this.triggerDisplayData = !(typeof(config.triggerDisplayData)=='undefined') ? config.triggerDisplayData : true;
 			_this.trigger.style.cursor='pointer';
 			_this.setStyle(config);
-			// _this.setTitle(_this.titleText);
 			_this.checkIsPC();
 			_this.checkCascade();
 			_this.addListenerAll();
@@ -75,34 +73,6 @@
 			_this.setCurDistance(_this.initPosition);
 
 
-			
-			// _this.cancelBtn.addEventListener('click',function(){
-			// 	_this.hide();
-		    // });
-
-		    // _this.ensureBtn.addEventListener('click',function(){
-			// 	_this.hide();
-			//     if(!_this.liHeight) {
-			//         _this.liHeight =  _this.mobileSelect.querySelector('li').offsetHeight;
-			//     }
-			// 	var tempValue ='';
-		    // 	for(var i=0; i<_this.wheel.length; i++){
-		    // 		i==_this.wheel.length-1 ? tempValue += _this.getInnerHtml(i) : tempValue += _this.getInnerHtml(i) + _this.connector;
-		    // 	}
-		    // 	if(_this.triggerDisplayData){
-		    // 		_this.trigger.innerHTML = tempValue;
-		    // 	}
-		    // 	_this.curIndexArr = _this.getIndexArr();
-		    // 	_this.curValue = _this.getCurValue();
-		    // 	_this.callback(_this.curIndexArr, _this.curValue);
-		    // });
-
-		    // _this.trigger.addEventListener('click',function(){
-		    // 	_this.show();
-		    // });
-		    // _this.grayLayer.addEventListener('click',function(){
-			// 	_this.hide();
-		    // });
 		    _this.popUp.addEventListener('click',function(){
 		    	event.stopPropagation();
 		    });
@@ -118,24 +88,11 @@
 
 		setStyle: function(config){
 			var _this = this;
-			// if(config.ensureBtnColor){
-			// 	_this.ensureBtn.style.color = config.ensureBtnColor;
-			// }
-			// if(config.cancelBtnColor){
-			// 	_this.cancelBtn.style.color = config.cancelBtnColor;
-			// }
-			// if(config.titleColor){
-			// 	_this.title = _this.mobileSelect.querySelector('.title');
-			// 	_this.title.style.color = config.titleColor;
-			// }
+
 			if(config.textColor){
 				_this.panel = _this.mobileSelect.querySelector('.panel');
 				_this.panel.style.color = config.textColor;
 			}
-			// if(config.titleBgColor){
-			// 	_this.btnBar = _this.mobileSelect.querySelector('.btnBar');
-			// 	_this.btnBar.style.backgroundColor = config.titleBgColor;
-			// }
 			if(config.bgColor){
 				_this.panel = _this.mobileSelect.querySelector('.panel');
 				_this.shadowMask = _this.mobileSelect.querySelector('.shadowMask');
@@ -188,15 +145,7 @@
 			_this.mobileSelect = document.createElement("div");
 			_this.mobileSelect.className = "mobileSelect mobileSelect-show";
 			_this.mobileSelect.innerHTML =
-		    	// '<div class="grayLayer"></div>'+
 		        '<div class="content">'+
-		            // '<div class="btnBar">'+
-		                // '<div class="fixWidth">'+
-		                    // '<div class="cancel">'+ cancelText +'</div>'+
-		                    // '<div class="title"></div>'+
-		                    // '<div class="ensure">'+ ensureText +'</div>'+
-		                // '</div>'+
-		            // '</div>'+
 		            '<div class="panel">'+
 		                '<div class="fixWidth">'+
 		                	'<div class="wheels">'+
@@ -206,9 +155,7 @@
 		                '</div>'+
 		            '</div>'+
 				'</div>';
-			// var html = document.getElementById("genul0")
 			_this.trigger.appendChild(_this.mobileSelect);
-			// document.body.appendChild(_this.mobileSelect);
 
 			
 
@@ -419,7 +366,6 @@
 						_this.addListenerWheel(tempWheel, i);
 				    	_this.wheels.appendChild(tempWheel);
 					}
-					//_this.·(i);
 				})(i);
 			}
 		},
@@ -519,7 +465,6 @@
 	    		temp.push(_this.calcDistance(indexArr[i]));
 	    		_this.movePosition(_this.slider[i],temp[i]);
 	    	}
-			// _this.curDistance = [0];
 			_this.curDistance = temp;
 	    },
 
@@ -590,7 +535,6 @@
 						var rect = element.getBoundingClientRect();
 						pos = rect.bottom + 32*1;
 						var clickOffetNum = parseInt((pos - _this.moveEndY)/32);
-						// var clickOffetNum = parseInt((document.documentElement.clientHeight - _this.moveEndY)/40);
 						if(clickOffetNum!=1){
 							var offset = clickOffetNum - 1;
 							var newDistance = _this.curDistance[index] + (offset*_this.liHeight);

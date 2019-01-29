@@ -87,7 +87,7 @@ display: none;
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 50px;
     font-weight: bold;
 }
 
@@ -190,20 +190,17 @@ a{
     margin-bottom: -7px;
 }
 #cart{
-    right: 3%;
-    position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 28px;
+    height: 28px;
 }
 #infc{
     margin-bottom: 2%;
     margin-top: 2%;
 }
-.selectopt{
-    right: 10%;
-    position: absolute;
-    max-height: 20px;
+.selectopt{  
+    height: 24px;
 }
+
 .liext{
     list-style: none;
 
@@ -284,6 +281,7 @@ a{
     width: 100%;
     height: 100%;
 }
+
 .imgpan{
     height: 50px;
     /* position: absolute;
@@ -344,11 +342,12 @@ a{
 }
 
 #imgext{
-    width: 22%;
+    max-height: 32px;
 }
 
 #imgdrap{
-    width: 22%;
+    max-height: 32px;
+    max-width: 32px;
 }
 
 #chg_boutique{
@@ -448,8 +447,8 @@ a{
 }
 
 #imgReprise {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     margin: 10px;
 }
 
@@ -463,4 +462,87 @@ a{
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+}
+
+#modalAchat #ulll {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#modalAchat .ui-btn {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#modalAchat .flex-container #stockLeft{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#modalAchat .flex-container #stockRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#modalAchat .flex-container a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liext {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#boutPrefTitle {
+    border-width: 1px;
+    border-style: solid;
+    background: linear-gradient( #5393c5,#6facd5 );
+    text-shadow: 0 1px 1px #3373a5;
+    color: #fff;
+    border-color: rgb(165, 165, 165);
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#boutPrefContent {
+    border-width: 1px;
+    border-style: dashed;
+    border-top: none;
+    background-color: #cee8fa ;
+    border-color: rgb(187, 187, 187);
+    padding-top: 12px;
+}
+
+#noStock {
+    padding: 15px;
+    padding-left: 25px;
+}
+
+#panierCategorie ul li{
+    text-shadow: 0 1px 1px #3373a5;
+    background-image: linear-gradient( #5393c5,#6facd5 );
+    color: #fff;
+    border: none;
+}
+
+#carteAchat ul li {
+    text-shadow: 0 1px 1px #3373a5;
+    background-image: linear-gradient( #5393c5,#6facd5 );
+    color: #fff;
+    border: none;
+}
+
+#panier #magasinPanier{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
 }

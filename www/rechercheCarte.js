@@ -138,7 +138,6 @@ function recup_pseudo() {
 }
 
 function sauvegarde_pseudo() {
-    // console.log("sauvegarde");
     var pseudo = document.getElementById("pseudo").value;
     Cookies.set('Pseudo', pseudo, { expires: 30 });
     var start = (Date.now()).toString();
@@ -312,24 +311,14 @@ function GetNomBoutique(idboutique) {
 
 function GetEtat(etat) {
     var contenu = "";
-    if (etat == 1) {
-        contenu += '| M &nbsp;| &nbsp; ';
-    }
-    if (etat == 2) {
-        contenu += '| NM | &nbsp;';
-    }
-    if (etat == 3) {
-        contenu += '| EX | &nbsp;';
-    }
-    if (etat == 4) {
-        contenu += '| F &nbsp;| &nbsp;';
-    }
-    if (etat == 5) {
-        contenu += '| P &nbsp;| &nbsp;';
-    }
-    if (etat == 6) {
-        contenu += '| Po | &nbsp;';
-    }
+    var etats = ['| M &nbsp;| &nbsp; ',
+    '| NM | &nbsp;',
+    '| EX | &nbsp;',
+    '| F &nbsp;| &nbsp;',
+    '| P &nbsp;| &nbsp;',
+    '| Po | &nbsp;',
+    ]
+    contenu += etats[etat-1];
     return contenu
 }
 
@@ -358,7 +347,7 @@ function afficherStock(idcarte) {
     // var prix = "9.99";
     // var nomBout = "";
     var contenu_total = "";
-    var contenu_first = "";
+    contenu_first ="<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>"
 
     if (boutTab.length == 1) {
         contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Pas de stock disponible pour cette carte</li><div id='contenu1' class='divctn'></div></ul>";
@@ -371,13 +360,14 @@ function afficherStock(idcarte) {
         var idboutiquecheck = 0;
         for (var i = 0; i < stock[villeBout].length; i++) {
             var contenu = "";
-
+            
             if (idboutiquecheck == 0 || idboutiquecheck != stock[villeBout][i].NomBoutique) {
                 contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + stock[villeBout][i].NomBoutique + "</li><div id='contenu" + h + "' class='divctn'></div></ul>";
             }
             idboutiquecheck = stock[villeBout][i].NomBoutique;
             if (idcartecheck == 0 || idcartecheck != stock[villeBout][i].Carte_idCarte) {
-                texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=12>";
+                
+                texttemp = "<img src=" + stock[villeBout][i].ImgExtension + " height=14>";
                 contenu += "<li class='liext'><div id='liii'>" + texttemp + " " + stock[villeBout][i].NomExtension + "</div></li>";
             }
             idcartecheck = stock[villeBout][i].Carte_idCarte;
@@ -389,14 +379,14 @@ function afficherStock(idcarte) {
             contenu += "<li id='idfoil" + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-container lideplus' " + style + "id='divfoil" + i + "'>";
             var idlang = stock[villeBout][i].Langages_idLangages;
             if (idlang != 0) {
-                contenu += "<img src='media/" + afficherDrap(idlang) + ".png' height=15>&nbsp;&nbsp;";
+                contenu += "<div id='stockLeft'><div><img src='media/" + afficherDrap(idlang) + ".png' height=24></div><div>&nbsp;";
             }
             var qte = stock[villeBout][i].Quantite;
             contenu += 'Dispo : ' + qte + '&nbsp;';
             var etat = stock[villeBout][i].Etats_idEtats;
             contenu += GetEtat(etat);
-            contenu += stock[villeBout][i].prix_vente + '€&nbsp;';
-            contenu += "<SELECT class='selectopt' id='selectopt_" + i + "_" + h + "' name='quantite'>";
+            contenu += stock[villeBout][i].prix_vente + '€&nbsp;</div></div>';
+            contenu += "<div id='stockLeft'><div><SELECT class='selectopt' id='selectopt_" + i + "_" + h + "' name='quantite'>";
             for (var x = 1; x <= qte; x++) {
                 contenu += "<OPTION value='" + x + "'>" + x + "</OPTION>";
             }
@@ -406,7 +396,9 @@ function afficherStock(idcarte) {
             var datee = stock[villeBout][i].Datee;
             var dedicace = stock[villeBout][i].Dedicace;
             idelmt = "panier_" + i + "_" + h;
-            contenu += "&nbsp;&nbsp;&nbsp;&nbsp;<img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
+            contenu += "&nbsp;&nbsp;</div><div><img id='cart' src='media/cart.png' onclick='modif_panier(" + stock[villeBout][i].Carte_idCarte + "," + etat + "," + idlang + "," + "document.getElementById(`selectopt_" + i + "_" + h + "`).value" + "," + foil + "," + stock[villeBout][i].prix_vente + ",`" + escape(villeBout) + "`," + alteree + "," + tampon + "," + datee + "," + dedicace + ",`" + idelmt + "`);' ></div></div></a ></div><div class='retourpanier' id='panier_" + i + "_" + h + "'></div></li > ";
+
+            //Vérification si le magasin préféré correspond -> Placé en tête
             if (stock[villeBout][i].NomBoutique == Cookies.get('Boutique_preferee')) {
                 contenu_first += contenu;
             } else {
@@ -416,6 +408,14 @@ function afficherStock(idcarte) {
 
         //FIN boucle pour chaque ligne de stock de cette boutique
     }
+    //Vérification si il y a du stock dans la boutique préféré (contenu_first défini)
+    if(contenu_first == "<div id='boutPref'><div id='boutPrefTitle'>Boutique préférée : </div><div id='boutPrefContent'>") {
+
+        contenu_first += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + Cookies.get('Boutique_preferee') + "</li></ul>"
+        contenu_first += "<div id='noStock'>Pas de stock disponible</div>";
+    }
+    contenu_first += "</div><br></div>"
+
     //FIN boucle pour chaque boutique ayant du sto
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     document.getElementById('modalAchat').innerHTML = contenu_first + contenu_total;
@@ -429,29 +429,30 @@ function afficherAchat(idcarte) {
     submitForm(element_idJson, directory, 'innerHTML');
     stock = document.getElementById(element_idJson).innerHTML;
     var stock = JSON.parse(stock);
-    // console.log(detail);
 
     // EXTENSION
     var mobileSelectExten;
     initPickerExten(detail, idcarte);
 
     //FOIL
-    initPickerFoil(idcarte);
+    initPickerFoil(idcarte, detail);
 
     // ETAT
     var mobileSelectEtat;
-    initPickerEtat(idcarte);
+    initPickerEtat(idcarte, detail);
 
     // LANGUE
     var mobileSelectLang;
-    initPickerLang(idcarte);
+    initPickerLang(idcarte, detail);
     
     // QUANTITE
     //var mobileSelectQuant;
-    //initPickerQuant(idcarte);
+    //initPickerQuant(idcarte, detail);
 
+    updatePrixRachat(idcarte, detail);
+    
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
-    content = "reprise_carte(" + idcarte + "," + updatePrixRachat(idcarte) + ");";
+    content = "reprise_carte(" + idcarte + ");";
     html = document.getElementById('imgReprise');
     html.setAttribute("onclick", content);
 
@@ -517,16 +518,16 @@ function recupRachat(idcarte) {
     return rachatP;
 }
 
-function updatePrixRachat(idcarte) {
-    var detail = recupRachat(idcarte);
+function updatePrixRachat(idcarte, detail) {
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];
+
     var directory = 'http://www.counterspell.fr/affiche_prix_simple/' + idcarte + '/' + foil + '/' + etat + '/' + langue2 + '/echange/72000/rien';
     var element_idJson = 'storJson';
-    // console.log(directory);
     
     submitForm(element_idJson, directory, 'innerHTML');
+    
     var recup = document.getElementById(element_idJson).innerHTML;
     var prixRachat = recup * quant;
     if (prixRachat == '0.00' || prixRachat == 'NaN' || prixRachat == '0') {
@@ -538,12 +539,14 @@ function updatePrixRachat(idcarte) {
         document.getElementById('imgReprise').style.display = "block";
         document.getElementById('liprix').style.fontSize = "18px";
         document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
+
         return prixRachat;
     }
 }
 
-function reprise_carte(idcarte, prixRachat) {
+function reprise_carte(idcarte) {
     var detail = recupRachat(idcarte);
+    var prixRachat = updatePrixRachat(idcarte, detail);
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];
@@ -559,6 +562,7 @@ function reprise_carte(idcarte, prixRachat) {
 //Fonction d'ajout au panier
 //*******************************************************************************************************//
 function modif_panier(idcarte, etat, idlang, qte, foil, prix, villeBout, alteree, tampon, datee, dedicace, idelement) {
+
     var uniqueID = Cookies.get('UniqueID');
     var villeBout = villeBout || '';
     var idcarte = idcarte || '';
@@ -591,49 +595,45 @@ function modif_panier(idcarte, etat, idlang, qte, foil, prix, villeBout, alteree
 //Fonction de récupération du panier
 //*******************************************************************************************************//
 function recupPanier() {
-
     var uniqueID = Cookies.get('UniqueID');
-    var contenu = "<div id='divpanier'>";
+    var contenu = "<div id='divpanier'></div>";
+    contenu += "<div id='panierCategorie'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Achetée(s)   </li></ul>"
     var contenu_reprise = "";
     var element_idJson = 'storJson';
     directory = 'http://www.counterspell.fr/app_user/voirpanier/' + uniqueID;
-    // alert(directory);
     submitForm(element_idJson, directory, 'innerHTML');
-    // alert(document.getElementById(element_idJson).innerHTML);
     var recup = document.getElementById(element_idJson).innerHTML;
     
     var panier = JSON.parse(recup);
     total = 0;
     idboutiquecheck = 0;
     var compteur = 0;
+
+    //A chaque article dans le panier
     for (var i = 0; i < panier.length; i++) {
-        // alert(GetNomBoutique(panier[i].Boutiques_idBoutiques));
-        // var idcarte = panier[i].Carte_idCarte;
         var nomBoutique = panier[i].NomBoutique;
         var nomCarte = panier[i].NomCarte;
+        //Détecte si il s'agit d'une nouvelle boutique
+        //Si le numéro de l'id actuel (panier[i].Boutiques_idBoutiques) est différent du compteur (idboutiquecheck)
+        //alors on affiche une séparation pour une nouvelle boutique et on met le compteur à l'id de la boutique actuelle
+        //Si l'id rechange, on refait la même chose.
         if (idboutiquecheck == 0 || idboutiquecheck != panier[i].Boutiques_idBoutiques) {
-            var compteur = 0;
-            contenu += "</div></td></tr ></table ></a > ";
-            contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + nomBoutique + "</li></ul>";
+            if(panier[i].Quantite > 0) {
+                contenu += "</div></td></tr ></table ></a > ";
+                contenu += "<div id='magasinPanier'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + nomBoutique + "</li></ul></div>";
+                idboutiquecheck = panier[i].Boutiques_idBoutiques;
+            }
         }
-        idboutiquecheck = panier[i].Boutiques_idBoutiques;
         var foil = panier[i].Foil;
         style = "";
         if (foil == 1) {
             style = "style='background-image : url(\"media/surfoil.png\");' ";
         }
-
-        // if (compteur == 0 || idcarteavant == panier[i].Carte_idCarte) {
-        //     if (compteur != 0) {
         contenu += "</div></td></tr></table></a>";
-        // }
-        // contenu += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
-        // }
-        // contenu += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
         var qtepanier = panier[i].Quantite;
         var qtemax = panier[i].QteEnStock;
 
-        if (qtepanier <= 0) {
+        if (qtepanier <= 0) { //Revente
             contenu_reprise += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
             contenu_reprise += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
             contenu_reprise += "<SELECT class='selectopt2' id='selectopt_" + i + "' name='quantite' onchange='getval(this," + panier[i].idPanier_en_cours + ");refreshli(" + i + ");'>";
@@ -648,9 +648,8 @@ function recupPanier() {
             contenu_reprise += GetEtat(panier[i].Etats_idEtats);
             contenu_reprise += "Pu : " + Number.parseFloat(panier[i].Prix_Unitaire).toFixed(2) + "€ | Total : " + Number.parseFloat(panier[i].Quantite * panier[i].Prix_Unitaire).toFixed(2) + "€</li>";
             contenu_reprise += "</div></td></tr></table></a>";
-        } else {
+        } else { //Achat
             contenu += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
-            // }
             contenu += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
             contenu += "<SELECT class='selectopt2' id='selectopt_" + i + "' name='quantite' onchange='getval(this," + panier[i].idPanier_en_cours + ");refreshli(" + i + ");'>";
             for (var x = 1; x <= qtemax; x++) {
@@ -668,14 +667,12 @@ function recupPanier() {
 
         total += panier[i].Quantite * panier[i].Prix_Unitaire;
 
-
         var idcarteavant = panier[i].Carte_idCarte;
         compteur++;
-        // alert(nomBoutique);
     }
     total = Number.parseFloat(total).toFixed(2);
-    // alert(total);
-    contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Reprise(s)   </li>" + contenu_reprise + "</ul>";
+    
+    contenu += "<div id='panierCategorie'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Reprise(s)   </li>" + contenu_reprise + "</ul></div>";
     contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Total du panier : " + total + "€</li></ul>";
     contenu += "<li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>Numéro de commande : " + uniqueID + "</div></li></div>";
     document.getElementById('panier').innerHTML = contenu;
@@ -691,7 +688,7 @@ function recupPanier() {
 // }
 function supprLigne(idLigne) {
     // alert(idLigne);
-    if (confirm('Voulez vous vraiment supprimer cette carte')) {
+    if (confirm('Voulez vous vraiment supprimer cette carte de votre panier ?')) {
         $('#supprhide').load('http://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
         refresh();
     }
