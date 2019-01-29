@@ -595,49 +595,45 @@ function modif_panier(idcarte, etat, idlang, qte, foil, prix, villeBout, alteree
 //Fonction de récupération du panier
 //*******************************************************************************************************//
 function recupPanier() {
-
     var uniqueID = Cookies.get('UniqueID');
-    var contenu = "<div id='divpanier'>";
+    var contenu = "<div id='divpanier'></div>";
+    contenu += "<div id='panierCategorie'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Achetée(s)   </li></ul>"
     var contenu_reprise = "";
     var element_idJson = 'storJson';
     directory = 'http://www.counterspell.fr/app_user/voirpanier/' + uniqueID;
-    // alert(directory);
     submitForm(element_idJson, directory, 'innerHTML');
-    // alert(document.getElementById(element_idJson).innerHTML);
     var recup = document.getElementById(element_idJson).innerHTML;
     
     var panier = JSON.parse(recup);
     total = 0;
     idboutiquecheck = 0;
     var compteur = 0;
+
+    //A chaque article dans le panier
     for (var i = 0; i < panier.length; i++) {
-        // alert(GetNomBoutique(panier[i].Boutiques_idBoutiques));
-        // var idcarte = panier[i].Carte_idCarte;
         var nomBoutique = panier[i].NomBoutique;
         var nomCarte = panier[i].NomCarte;
+        //Détecte si il s'agit d'une nouvelle boutique
+        //Si le numéro de l'id actuel (panier[i].Boutiques_idBoutiques) est différent du compteur (idboutiquecheck)
+        //alors on affiche une séparation pour une nouvelle boutique et on met le compteur à l'id de la boutique actuelle
+        //Si l'id rechange, on refait la même chose.
         if (idboutiquecheck == 0 || idboutiquecheck != panier[i].Boutiques_idBoutiques) {
-            var compteur = 0;
-            contenu += "</div></td></tr ></table ></a > ";
-            contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + nomBoutique + "</li></ul>";
+            if(panier[i].Quantite > 0) {
+                contenu += "</div></td></tr ></table ></a > ";
+                contenu += "<div id='magasinPanier'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>" + nomBoutique + "</li></ul></div>";
+                idboutiquecheck = panier[i].Boutiques_idBoutiques;
+            }
         }
-        idboutiquecheck = panier[i].Boutiques_idBoutiques;
         var foil = panier[i].Foil;
         style = "";
         if (foil == 1) {
             style = "style='background-image : url(\"media/surfoil.png\");' ";
         }
-
-        // if (compteur == 0 || idcarteavant == panier[i].Carte_idCarte) {
-        //     if (compteur != 0) {
         contenu += "</div></td></tr></table></a>";
-        // }
-        // contenu += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
-        // }
-        // contenu += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
         var qtepanier = panier[i].Quantite;
         var qtemax = panier[i].QteEnStock;
 
-        if (qtepanier <= 0) {
+        if (qtepanier <= 0) { //Revente
             contenu_reprise += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
             contenu_reprise += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
             contenu_reprise += "<SELECT class='selectopt2' id='selectopt_" + i + "' name='quantite' onchange='getval(this," + panier[i].idPanier_en_cours + ");refreshli(" + i + ");'>";
@@ -652,9 +648,8 @@ function recupPanier() {
             contenu_reprise += GetEtat(panier[i].Etats_idEtats);
             contenu_reprise += "Pu : " + Number.parseFloat(panier[i].Prix_Unitaire).toFixed(2) + "€ | Total : " + Number.parseFloat(panier[i].Quantite * panier[i].Prix_Unitaire).toFixed(2) + "€</li>";
             contenu_reprise += "</div></td></tr></table></a>";
-        } else {
+        } else { //Achat
             contenu += "<table><tr><td><img class='imgpan' src =" + panier[i].Img_Carte + "></td><td id='tdli'><li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>" + nomCarte + "</div></li>";
-            // }
             contenu += "<li id='refreshli " + i + "' class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><a href='#'><div class='flex-containerpan lideplus' " + style + "><img src='media/" + afficherDrap(panier[i].Langages_idLangages) + ".png' height=15>&nbsp;&nbsp;<img id='suppr' src='media/bin.png' onclick='supprLigne(" + panier[i].idPanier_en_cours + ");'>";
             contenu += "<SELECT class='selectopt2' id='selectopt_" + i + "' name='quantite' onchange='getval(this," + panier[i].idPanier_en_cours + ");refreshli(" + i + ");'>";
             for (var x = 1; x <= qtemax; x++) {
@@ -672,14 +667,12 @@ function recupPanier() {
 
         total += panier[i].Quantite * panier[i].Prix_Unitaire;
 
-
         var idcarteavant = panier[i].Carte_idCarte;
         compteur++;
-        // alert(nomBoutique);
     }
     total = Number.parseFloat(total).toFixed(2);
-    // alert(total);
-    contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Reprise(s)   </li>" + contenu_reprise + "</ul>";
+    
+    contenu += "<div id='panierCategorie'><ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Carte(s) Reprise(s)   </li>" + contenu_reprise + "</ul></div>";
     contenu += "<ul id='ulll' data-role='listview' class= 'ui-listview ui-listview-inset ui-corner-all ui-shadow' data-inset='true' data-divider-theme='a'><li class='ui-li-divider ui-bar-a ui-first-child' data-role='list-divider'>Total du panier : " + total + "€</li></ul>";
     contenu += "<li class='ui-btn ui-btn-icon-right ui-icon-carat-r lictn'><div class='licarte flex-container'>Numéro de commande : " + uniqueID + "</div></li></div>";
     document.getElementById('panier').innerHTML = contenu;

@@ -504,7 +504,9 @@ a{
 #boutPrefTitle {
     border-width: 1px;
     border-style: solid;
-    background: linear-gradient(#ff9853,#ffc392);
+    background: linear-gradient( #5393c5,#6facd5 );
+    text-shadow: 0 1px 1px #3373a5;
+    color: #fff;
     border-color: rgb(165, 165, 165);
     padding: 8px;
     font-weight: bold;
@@ -515,7 +517,7 @@ a{
     border-width: 1px;
     border-style: dashed;
     border-top: none;
-    background-color: #ffecdd;
+    background-color: #cee8fa ;
     border-color: rgb(187, 187, 187);
     padding-top: 12px;
 }
@@ -525,3 +527,22 @@ a{
     padding-left: 25px;
 }
 
+#panierCategorie ul li{
+    text-shadow: 0 1px 1px #3373a5;
+    background-image: linear-gradient( #5393c5,#6facd5 );
+    color: #fff;
+    border: none;
+}
+
+#carteAchat ul li {
+    text-shadow: 0 1px 1px #3373a5;
+    background-image: linear-gradient( #5393c5,#6facd5 );
+    color: #fff;
+    border: none;
+}
+
+#panier #magasinPanier{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+}
