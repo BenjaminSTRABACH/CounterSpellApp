@@ -39,7 +39,7 @@ function changerboutique() {
     var contenu = "<SELECT onchange='changercookieboutique(this);' class='selectopt' id='change' name='quantite'>";
     contenu += "<OPTION value='0'>Changer de boutique préférée</OPTION>";
     for (var i = 0; i < boutiques.length; i++) {
-        if (boutiques[i].Nom_complet != "Boutique Test") {
+        if (boutiques[i].Nom_complet != "Boutique Test" && boutiques[i].Nom_complet != "Continuum CyberCafé Niort Point Relais") {
             contenu += "<OPTION value='" + boutiques[i].Nom_complet + "___" + boutiques[i].nom_boutique + "'>" + boutiques[i].Nom_complet + "</OPTION>";
         }
     }

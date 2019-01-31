@@ -28,6 +28,7 @@ function storing(data, element, type) {
 }
 
 function submitForm(id, directory, type) {
+
     var id = id;
     var type = type || 'innerHTML';
     var htmlobj = document.getElementById(id);
