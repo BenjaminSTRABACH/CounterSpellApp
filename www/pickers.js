@@ -128,7 +128,9 @@ function initPickerLang(idcarte, detail) {
 }
 
 function chgDrap(index, imgDrap){
-    document.getElementById("imgdrap").src = "/media/" + imgDrap[index] + ".png";
+    console.log(imgDrap);
+    console.log(imgDrap[index]);
+    document.getElementById("imgdrap").src = "media/" + imgDrap[index] + ".png";
     document.getElementById("imgdrap").style["height"] = 15;
 }
 
