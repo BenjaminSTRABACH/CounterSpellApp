@@ -138,8 +138,9 @@ function recup_pseudo() {
 }
 
 function sauvegarde_pseudo() {
-    var pseudo = document.getElementById("pseudo").value;
-    Cookies.set('Pseudo', pseudo, { expires: 30 });
+    var oldPseudo = Cookies.get('UniqueID');
+    var newPseudo = document.getElementById("pseudo").value;
+    Cookies.set('Pseudo', newPseudo, { expires: 30 });
     var start = (Date.now()).toString();
     var uniqueID = Cookies.get('Pseudo') + "_" + start.substr(start.length - 1);
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -148,7 +149,16 @@ function sauvegarde_pseudo() {
     }
     Cookies.set('UniqueID', uniqueID, { expires: 30 });
     document.getElementById('myPopup').style.display = "none";
+    transfertPanier(oldPseudo, uniqueID);
+}
 
+//Fonction de transfert du panier lorsque l'on change de pseudo
+function transfertPanier(oldPseudo, newPseudo) {
+    oldPseudo = 'App_' + oldPseudo;
+    newPseudo = 'App_' + newPseudo;
+    var directory = 'http://www.counterspell.fr/app_json_cartes/transfert_panier/' + oldPseudo + '/' + newPseudo;
+    var element_idJson = 'storJson';
+    submitForm(element_idJson, directory, 'innerHTML');
 }
 
 //Fonction de récupération du nom des cartes
