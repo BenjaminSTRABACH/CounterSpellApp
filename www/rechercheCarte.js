@@ -696,6 +696,16 @@ function recupPanier() {
 // function affichagePanier(panier) {
 //     alert(panier);
 // }
+
+function supprPanier() {
+    if (confirm('Voulez vous vraiment vider le contenu de votre panier ?')) {
+        var uniqueID = Cookies.get('UniqueID');
+        uniqueID = "App_" + uniqueID;
+        $('#supprhide').load('http://www.counterspell.fr/app_json_cartes/vider_panier_app/' + uniqueID + '/niet');
+        refresh();
+    }
+}
+
 function supprLigne(idLigne) {
     // alert(idLigne);
     if (confirm('Voulez vous vraiment supprimer cette carte de votre panier ?')) {
