@@ -5,6 +5,7 @@ function initPickerExten(detail, idcarte) {
     var data = [];
     var img = [];
     var ext;
+    console.log(detail);
     for(var i = 0; i < detail.length; i++){
         if(detail[i].idcarte == idcarte){
             ext = i;
@@ -128,14 +129,11 @@ function initPickerLang(idcarte, detail) {
 }
 
 function chgDrap(index, imgDrap){
-    console.log(imgDrap);
-    console.log(imgDrap[index]);
     document.getElementById("imgdrap").src = "media/" + imgDrap[index] + ".png";
     document.getElementById("imgdrap").style["height"] = 15;
 }
 
 function initPickerQuant(idcarte, detail) {
-
     //Initialisation des données
     var data = ['1','2','3','4','5','6','7','8'];
 

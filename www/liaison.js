@@ -27,8 +27,37 @@ function storing(data, element, type) {
     element[type] = data;
 }
 
-function submitForm(id, directory, type) {
+function submitFormAsync(id, directory, type, callback) {
 
+    var id = id;
+    var type = type || 'innerHTML';
+    var htmlobj = document.getElementById(id);
+    // document.getElementById(id).innerHTML = directory + " dans le div " + id;
+
+    setTimeout(function setTimeoutCB(){
+        var req = createInstance();
+        req.onreadystatechange = function () {
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                storing(req.responseText, htmlobj, type);
+            }
+            else {
+                // alert("Error: returned status code " + req.status + " " + req.statusText);
+            }
+
+        }
+    }
+
+    req.open("GET", directory, false, 'ltdj', 'magasin2');
+
+    req.send(null);
+
+    callback(id);
+
+    });
+}
+
+function submitForm(id, directory, type) {
     var id = id;
     var type = type || 'innerHTML';
     var htmlobj = document.getElementById(id);
@@ -43,10 +72,8 @@ function submitForm(id, directory, type) {
             else {
                 // alert("Error: returned status code " + req.status + " " + req.statusText);
             }
-
         }
     }
-
     req.open("GET", directory, false, 'ltdj', 'magasin2');
 
     req.send(null);
