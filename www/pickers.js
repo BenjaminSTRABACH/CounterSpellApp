@@ -42,6 +42,7 @@ function initPickerExten(detail, idcarte) {
             resetPickerFoil(idcarte, detail);
             resetPickerLang(idcarte, detail);
             updatePrixRachat(idcarte,detail);
+            updateAddPanier(idcarte);
         }
     });
 }
@@ -80,6 +81,7 @@ function initPickerEtat(idcarte, detail) {
             setEtat(this.getIndexArr());
             idcarte = exten.idcarte;
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }
@@ -124,6 +126,7 @@ function initPickerLang(idcarte, detail) {
             chgDrap(this.getIndexArr(), imgDrap);
             setLang(this.getIndexArr());
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }
@@ -155,6 +158,7 @@ function initPickerQuant(idcarte, detail) {
             setQuant(this.getIndexArr());
             idcarte = exten.idcarte;
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }

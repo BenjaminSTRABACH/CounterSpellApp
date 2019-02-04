@@ -566,6 +566,12 @@ function updatePrixRachat(idcarte, detail) {
 
 }
 
+function updateAddPanier(idcarte){
+    content = "reprise_carte(" + idcarte + ");";
+    html = document.getElementById('imgReprise');
+    html.setAttribute("onclick", content);
+}
+
 function reprise_carte(idcarte) {
     var detail = recupRachat(idcarte);
     var prixRachat = updatePrixRachat(idcarte, detail);
@@ -727,6 +733,16 @@ function supprLigne(idLigne) {
     }
     // alert('http://www.counterspell.fr/gestion_panier/enlever_panier_ligne/' + idLigne + '/niet');
 }
+
+function supprPanier() {
+    if (confirm('Voulez vous vraiment vider le contenu de votre panier ?')) {
+        var uniqueID = Cookies.get('UniqueID');
+        uniqueID = "App_" + uniqueID;
+        $('#supprhide').load('http://www.counterspell.fr/app_json_cartes/vider_panier_app/' + uniqueID + '/niet');
+        refresh();
+    }
+}
+
 function getval(select, idLigne) {
     var newqte = select.value;
     // alert('http://www.counterspell.fr/chgqtepanier/' + newqte + '/' + idLigne + '/niet');
