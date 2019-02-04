@@ -460,7 +460,6 @@ function afficherAchat(idcarte) {
     //initPickerQuant(idcarte, detail);
 
     updatePrixRachat(idcarte, detail);
-    
     document.getElementById('infc').innerHTML = stock.general.nom_carte;
     content = "reprise_carte(" + idcarte + ");";
     html = document.getElementById('imgReprise');
@@ -554,7 +553,14 @@ function updatePrixRachat(idcarte, detail) {
     }
 }
 
+function updateAddPanier(idcarte){
+    content = "reprise_carte(" + idcarte + ");";
+    html = document.getElementById('imgReprise');
+    html.setAttribute("onclick", content);
+}
+
 function reprise_carte(idcarte) {
+    console.log(idcarte);
     var detail = recupRachat(idcarte);
     var prixRachat = updatePrixRachat(idcarte, detail);
     var tabdrap = [];
