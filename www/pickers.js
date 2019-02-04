@@ -41,6 +41,7 @@ function initPickerExten(detail, idcarte) {
             resetPickerFoil(idcarte, detail);
             resetPickerLang(idcarte, detail);
             updatePrixRachat(idcarte,detail);
+            updateAddPanier(idcarte);
         }
     });
 }
@@ -79,6 +80,7 @@ function initPickerEtat(idcarte, detail) {
             setEtat(this.getIndexArr());
             idcarte = exten.idcarte;
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }
@@ -123,13 +125,12 @@ function initPickerLang(idcarte, detail) {
             chgDrap(this.getIndexArr(), imgDrap);
             setLang(this.getIndexArr());
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }
 
 function chgDrap(index, imgDrap){
-    console.log(imgDrap);
-    console.log(imgDrap[index]);
     document.getElementById("imgdrap").src = "media/" + imgDrap[index] + ".png";
     document.getElementById("imgdrap").style["height"] = 15;
 }
@@ -157,6 +158,7 @@ function initPickerQuant(idcarte, detail) {
             setQuant(this.getIndexArr());
             idcarte = exten.idcarte;
             updatePrixRachat(idcarte, detail);
+            updateAddPanier(idcarte)
         }
     });
 }
