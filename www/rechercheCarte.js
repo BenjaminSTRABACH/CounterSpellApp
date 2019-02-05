@@ -113,28 +113,24 @@ function modal(card, liencarte) {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
-        var pickers = document.getElementsByClassName('mobileSelect mobileSelect-show');
-        if(pickers.length > 0){
-            resetPickers();
-        }
-        resetAchat();
-    }
-
-    function resetAchat(){
-        var content = document.getElementById("infc");
-        content.innerHTML = '';
-        document.getElementById("modalAchat").innerHTML = '';
+        resetModalContent();
     }
     
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            var pickers = document.getElementsByClassName('mobileSelect mobileSelect-show');
-            if(pickers.length > 0){
-                resetPickers();
-            }
+            resetModalContent();
         }
+    }
+}
+
+function resetModalContent(){
+    document.getElementById("infc").innerHTML = '';
+    document.getElementById("modalAchat").innerHTML = '';
+    var pickers = document.getElementsByClassName('mobileSelect mobileSelect-show');
+    if(pickers.length > 0){
+        resetPickers();
     }
 }
 
