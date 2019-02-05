@@ -32,20 +32,20 @@ function uniqueID() {
 function changerboutique() {
     var directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     var element_idJson = 'storJson';
-    submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){
-        recup = document.getElementById(element_idJson).innerHTML;
-        var boutiques = JSON.parse(recup);
+    submitForm(element_idJson, directory, 'innerHTML')
+    recup = document.getElementById(element_idJson).innerHTML;
+    var boutiques = JSON.parse(recup);
     
-        var contenu = "<SELECT onchange='changercookieboutique(this);' class='selectopt' id='change' name='quantite'>";
-        contenu += "<OPTION value='0'>Changer de boutique préférée</OPTION>";
-        for (var i = 0; i < boutiques.length; i++) {
-            if (boutiques[i].Nom_complet != "Boutique Test" && boutiques[i].Nom_complet != "Continuum CyberCafé Niort Point Relais") {
-                contenu += "<OPTION value='" + boutiques[i].Nom_complet + "___" + boutiques[i].nom_boutique + "'>" + boutiques[i].Nom_complet + "</OPTION>";
-            }
+    var contenu = "<SELECT onchange='changercookieboutique(this);' class='selectopt' id='change' name='quantite'>";
+    contenu += "<OPTION value='0'>Changer de boutique préférée</OPTION>";
+    for (var i = 0; i < boutiques.length; i++) {
+        if (boutiques[i].Nom_complet != "Boutique Test" && boutiques[i].Nom_complet != "Continuum CyberCafé Niort Point Relais") {
+            contenu += "<OPTION value='" + boutiques[i].Nom_complet + "___" + boutiques[i].nom_boutique + "'>" + boutiques[i].Nom_complet + "</OPTION>";
         }
-        contenu += "</SELECT>";
-        document.getElementById('chg_boutique').innerHTML = contenu;
-    });
+    }
+    contenu += "</SELECT>";
+    document.getElementById('chg_boutique').innerHTML = contenu;
+    
 }
 
 function changercookieboutique(valeur) {
@@ -117,7 +117,13 @@ function modal(card, liencarte) {
         if(pickers.length > 0){
             resetPickers();
         }
-        
+        resetAchat();
+    }
+
+    function resetAchat(){
+        var content = document.getElementById("infc");
+        content.innerHTML = '';
+        document.getElementById("modalAchat").innerHTML = '';
     }
     
     // When the user clicks anywhere outside of the modal, close it
@@ -159,7 +165,7 @@ function transfertPanier(oldPseudo, newPseudo) {
     newPseudo = 'App_' + newPseudo;
     var directory = 'http://www.counterspell.fr/app_json_cartes/transfert_panier/' + oldPseudo + '/' + newPseudo;
     var element_idJson = 'storJson';
-    submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){});
+    submitForm(element_idJson, directory, 'innerHTML');
 }
 
 //Fonction de récupération du nom des cartes
@@ -167,18 +173,18 @@ function transfertPanier(oldPseudo, newPseudo) {
 function getNomCarte(idcarte) {
     var directory = 'http://www.counterspell.fr/app_json_cartes/voir_json/' + idcarte;
     var element_idJson = 'storJson';
-    submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){
-        var recup = document.getElementById(element_idJson).innerHTML;
-        var infoCarte = JSON.parse(recup);
-        var nomCarte = '';
-        if ((infoCarte.NomFr == null) || (infoCarte.NomFr == "")) {
-            nomCarte = infoCarte.NomEn;
-        } else {
-            nomCarte = infoCarte.NomFr;
-        }
-        return nomCarte;
+    submitForm(element_idJson, directory, 'innerHTML')
+    var recup = document.getElementById(element_idJson).innerHTML;
+    var infoCarte = JSON.parse(recup);
+    var nomCarte = '';
+    if ((infoCarte.NomFr == null) || (infoCarte.NomFr == "")) {
+        nomCarte = infoCarte.NomEn;
+    } else {
+        nomCarte = infoCarte.NomFr;
+    }
+    return nomCarte;
 
-    });  
+      
 }
 
 //Fonction de recherche des cartes
@@ -313,19 +319,19 @@ function GetNomBoutique(idboutique) {
     //boutiques devient le tableau de données sur les boutiques existantes
     directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     var element_idJson = 'storJson';
-    submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){
-        recup = document.getElementById(element_idJson).innerHTML;
-        var boutiques = JSON.parse(recup);
+    submitForm(element_idJson, directory, 'innerHTML');
+    recup = document.getElementById(element_idJson).innerHTML;
+    var boutiques = JSON.parse(recup);
     
-        var nomBout = "";
-        for (var j = 0; j < boutiques.length; j++) {
-            if (boutiques[j].idBoutiques == idboutique) {
-                nomBout = boutiques[j].Nom_complet;
-            }
+    var nomBout = "";
+    for (var j = 0; j < boutiques.length; j++) {
+        if (boutiques[j].idBoutiques == idboutique) {
+            nomBout = boutiques[j].Nom_complet;
         }
-        // alert(nomBout);
-        return nomBout;
-    });
+    }
+    // alert(nomBout);
+    return nomBout;
+    
 }
 
 function GetEtat(etat) {
@@ -443,7 +449,6 @@ function afficherStock(idcarte) {
 
 function afficherAchat(idcarte) {
     var detail = recupRachat(idcarte);
-    console.log(detail);
     // idcarte = detail[0].idcarte;
     var element_idJson = 'storJson';
     directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
@@ -559,11 +564,9 @@ function updatePrixRachat(idcarte, detail) {
             document.getElementById('imgReprise').style.display = "block";
             document.getElementById('liprix').style.fontSize = "18px";
             document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
-    
             return prixRachat;
         }
     });
-
 }
 
 function updateAddPanier(idcarte){
@@ -574,7 +577,8 @@ function updateAddPanier(idcarte){
 
 function reprise_carte(idcarte) {
     var detail = recupRachat(idcarte);
-    var prixRachat = updatePrixRachat(idcarte, detail);
+    var prixRachat = document.getElementById('liprix').innerHTML;
+    prixRachat = prixRachat.replace('€','');
     var tabdrap = [];
     tabdrap = index_string_lang(detail, position_dans_le_tableau(idcarte, detail));
     var langue2 = tabdrap[lang - 1];

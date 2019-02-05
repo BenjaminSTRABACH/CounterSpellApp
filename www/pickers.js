@@ -5,7 +5,6 @@ function initPickerExten(detail, idcarte) {
     var data = [];
     var img = [];
     var ext;
-    console.log(detail);
     for(var i = 0; i < detail.length; i++){
         if(detail[i].idcarte == idcarte){
             ext = i;
