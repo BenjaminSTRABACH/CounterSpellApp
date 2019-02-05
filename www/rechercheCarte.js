@@ -792,8 +792,5 @@ function chgmodemarchand() {
 
 function closeModal(){
     document.getElementById("myModal").style.display = "none";
-    mobileSelectExten == null;
-    mobileSelectLang == null;
-    mobileSelectEtat == null;
-    mobileSelectQuant == null;
+    resetPickers();
 }
