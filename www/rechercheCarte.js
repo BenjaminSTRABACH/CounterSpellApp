@@ -793,4 +793,5 @@ function chgmodemarchand() {
 function closeModal(){
     document.getElementById("myModal").style.display = "none";
     resetPickers();
+    resetModalContent();
 }
