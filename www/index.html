@@ -32,33 +32,33 @@
     <script src="pickers.js"></script>
     <div class="darkbox"></div>
     <div data-role="header">
-
-        <div data-role="fieldcontain" id='boutonVR'>
-            <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true" onchange="chgmodemarchand();">
-                <option value="no">Achat</option>
-                <option value="yes">Vente</option>
-            </select>
-        </div>
         <!-- <div id="flexheader "> -->
-        <img src="media/logo_nantes_temple.png" id="logo">
-        <h1>Counterspell</h1>
-
         <!-- </div> -->
         <div data-role="navbar">
             <ul>
-                <li>
-                    <a onclick="openNavG();">Options</a>
+                <li id="header1">
+                    <img src="media/menuHeader.png" onclick="openNavG();" id="menuIcon"/>
                 </li>
-                <li>
-                    <input type="text" onkeyup="recupCard();" name="name" id="basic" value="" placeholder="Recherche" data-mini="true" /> </li>
-                <li>
-                    <a onclick="openNavD();">Panier</a>
+                <li id="header2">
+                    <input type="text" onkeyup="recupCard();" name="name" id="basic" value="" placeholder="Recherche" data-mini="true" /> 
+                </li>
+                <li id="header3">
+                    <img src="media/cartHeader.png" onclick="openNavD();" id="cartIcon"/>
                 </li>
             </ul>
         </div>
     </div>
     <div id="infonav" class="slidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavG();">&times;</a>
+        <div id="headMenu">
+        <img src="media/logo_nantes_temple.png" id="logo">
+            <div data-role="fieldcontain" id='boutonVR'>
+                <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true" onchange="chgmodemarchand();">
+                    <option value="no">Achat</option>
+                    <option value="yes">Vente</option>
+                </select>
+            </div>
+        </div>
         <a onclick='uniqueID();' href="#">Pseudo:
             <div id="nom"></div>
         </a>

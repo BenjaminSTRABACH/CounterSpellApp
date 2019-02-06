@@ -6,10 +6,15 @@ body{
 }
 
 #logo{
-    height: 35px;
-    width: 58px;
+    height: 105px;
+    width: 150px;
     margin: 0 auto;
     position: absolute;
+    top: 2%;
+}
+
+#headMenu {
+    height: 70px;
 }
 
 .ui-body-c .ui-link:visited{
@@ -231,7 +236,7 @@ a{
     margin-top: 15px;
     position: absolute;
     bottom:0px;
-    top:77px;
+    top:80px;
     text-align: center;
     height:auto;
     overflow-y: scroll;
@@ -240,6 +245,15 @@ a{
     /* transition-duration: 2s;
     transition-property: all;
     scroll-behavior: auto; */
+}
+
+#nbrcartes {
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: rgb(184, 184, 184);
 }
 
 #checkFoil{
@@ -321,10 +335,16 @@ a{
     background-size: cover;
 }
 #boutonVR{
-    right: 0;
+    left: 165px;
     position: absolute;
-    top: 0;
-    margin-top: -4%;
+    top: 14px;
+    /* margin-top: -4%; */
+    border-bottom-style: none;
+}
+
+div.ui-slider-switch a.ui-btn.ui-slider-handle{
+    margin: 1px 0 0 -13px;
+    padding: 0;
 }
 
 .lislid{
@@ -545,4 +565,41 @@ a{
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 15px;
+}
+
+.ui-header {
+    height: 48px;
+}
+
+.ui-navbar.ui-mini {
+    height: 48px;
+}
+
+#menuIcon {
+    float: left;
+    margin-top: 8px;
+    margin-left: 12px;
+    width: 32px;
+    height: 32px;
+}
+
+#cartIcon {
+    float: right;
+    margin-top: 8px;
+    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+}
+
+#header1 {
+    width: 12%;
+}
+
+#header2 {
+    margin-top: 8px;
+    width: 76%;
+}
+
+#header3 {
+    width: 12%;
 }
