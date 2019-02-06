@@ -43,6 +43,14 @@
                     <input type="text" onkeyup="recupCard();" name="name" id="basic" value="" placeholder="Recherche" data-mini="true" /> 
                 </li>
                 <li id="header3">
+                    <div data-role="fieldcontain" id='boutonVR'>
+                        <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true" onchange="chgmodemarchand();">
+                            <option value="no">Achat</option>
+                            <option value="yes">Vente</option>
+                        </select>
+                    </div>
+                </li>
+                <li id="header4">
                     <img src="media/cartHeader.png" onclick="openNavD();" id="cartIcon"/>
                 </li>
             </ul>
@@ -52,12 +60,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavG();">&times;</a>
         <div id="headMenu">
         <img src="media/logo_nantes_temple.png" id="logo">
-            <div data-role="fieldcontain" id='boutonVR'>
-                <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true" onchange="chgmodemarchand();">
-                    <option value="no">Achat</option>
-                    <option value="yes">Vente</option>
-                </select>
-            </div>
+            
         </div>
         <a onclick='uniqueID();' href="#">Pseudo:
             <div id="nom"></div>
