@@ -200,7 +200,11 @@ function getNomCarte(idcarte) {
 //Fonction de recherche des cartes
 //*******************************************************************************************************//
 function rechercheCarte(card) {
-    var motsaisi = card;
+    var punctuationless = card.replace(/[.,\/#!$%\^&\*;:{}="\-_`~()]/g,"");
+    var card2 = punctuationless.replace(/\s{2,}/g," ");
+    var motsaisi = card2;
+    console.log(card2);
+    
 
     if (motsaisi.length == 0){
         affichercarterechercher();
@@ -211,7 +215,7 @@ function rechercheCarte(card) {
         document.getElementById("slider").innerHTML = "";
         return false;
     }
-    var directory = 'http://www.counterspell.fr/app_json_cartes/recherche_carte/' + escape(card);
+    var directory = 'http://www.counterspell.fr/app_json_cartes/recherche_carte/' + escape(card2);
     var element_idJson = 'storJson';
     // var element_idCarte = 'carte';
     submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){
