@@ -52,7 +52,6 @@ a:link{
     display: none;
 }
 #basic{
-    width: 80%;
     margin: 0 auto;
 }
 .stock{
@@ -335,11 +334,10 @@ a{
     background-size: cover;
 }
 #boutonVR{
-    left: 165px;
     position: absolute;
-    top: 14px;
-    /* margin-top: -4%; */
+    padding: 7px;
     border-bottom-style: none;
+    margin-left: 4px;
 }
 
 div.ui-slider-switch a.ui-btn.ui-slider-handle{
@@ -592,14 +590,18 @@ div.ui-slider-switch a.ui-btn.ui-slider-handle{
 }
 
 #header1 {
-    width: 12%;
+    width: 16%;
 }
 
 #header2 {
     margin-top: 8px;
-    width: 76%;
+    width: 42%;
 }
 
 #header3 {
-    width: 12%;
+    width: 26%;
+}
+
+#header4 {
+    width: 16%;
 }
