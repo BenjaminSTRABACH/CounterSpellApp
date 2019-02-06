@@ -27,7 +27,7 @@ function storing(data, element, type) {
     element[type] = data;
 }
 
-function submitFormAsync(id, directory, type, callback) {
+function submitFormAsync(id, directory, type, callback, time) {
 
     var id = id;
     var type = type || 'innerHTML';
@@ -54,7 +54,7 @@ function submitFormAsync(id, directory, type, callback) {
 
     callback(id);
 
-    });
+    }, time);
 }
 
 function submitForm(id, directory, type) {

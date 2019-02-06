@@ -32,15 +32,18 @@ function uniqueID() {
 function changerboutique() {
     var directory = 'http://www.counterspell.fr/app_json_cartes/getboutiques';
     var element_idJson = 'storJson';
-    submitForm(element_idJson, directory, 'innerHTML')
+    submitForm(element_idJson, directory, 'innerHTML');
     recup = document.getElementById(element_idJson).innerHTML;
     var boutiques = JSON.parse(recup);
-    
+    var boutiqueSelect = Cookies.get('Boutique_preferee');
     var contenu = "<SELECT onchange='changercookieboutique(this);' class='selectopt' id='change' name='quantite'>";
-    contenu += "<OPTION value='0'>Changer de boutique préférée</OPTION>";
-    for (var i = 0; i < boutiques.length; i++) {
+    for (var i = 0; i < boutiques.length - 1; i++) {
         if (boutiques[i].Nom_complet != "Boutique Test" && boutiques[i].Nom_complet != "Continuum CyberCafé Niort Point Relais") {
-            contenu += "<OPTION value='" + boutiques[i].Nom_complet + "___" + boutiques[i].nom_boutique + "'>" + boutiques[i].Nom_complet + "</OPTION>";
+            contenu += "<OPTION";
+            if (boutiques[i].Nom_complet == boutiqueSelect){
+                contenu += " selected";
+            }
+            contenu += " value='" + boutiques[i].Nom_complet + "___" + boutiques[i].nom_boutique + "'>" + boutiques[i].Nom_complet + "</OPTION>";
         }
     }
     contenu += "</SELECT>";
@@ -56,7 +59,6 @@ function changercookieboutique(valeur) {
     valeurdebut = valeur.split("___");
     Cookies.set('Boutique_preferee', valeurdebut[0], { expires: 30 });
     Cookies.set('Boutique_preferee_nom_court', valeurdebut[1], { expires: 30 });
-    document.getElementById('boutique_preferee').innerHTML = Cookies.get('Boutique_preferee');
     affichercarterechercher();
 }
 
@@ -562,7 +564,7 @@ function updatePrixRachat(idcarte, detail) {
             document.getElementById('liprix').innerHTML = Number.parseFloat(prixRachat).toFixed(2) + '€';
             return prixRachat;
         }
-    });
+    }, 400);
 }
 
 function updateAddPanier(idcarte){
