@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.hello" version="1.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="fr.ltdj.t5" version="1.6.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CounterSpell</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A Cordova application to sell/buy Magic and Final Fantasy cards in Le Temple du Jeu shops
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="sylouan.corfa@epsi.fr" href="epsi.fr">
+        Sylouan CORFA
+        Benjamin STRABACH
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -20,6 +21,8 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <icon src="media/CS-logo.png" density="mdpi" />
+        <preference name="android-minSdkVersion"  value="16" />
+        <preference name="android-targetSdkVersion"  value="26" />
     <preference name="Orientation" value="sensorPortrait" />
     </platform>
     <platform name="ios">
