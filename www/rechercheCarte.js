@@ -85,6 +85,7 @@ function popup(){
 }
 
 function verif_pseudo(){
+    //On n'autorise que les caractère numérique, alphabétiques, ou alphanumériques
     var exp = /^([0-9]|[a-z])+([0-9a-z]+)$/i;
     var newPseudo = document.getElementById("pseudo").value;
     if (!exp.test(newPseudo)){
