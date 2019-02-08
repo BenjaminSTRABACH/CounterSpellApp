@@ -64,7 +64,7 @@ function changercookieboutique(valeur) {
 
 function popup(){
     
-    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">×</span><div id="mdlct"><br><br>Veuillez entrer votre pseudo,<br> il ne sera utilisé que pour la sauvegarde de votre panier.<br>Seuls les caractères alphanumériques sont autorisés<br><br><input id="pseudo" type="text" placeholder="Votre pseudo."><button onclick="verif_pseudo();">Valider</button></div></div>';
+    var contenu = '<div id="mdcContent" class="modal-content"><span class="close" onclick="closeModal()">×</span><div id="mdlct"><div id="titlePopupPseudo">Entrez votre pseudo :</div> Il ne sera utilisé que pour la sauvegarde de votre panier.<br>Seuls les caractères alphanumériques sont autorisés<br><br><div id="pseudoForm"><input id="pseudoInput" type="text" placeholder="Votre pseudo."><img src="media/confirm.png" id="pseudoConfirm" onclick="verif_pseudo();"/></div></div></div>';
     document.getElementById('myPopup').innerHTML = contenu;
     // Get the modal
     var modal = document.getElementById('myPopup');
@@ -87,7 +87,7 @@ function popup(){
 function verif_pseudo(){
     //On n'autorise que les caractère numérique, alphabétiques, ou alphanumériques
     var exp = /^([0-9]|[a-z])+([0-9a-z]+)$/i;
-    var newPseudo = document.getElementById("pseudo").value;
+    var newPseudo = document.getElementById("pseudoInput").value;
     if (!exp.test(newPseudo)){
         alert("Votre pseudo contient des caractères non autorisés");
     }
@@ -149,14 +149,14 @@ function resetModalContent(){
 }
 
 function recup_pseudo() {
-    var contenu = "<br><br>Veuillez mettre votre pseudo,<br> il ne sera utilisé que pour la sauvegarde de votre panier.<br>N'utilisez que des caractères alphanumériques.<br><input id='pseudo' type='text' placeholder='Votre pseudo.'/>";
+    var contenu = "<br><br>Veuillez mettre votre pseudo,<br> il ne sera utilisé que pour la sauvegarde de votre panier.<br>N'utilisez que des caractères alphanumériques.<br><input id='pseudoInput' type='text' placeholder='Votre pseudo.'/>";
     contenu += "<button onclick='verif_pseudo();'>Valider</button>";
     document.getElementById('mdlct').innerHTML = contenu;
 }
 
 function sauvegarde_pseudo() {
     var oldPseudo = Cookies.get('UniqueID');
-    var newPseudo = document.getElementById("pseudo").value.replace(/[^a-z0-9]/gi,'');
+    var newPseudo = document.getElementById("pseudoInput").value.replace(/[^a-z0-9]/gi,'');
     Cookies.set('Pseudo', newPseudo, { expires: 30 });
     var start = (Date.now()).toString();
     var uniqueID = Cookies.get('Pseudo') + "_" + start.substr(start.length - 1);

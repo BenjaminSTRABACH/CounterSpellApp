@@ -99,9 +99,9 @@ display: none;
 
 /* The Close Button */
 .close {
-    color: #aaa;
+    color: black;
     float: right;
-    font-size: 50px;
+    font-size: 36px;
     font-weight: bold;
 }
 
@@ -211,7 +211,7 @@ a{
     margin-bottom: 2%;
     margin-top: 2%;
 }
-.selectopt{  
+#chg_boutique .selectopt{  
     height: 32px;
     width: 100%;
 }
@@ -642,4 +642,33 @@ div.ui-slider-switch a.ui-btn.ui-slider-handle{
 
 #nom {
     flex: 1;
+}
+
+.ui-btn-up-c {
+    width: 90%;
+    left: 5%;
+    padding: 0;
+}
+
+#titlePopupPseudo{
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 24px;
+}
+
+#pseudoForm {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: center;
+    height: 38px;
+}
+
+#pseudoInput {
+    flex: 1;
+    margin-right: 8px;
+    height: 70%;
+}
+#pseudoConfirm {
+    height: 100%;
 }

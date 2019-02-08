@@ -22,17 +22,19 @@
 /* ----bouton de fermeture du slide----*/
 .slidenavperson .closebtn {
     position: absolute;
-    top: 1%;
-    right: 4%;
+    top: 2%;
+    right: 6%;
     font-size: 36px;
     margin-left: 50px;
 }
 h2{
     color: black;
     text-align: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 #divpanier{
-    padding: 5%;
+    padding: 2%;
 }
 .licarte{
     background-image: linear-gradient( #EEEFEA, whitesmoke );
