@@ -720,7 +720,7 @@ function recupPanier() {
         document.getElementById('panier').innerHTML = contenu;
     
         return panier;
-    });
+    }, 400);
 }
 
 //Fonction d'affichage du panier

@@ -59,27 +59,24 @@
     <div id="infonav" class="slidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavG();">&times;</a>
         <div id="headMenu">
-        <img src="media/logo_nantes_temple.png" id="logo">
-            
+            <img src="media/logo_nantes_temple.png" id="logo">  
         </div>
-        <a onclick='uniqueID();' href="#">Pseudo:
+        <hr class="separator">
+        <div id="pseudoMenu">
+            <a onclick='uniqueID();' href="#">Pseudo:</a>
             <div id="nom"></div>
-        </a>
+            <img src="media/edit.png" id="pseudoEdit" onclick="closeNavG();popup();">  
+        </div>
+        <hr class="separator">
         <!-- <div id="jeuxDiv">Jeux :
             <ul class="jeuxList">
                 <li><a href="#" class="jeu">Magic</a></li>
                 <li><a href="_" class="jeu">Final Fantasy</a></li>
             </ul>
         </div> -->
-        <a href="#">Boutique Préférée: </a>
-        <div id="chg_boutique"></div>
-        <br>
-        <br>
-        <br>
-        <div>
-        <!-- <div onclick="openinputbar();"> -->
-            <button onclick="closeNavG();
-            popup();">Modifier Pseudo</button>
+        <div id="boutiqueMenu">
+            <a href="#">Boutique Préférée: </a>
+            <div id="chg_boutique"></div>
         </div>
     </div>
     <div id="infonavperson" class="slidenavperson">
