@@ -32,7 +32,7 @@
 			_this.checkDataType();
 			_this.trigger = document.querySelector(config.trigger);
 			if(!_this.trigger){
-				console.error('mobileSelect has been successfully installed, but no trigger found on your page.');
+				console.error('Installation ok : aucun trigger trouvé sur la page.');
 				return false;
 			}
 			_this.renderWheels(_this.wheelsData, config.cancelBtnText, config.ensureBtnText);
@@ -139,8 +139,8 @@
 		
 		renderWheels: function(wheelsData, cancelBtnText, ensureBtnText){
 			var _this = this;
-			var cancelText = cancelBtnText ? cancelBtnText : '取消';
-			var ensureText = ensureBtnText ? ensureBtnText : '确认';
+			var cancelText = cancelBtnText ? cancelBtnText : 'Annuler';
+			var ensureText = ensureBtnText ? ensureBtnText : 'Confirmer';
 			_this.mobileSelect = document.getElementById("genul0");
 			_this.mobileSelect = document.createElement("div");
 			_this.mobileSelect.className = "mobileSelect mobileSelect-show";
@@ -391,7 +391,7 @@
 			var _this = this;
 			var tempHTML='';
 	    	if(_this.cascade){
-	    		console.error('级联格式不支持updateWheel(),请使用updateWheels()更新整个数据源');
+	    		console.error('updateWheel(),updateWheels()');
 				return false;
 	    	}
 	    	else if(_this.jsonType){

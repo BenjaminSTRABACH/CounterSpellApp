@@ -12,6 +12,7 @@ function recupCard() {
 }
 
 function uniqueID() {
+    //Si l'ID de l'utilisateur n'est pas defined, on l'invite à le définir
     if ((Cookies.get('UniqueID')) == undefined) {
         popup();
     }
@@ -124,13 +125,13 @@ function modal(card, liencarte) {
         }
     }
     
-    // When the user clicks on <span> (x), close the modal
+    // Quand on clique sur le span (x), ferme le modal
     span.onclick = function () {
         modal.style.display = "none";
         resetModalContent();
     }
     
-    // When the user clicks anywhere outside of the modal, close it
+    // Quand l'utilisateur clique ailleurs que sur le modal, on le ferme
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -160,6 +161,7 @@ function sauvegarde_pseudo() {
     Cookies.set('Pseudo', newPseudo, { expires: 30 });
     var start = (Date.now()).toString();
     var uniqueID = Cookies.get('Pseudo') + "_" + start.substr(start.length - 1);
+    //Génération aléatoire du code pseudo
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     for (var i = 0; i < 3; i++) {
         uniqueID += alphabet[Math.floor(Math.random() * Math.floor(alphabet.length))];
@@ -200,10 +202,10 @@ function getNomCarte(idcarte) {
 //Fonction de recherche des cartes
 //*******************************************************************************************************//
 function rechercheCarte(card) {
+    //On remplace tous les caractères non-alphanumériques par des espaces 
     var punctuationless = card.replace(/[.,\/#!$%\^&\*;:{}="\-_`~()]/g,"");
     var card2 = punctuationless.replace(/\s{2,}/g," ");
     var motsaisi = card2;
-    console.log(card2);
     
 
     if (motsaisi.length == 0){
@@ -367,7 +369,7 @@ function afficherStock(idcarte) {
 
 
     var element_idJson = 'storJson';
-    //stock devient un objet avec le stock de toutes les boutiues pour cette carte et celles avec le même nom
+    //stock devient un objet avec le stock de toutes les boutiques pour cette carte et celles avec le même nom
     directory = 'http://www.counterspell.fr/app_json_cartes/getstock/' + idcarte;
     submitFormAsync(element_idJson, directory, 'innerHTML', function RequestCB(element_idJson){
         stock = document.getElementById(element_idJson).innerHTML;
@@ -729,10 +731,6 @@ function recupPanier() {
 
 //Fonction d'affichage du panier
 //*******************************************************************************************************//
-
-// function affichagePanier(panier) {
-//     alert(panier);
-// }
 
 function supprPanier() {
     if (confirm('Voulez vous vraiment vider le contenu de votre panier ?')) {
